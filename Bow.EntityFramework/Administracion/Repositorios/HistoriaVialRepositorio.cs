@@ -11,7 +11,7 @@ using System.Data.Entity;
 
 namespace Bow.Administracion.Repositorios
 {
-    public class HistoriaVialRepositorio : BowRepositoryBase<HistoriaVial>, IHistorialVialRepositorio
+    public class HistoriaVialRepositorio : BowRepositoryBase<HistoriaVial>, IHistoriaVialRepositorio
     {
         public HistoriaVialRepositorio(IDbContextProvider<BowDbContext> dbContextProvider)
            : base(dbContextProvider)

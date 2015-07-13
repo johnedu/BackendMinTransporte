@@ -9,6 +9,5 @@ namespace Bow.Seguridad
 {
     public interface ISeguridadService : IApplicationService
     {
-        Task CrearTenant();
     }
 }

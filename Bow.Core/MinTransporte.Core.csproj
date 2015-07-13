@@ -92,7 +92,7 @@
     <Compile Include="Administracion\Entidades\TipoVehiculo.cs" />
     <Compile Include="Administracion\Entidades\TipoReporte.cs" />
     <Compile Include="Administracion\Entidades\ReporteIncidentes.cs" />
-    <Compile Include="Administracion\Repositorios\IHistorialVialRepositorio.cs" />
+    <Compile Include="Administracion\Repositorios\IHistoriaVialRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\IDeslizadorRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\IPasoHistoriaVialRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\IPreguntaFrecuenteRepositorio.cs" />

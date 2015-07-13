@@ -25,19 +25,20 @@ namespace Bow.Web
                                 new LocalizableString("menu_administracion_preguntasFrecuentes", BowConsts.LocalizationSourceName),
                                 url: "#/administracion/preguntasFrecuentes"
                             )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "menu_administracion_preguntasJuegos",
-                                new LocalizableString("menu_administracion_preguntasJuegos", BowConsts.LocalizationSourceName),
-                                url: "#/administracion/preguntasJuegos"
-                            )
-                        ).AddItem(
-                            new MenuItemDefinition(
-                                "menu_administracion_entidadesDimensiones",
-                                new LocalizableString("menu_administracion_entidadesDimensiones", BowConsts.LocalizationSourceName),
-                                url: "#/administracion/entidadesDimensiones"
-                            )
                         )
+                        //.AddItem(
+                        //    new MenuItemDefinition(
+                        //        "menu_administracion_historiasViales",
+                        //        new LocalizableString("menu_administracion_historiasViales", BowConsts.LocalizationSourceName),
+                        //        url: "#/administracion/historiasViales"
+                        //    )
+                        //).AddItem(
+                        //    new MenuItemDefinition(
+                        //        "menu_administracion_noticias",
+                        //        new LocalizableString("menu_administracion_noticias", BowConsts.LocalizationSourceName),
+                        //        url: "#/administracion/noticias"
+                        //    )
+                        //)
                 );
         }
     }

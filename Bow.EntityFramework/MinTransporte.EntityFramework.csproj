@@ -108,14 +108,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administracion\Mappings\HistoriaVialMap.cs" />
-    <Compile Include="Administracion\Mappings\DeslizadorMap.cs" />
+    <Compile Include="Administracion\Mappings\NoticiasMap.cs" />
     <Compile Include="Administracion\Mappings\PasoHistoriaVialMap.cs" />
     <Compile Include="Administracion\Mappings\PreguntaFrecuenteMap.cs" />
     <Compile Include="Administracion\Mappings\ReporteCalificacionesMap.cs" />
     <Compile Include="Administracion\Mappings\ItemDiagnosticoMap.cs" />
     <Compile Include="Administracion\Mappings\DiagnosticoVialMap.cs" />
     <Compile Include="Administracion\Mappings\TipoVehiculoMap.cs" />
-    <Compile Include="Administracion\Mappings\NoticiasMap.cs" />
+    <Compile Include="Administracion\Mappings\DeslizadorMap.cs" />
     <Compile Include="Administracion\Mappings\TipoReporteMap.cs" />
     <Compile Include="Administracion\Mappings\ReporteIncidentesMap.cs" />
     <Compile Include="Administracion\Repositorios\HistoriaVialRepositorio.cs" />

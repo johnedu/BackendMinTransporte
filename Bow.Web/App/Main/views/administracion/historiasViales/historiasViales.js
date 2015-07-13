@@ -1,10 +1,10 @@
 ﻿(function () {
     //Nombre del controlador   
-    var controllerId = 'app.views.administracion.preguntasJuegos';
+    var controllerId = 'app.views.administracion.historiasViales';
 
     /*****************************************************************
     * 
-    * CONTROLADOR DE PREGUNTAS DE JUEGOS
+    * CONTROLADOR DE HISTORIAS VIALES
     * 
     *****************************************************************/
 
@@ -14,12 +14,7 @@
 
            //Inicializando Modelos
 
-           vm.listaJuegos = [];
-           vm.listaDimensiones = [];
-           vm.listaPreguntas = [];
-
-           vm.selectedJuego = '';
-           vm.selectedDimension = '';
+           vm.listaHistorias = [];
 
            vm.pregunta = {
                id: '',
@@ -29,24 +24,10 @@
 
            //Funcion encargada de consultar las preguntas de un juego y una dimensión seleccionada
            vm.cargarPreguntas = function () {
-               administracionService.getAllPreguntasByDimension({ juegoId: vm.selectedJuego, dimensionId: vm.selectedDimension }).success(function (data) {
-                   vm.listaPreguntas = data.preguntas;
+               administracionService.getAllHistoriasViales().success(function (data) {
+                   vm.listaPreguntas = data.historiasViales;
                });
            }
-
-           function cargarJuegos() {
-               administracionService.getAllJuegos().success(function (data) {
-                   vm.listaJuegos = data.juegos;
-               });
-           }
-           cargarJuegos();
-
-           function cargarDimensiones() {
-               administracionService.getAllDimensiones().success(function (data) {
-                   vm.listaDimensiones = data.dimensiones;
-               });
-           }
-           cargarDimensiones();
 
            /************************************************************************
             * Llamado para abrir Modal para Nueva Pregunta Frecuente

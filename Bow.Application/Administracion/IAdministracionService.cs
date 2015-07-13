@@ -97,7 +97,7 @@ namespace Bow.Administracion
 
         void DeleteItemDiagnosticoVial(DeleteItemDiagnosticoVialInput itemDiagnosticoEliminar);
 
-        //  Diagnostico Vial
+
     }
 }
 

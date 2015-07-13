@@ -120,13 +120,13 @@
   <data name="menu_administracion" xml:space="preserve">
     <value>ADMINISTRACIÓN</value>
   </data>
-  <data name="menu_administracion_entidadesDimensiones" xml:space="preserve">
-    <value>Entidades de las Dimensiones</value>
+  <data name="menu_administracion_historiasViales" xml:space="preserve">
+    <value>Historias en la Vía</value>
+  </data>
+  <data name="menu_administracion_noticias" xml:space="preserve">
+    <value>Noticias</value>
   </data>
   <data name="menu_administracion_preguntasFrecuentes" xml:space="preserve">
     <value>Preguntas Frecuentes</value>
-  </data>
-  <data name="menu_administracion_preguntasJuegos" xml:space="preserve">
-    <value>Juegos de la App</value>
   </data>
 </root>

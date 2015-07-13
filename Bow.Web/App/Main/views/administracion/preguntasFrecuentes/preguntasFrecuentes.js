@@ -20,6 +20,8 @@
            function cargarPreguntasFrecuentes() {
                administracionService.getAllPreguntasFrecuentes().success(function (data) {
                    vm.preguntasFrecuentes = data.preguntasFrecuentes;
+               }).error(function (error) {
+                   console.log(error);
                });
            }
            cargarPreguntasFrecuentes();

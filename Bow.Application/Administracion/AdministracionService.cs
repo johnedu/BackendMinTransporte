@@ -22,11 +22,12 @@ namespace Bow.Administracion
         private IPreguntaFrecuenteRepositorio _preguntaFrecuenteRepositorio;
         private IReporteIncidentesRepositorio _reporteIncidentesRepositorio;
         private ITipoReporteRepositorio _tipoReporteRepositorio;
+        private ITipoVehiculoRepositorio _tipoVehiculoRepositorio;
         private INoticiasRepositorio _noticiasRepositorio;
         private IItemDiagnosticoRepositorio _itemDiagnosticoRepositorio;
         private IDiagnosticoVialRepositorio _diagnosticoVialRepositorio;
         private IPasoHistoriaVialRepositorio _pasoHistoriaVialRepositorio;
-        private IHistorialVialRepositorio _historialVialRepositorio;
+        private IHistoriaVialRepositorio _historiaVialRepositorio;
         private IDeslizadorRepositorio _deslizadorRepositorio;
 
         public IAbpSession AbpSession { get; set; }
@@ -38,21 +39,23 @@ namespace Bow.Administracion
             IPreguntaFrecuenteRepositorio preguntaFrecuenteRepositorio,
             IReporteIncidentesRepositorio reporteIncidentesRepositorio,
             ITipoReporteRepositorio tipoReporteRepositorio, 
+            ITipoVehiculoRepositorio tipoVehiculoRepositorio,
             INoticiasRepositorio noticiasRepositorio,
             IItemDiagnosticoRepositorio itemDiagnosticoRepositorio,
             IDiagnosticoVialRepositorio diagnosticoVialRepositorio,
             IPasoHistoriaVialRepositorio pasoHistoriaVialRepositorio,
-            IHistorialVialRepositorio historialVialRepositorio,
-             IDeslizadorRepositorio deslizadorRepositorio)
+            IHistoriaVialRepositorio historiaVialRepositorio,
+            IDeslizadorRepositorio deslizadorRepositorio)
         {
             _preguntaFrecuenteRepositorio = preguntaFrecuenteRepositorio;
             _reporteIncidentesRepositorio = reporteIncidentesRepositorio;
             _tipoReporteRepositorio = tipoReporteRepositorio;
+            _tipoVehiculoRepositorio = tipoVehiculoRepositorio;
             _noticiasRepositorio = noticiasRepositorio;
             _itemDiagnosticoRepositorio = itemDiagnosticoRepositorio;
             _diagnosticoVialRepositorio = diagnosticoVialRepositorio;
             _pasoHistoriaVialRepositorio = pasoHistoriaVialRepositorio;
-            _historialVialRepositorio = historialVialRepositorio;
+            _historiaVialRepositorio = historiaVialRepositorio;
             _deslizadorRepositorio = deslizadorRepositorio;
             AbpSession = NullAbpSession.Instance;
         }
@@ -214,25 +217,25 @@ namespace Bow.Administracion
 
         public GetAllHistoriasVialesOutput GetAllHistoriasViales()
         {
-            var listaHistorias = _historialVialRepositorio.GetAllList().OrderByDescending(h => h.Id);
+            var listaHistorias = _historiaVialRepositorio.GetAllList().OrderByDescending(h => h.Id);
             return new GetAllHistoriasVialesOutput { HistoriasViales = Mapper.Map<List<HistoriaVialOutput>>(listaHistorias) };
         }
 
         public GetHistoriaVialOutput GetHistoriaVial(GetHistoriaVialInput historiaInput)
         {
-            return Mapper.Map<GetHistoriaVialOutput>(_historialVialRepositorio.Get(historiaInput.Id));
+            return Mapper.Map<GetHistoriaVialOutput>(_historiaVialRepositorio.Get(historiaInput.Id));
         }
 
         public void SaveHistoriasVial(SaveHistoriasVialInput nuevaHistoria)
         {
-            HistoriaVial existeHistoria = _historialVialRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == nuevaHistoria.Nombre.ToLower());
+            HistoriaVial existeHistoria = _historiaVialRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == nuevaHistoria.Nombre.ToLower());
 
             if (existeHistoria == null)
             {
                 HistoriaVial historia = Mapper.Map<HistoriaVial>(nuevaHistoria);
                 historia.EsActiva = true;
                 historia.TenantId = BowConsts.TENANT_ID_ACR;
-                _historialVialRepositorio.Insert(historia);
+                _historiaVialRepositorio.Insert(historia);
             }
             else
             {
@@ -243,13 +246,13 @@ namespace Bow.Administracion
 
         public void UpdateHistoriasVial(UpdateHistoriasVialInput historiaUpdate)
         {
-            HistoriaVial existeHistoria = _historialVialRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == historiaUpdate.Nombre.ToLower() && p.Id != historiaUpdate.Id);
+            HistoriaVial existeHistoria = _historiaVialRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == historiaUpdate.Nombre.ToLower() && p.Id != historiaUpdate.Id);
 
             if (existeHistoria == null)
             {
-                HistoriaVial historia = _historialVialRepositorio.Get(historiaUpdate.Id);
+                HistoriaVial historia = _historiaVialRepositorio.Get(historiaUpdate.Id);
                 Mapper.Map(historiaUpdate, historia);
-                _historialVialRepositorio.Update(historia);
+                _historiaVialRepositorio.Update(historia);
             }
             else
             {
@@ -260,7 +263,7 @@ namespace Bow.Administracion
 
         public void DeleteHistoriasVial(DeleteHistoriasVialInput historiaEliminar)
         {
-            _historialVialRepositorio.Delete(historiaEliminar.Id);
+            _historiaVialRepositorio.Delete(historiaEliminar.Id);
         }
 
         public GetAllPasosByHistoriaVialOutput GetAllPasosByHistoriaVial(GetAllPasosByHistoriaVialInput historiaVial)

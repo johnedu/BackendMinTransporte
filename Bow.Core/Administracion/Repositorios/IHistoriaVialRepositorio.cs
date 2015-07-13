@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Bow.Administracion.Repositorios
 {
-    public interface IHistorialVialRepositorio : IRepository<HistoriaVial>
+    public interface IHistoriaVialRepositorio : IRepository<HistoriaVial>
     {
         
     }

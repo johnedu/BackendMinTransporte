@@ -25,8 +25,9 @@ namespace Bow.Administracion
             CreateMap<PreguntaFrecuente, GetPreguntaFrecuenteOutput>();
             CreateMap<PreguntaFrecuente, PreguntaFrecuenteOutput>();
 
-            CreateMap<TipoReporte, TipoReporteOutput>();
+            //  Reporte Incidentes
 
+            CreateMap<TipoReporte, TipoReporteOutput>();
             CreateMap<ReporteIncidentes, ReporteIncidenteOutput>()
                 .ForMember(dest => dest.TipoReporteIncidente, opt => opt.MapFrom(src => src.TipoReporteIncidente.Nombre));
             CreateMap<SaveReporteIncidentesInput, ReporteIncidentes>();
@@ -36,11 +37,13 @@ namespace Bow.Administracion
             CreateMap<UpdateNoticiasInput, Noticias>();
             CreateMap<Noticias, GetNoticiasInput>();
             CreateMap<Noticias, NoticiasOutput>();
+
             //  Historia Vial
             CreateMap<SaveHistoriasVialInput, HistoriaVial>();
             CreateMap<UpdateHistoriasVialInput, HistoriaVial>();
             CreateMap<HistoriaVial, GetHistoriaVialInput>();
             CreateMap<HistoriaVial, HistoriaVialOutput>();
+
             CreateMap<SavePasoHistoriaVialInput, PasoHistoriaVial>();
             CreateMap<UpdatePasoHistoriaVialInput, PasoHistoriaVial>();
             CreateMap<PasoHistoriaVial, GetPasoByHistoriaVialInput>();
@@ -51,6 +54,7 @@ namespace Bow.Administracion
             CreateMap<UpdateDiagnosticoVialInput, DiagnosticoVial>();
             CreateMap<DiagnosticoVial, GetDiagnosticoVialInput>();
             CreateMap<DiagnosticoVial, DiagnosticoVialOutput>();
+
             CreateMap<SaveItemDiagnosticoVialInput, ItemDiagnostico>();
             CreateMap<UpdateItemDiagnosticoVialInput, ItemDiagnostico>();
             CreateMap<ItemDiagnostico, GetItemByDiagnosticoVialInput>();

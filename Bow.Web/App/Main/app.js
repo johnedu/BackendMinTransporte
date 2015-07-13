@@ -54,15 +54,15 @@
                     templateUrl: '/App/Main/views/administracion/preguntasFrecuentes/preguntasFrecuentes.cshtml',
                     menu: 'menu_administracion_preguntasFrecuentes'
                 })
-                .state('preguntasJuegos', {
-                    url: '/administracion/preguntasJuegos',
-                    templateUrl: '/App/Main/views/administracion/preguntasJuegos/preguntasJuegos.cshtml',
-                    menu: 'menu_administracion_preguntasJuegos'
+                .state('historiasViales', {
+                    url: '/administracion/historiasViales',
+                    templateUrl: '/App/Main/views/administracion/historiasViales/historiasViales.cshtml',
+                    menu: 'menu_administracion_historiasViales'
                 })
-                .state('entidadesDimensiones', {
-                    url: '/administracion/entidadesDimensiones',
-                    templateUrl: '/App/Main/views/administracion/entidadesDimensiones/entidadesDimensiones.cshtml',
-                    menu: 'menu_administracion_entidadesDimensiones'
+                .state('noticias', {
+                    url: '/administracion/noticias',
+                    templateUrl: '/App/Main/views/administracion/noticias/noticias.cshtml',
+                    menu: 'menu_administracion_noticias'
                 })
                 .state('about', {
                     url: '/about',
