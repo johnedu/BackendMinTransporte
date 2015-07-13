@@ -50,6 +50,7 @@ namespace Bow.EntityFramework
             modelBuilder.Configurations.Add(new HistoriaVialMap());
             modelBuilder.Configurations.Add(new ItemDiagnosticoMap());
             modelBuilder.Configurations.Add(new DiagnosticoVialMap());
+            modelBuilder.Configurations.Add(new DeslizadorMap());
 
             base.OnModelCreating(modelBuilder);
         }

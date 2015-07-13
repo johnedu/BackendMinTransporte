@@ -34,6 +34,18 @@ namespace Bow.Administracion
 
         GetAllNoticiasOutput GetAllNoticias();
 
+       GetNoticiasOutput GetNoticias(GetNoticiasInput noticiasInput)
+       
+
+        void SaveNoticias(SaveNoticiasInput nuevaNoticias)
+      
+
+        void UpdateNoticias(UpdateNoticiasInput noticiaUpdate)
+        
+
+        void DeleteNoticias(DeleteNoticiasInput noticiaEliminar)
+       
+
         //  Historia Vial
 
         GetAllHistoriasVialesOutput GetAllHistoriasViales();

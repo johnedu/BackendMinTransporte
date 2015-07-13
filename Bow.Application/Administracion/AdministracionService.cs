@@ -27,6 +27,7 @@ namespace Bow.Administracion
         private IDiagnosticoVialRepositorio _diagnosticoVialRepositorio;
         private IPasoHistoriaVialRepositorio _pasoHistoriaVialRepositorio;
         private IHistorialVialRepositorio _historialVialRepositorio;
+        private IDeslizadorRepositorio _deslizadorRepositorio;
 
         public IAbpSession AbpSession { get; set; }
 
@@ -41,7 +42,8 @@ namespace Bow.Administracion
             IItemDiagnosticoRepositorio itemDiagnosticoRepositorio,
             IDiagnosticoVialRepositorio diagnosticoVialRepositorio,
             IPasoHistoriaVialRepositorio pasoHistoriaVialRepositorio,
-            IHistorialVialRepositorio historialVialRepositorio)
+            IHistorialVialRepositorio historialVialRepositorio,
+             IDeslizadorRepositorio deslizadorRepositorio)
         {
             _preguntaFrecuenteRepositorio = preguntaFrecuenteRepositorio;
             _reporteIncidentesRepositorio = reporteIncidentesRepositorio;
@@ -51,6 +53,7 @@ namespace Bow.Administracion
             _diagnosticoVialRepositorio = diagnosticoVialRepositorio;
             _pasoHistoriaVialRepositorio = pasoHistoriaVialRepositorio;
             _historialVialRepositorio = historialVialRepositorio;
+            _deslizadorRepositorio = deslizadorRepositorio;
             AbpSession = NullAbpSession.Instance;
         }
 
@@ -141,6 +144,16 @@ namespace Bow.Administracion
         }
 
         /*********************************************************************************************
+        ******************************************  Deslizador  ***************************************
+        *********************************************************************************************/
+
+        public GetAllDeslizadorOutput GetAllDeslizador()
+        {
+            var listaDeslizador = _deslizadorRepositorio.GetAllList().OrderBy(p => p.Nombre);
+            return new GetAllDeslizadorOutput { Deslizador = Mapper.Map<List<DeslizadorOutput>>(listaDeslizador) };
+        }
+
+        /*********************************************************************************************
          ******************************************  Noticias  ***************************************
          *********************************************************************************************/
 
@@ -148,6 +161,51 @@ namespace Bow.Administracion
         {
             var listaNoticias = _noticiasRepositorio.GetAllList().OrderBy(p => p.Fecha);
             return new GetAllNoticiasOutput { Noticias = Mapper.Map<List<NoticiasOutput>>(listaNoticias) };
+        }
+
+        public GetNoticiasOutput GetNoticias(GetNoticiasInput noticiasInput)
+        {
+            return Mapper.Map<GetNoticiasOutput>(_noticiasRepositorio.Get(noticiasInput.Id));
+        }
+
+        public void SaveNoticias(SaveNoticiasInput nuevaNoticias)
+        {
+            Noticias existeNoticia = _noticiasRepositorio.FirstOrDefault(p => p.Titulo.ToLower() == nuevaNoticias.Titulo.ToLower());
+
+            if (existeNoticia == null)
+            {
+                Noticias noticia = Mapper.Map<Noticias>(nuevaNoticias);
+                noticia.EsActiva = true;
+                noticia.TenantId = BowConsts.TENANT_ID_ACR;
+                _noticiasRepositorio.Insert(noticia);
+            }
+            else
+            {
+                var mensajeError = "Ya existe la noticia.";
+                throw new UserFriendlyException(mensajeError);
+            }
+        }
+
+        public void UpdateNoticias(UpdateNoticiasInput noticiaUpdate)
+        {
+            Noticias existeNoticia = _noticiasRepositorio.FirstOrDefault(p => p.Titulo.ToLower() == noticiaUpdate.Titulo.ToLower() && p.Id != noticiaUpdate.Id);
+
+            if (existeNoticia == null)
+            {
+                Noticias noticia = _noticiasRepositorio.Get(noticiaUpdate.Id);
+                Mapper.Map(noticiaUpdate, noticia);
+                _noticiasRepositorio.Update(noticia);
+            }
+            else
+            {
+                var mensajeError = "Ya existe la noticia.";
+                throw new UserFriendlyException(mensajeError);
+            }
+        }
+
+        public void DeleteNoticias(DeleteNoticiasInput noticiaEliminar)
+        {
+            _noticiasRepositorio.Delete(noticiaEliminar.Id);
         }
 
         /*********************************************************************************************

@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administracion\Entidades\HistoriaVial.cs" />
+    <Compile Include="Administracion\Entidades\Deslizador.cs" />
     <Compile Include="Administracion\Entidades\PreguntaFrecuente.cs" />
     <Compile Include="Administracion\Entidades\ReporteCalificaciones.cs" />
     <Compile Include="Administracion\Entidades\Noticias.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Administracion\Entidades\TipoReporte.cs" />
     <Compile Include="Administracion\Entidades\ReporteIncidentes.cs" />
     <Compile Include="Administracion\Repositorios\IHistorialVialRepositorio.cs" />
+    <Compile Include="Administracion\Repositorios\IDeslizadorRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\IPasoHistoriaVialRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\IPreguntaFrecuenteRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\IReporteCalificacionesRepositorio.cs" />

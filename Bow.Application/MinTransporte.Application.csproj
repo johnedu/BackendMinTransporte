@@ -99,16 +99,21 @@
   <ItemGroup>
     <Compile Include="Administracion\AdministracionService.cs" />
     <Compile Include="Administracion\AutoMapperAdministracionProfile.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\DeleteNoticiasInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeleteHistoriasVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeletePreguntaFrecuenteInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\GetNoticiasInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetHistoriaVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetPreguntaFrecuenteInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\UpdateNoticiasInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\SaveNoticiasInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SaveHistoriasVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SaveReporteIncidentesInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SavePreguntaFrecuenteInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\UpdateHistoriasVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\UpdatePreguntaFrecuenteInput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllHistoriasVialesOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetAllDeslizadorOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllNoticiasOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllReporteIncidentesOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllTiposReporteOutput.cs" />
@@ -116,6 +121,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Administracion\DTOs\OutputModels\HistoriaVialOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetNoticiasOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\DeslizadorOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\ReporteIncidenteOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\NoticiasOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\TipoReporteOutput.cs" />
