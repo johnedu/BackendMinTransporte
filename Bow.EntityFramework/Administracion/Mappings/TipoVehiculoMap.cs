@@ -21,7 +21,7 @@ namespace Bow.Administracion.Mappings
             HasMany<ReporteCalificaciones>(tipoVehiculo => tipoVehiculo.ReportesCalificaciones)
               .WithRequired(reporteCalificaciones => reporteCalificaciones.TipoVehiculoReporte)
               .HasForeignKey(reporteCalificaciones => reporteCalificaciones.TipoVehiculoId)
-              .WillCascadeOnDelete(false);
+              .WillCascadeOnDelete(true);
 
             //Tabla
             ToTable("tipo_vehiculo");

@@ -18,10 +18,5 @@ namespace Bow.Administracion.Repositorios
         {
 
         }
-
-        public List<ReporteIncidentes> GetAllReporteIncidentesWithTipo()
-        {
-            return GetAll().Include(m => m.TipoReporteIncidente).OrderBy(m => m.TipoReporteId).ToList();
-        }
     }
 }

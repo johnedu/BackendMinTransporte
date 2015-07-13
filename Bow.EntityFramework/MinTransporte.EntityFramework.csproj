@@ -142,6 +142,10 @@
     <Compile Include="Migrations\201507130544291_add_table_noticias.Designer.cs">
       <DependentUpon>201507130544291_add_table_noticias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507130609555_add_tables_diagnostico_historiaVial.cs" />
+    <Compile Include="Migrations\201507130609555_add_tables_diagnostico_historiaVial.Designer.cs">
+      <DependentUpon>201507130609555_add_tables_diagnostico_historiaVial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="BowDataModule.cs" />
     <Compile Include="Migrations\Data\InitialDataBuilder.cs" />
@@ -167,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507130544291_add_table_noticias.resx">
       <DependentUpon>201507130544291_add_table_noticias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507130609555_add_tables_diagnostico_historiaVial.resx">
+      <DependentUpon>201507130609555_add_tables_diagnostico_historiaVial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
