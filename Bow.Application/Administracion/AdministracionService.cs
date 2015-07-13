@@ -23,6 +23,10 @@ namespace Bow.Administracion
         private IReporteIncidentesRepositorio _reporteIncidentesRepositorio;
         private ITipoReporteRepositorio _tipoReporteRepositorio;
         private INoticiasRepositorio _noticiasRepositorio;
+        private IItemDiagnosticoRepositorio _itemDiagnosticoRepositorio;
+        private IDiagnosticoVialRepositorio _diagnosticoVialRepositorio;
+        private IPasoHistoriaVialRepositorio _pasoHistoriaVialRepositorio;
+        private IHistorialVialRepositorio _historialVialRepositorio;
 
         public IAbpSession AbpSession { get; set; }
 
@@ -33,12 +37,20 @@ namespace Bow.Administracion
             IPreguntaFrecuenteRepositorio preguntaFrecuenteRepositorio,
             IReporteIncidentesRepositorio reporteIncidentesRepositorio,
             ITipoReporteRepositorio tipoReporteRepositorio, 
-            INoticiasRepositorio noticiasRepositorio)
+            INoticiasRepositorio noticiasRepositorio,
+            IItemDiagnosticoRepositorio itemDiagnosticoRepositorio,
+            IDiagnosticoVialRepositorio diagnosticoVialRepositorio,
+            IPasoHistoriaVialRepositorio pasoHistoriaVialRepositorio,
+            IHistorialVialRepositorio historialVialRepositorio)
         {
             _preguntaFrecuenteRepositorio = preguntaFrecuenteRepositorio;
             _reporteIncidentesRepositorio = reporteIncidentesRepositorio;
             _tipoReporteRepositorio = tipoReporteRepositorio;
             _noticiasRepositorio = noticiasRepositorio;
+            _itemDiagnosticoRepositorio = itemDiagnosticoRepositorio;
+            _diagnosticoVialRepositorio = diagnosticoVialRepositorio;
+            _pasoHistoriaVialRepositorio = pasoHistoriaVialRepositorio;
+            _historialVialRepositorio = historialVialRepositorio;
             AbpSession = NullAbpSession.Instance;
         }
 
@@ -63,6 +75,51 @@ namespace Bow.Administracion
             return new GetAllPreguntasFrecuentesActivasOutput { PreguntasFrecuentes = Mapper.Map<List<PreguntaFrecuenteOutput>>(listaFAQs) };
         }
 
+        public void SavePreguntaFrecuente(SavePreguntaFrecuenteInput nuevaFaq)
+        {
+            PreguntaFrecuente existeFAQ = _preguntaFrecuenteRepositorio.FirstOrDefault(p => p.Pregunta.ToLower() == nuevaFaq.Pregunta.ToLower());
+
+            if (existeFAQ == null)
+            {
+                PreguntaFrecuente preguntaFrecuente = Mapper.Map<PreguntaFrecuente>(nuevaFaq);
+                preguntaFrecuente.EsActiva = true;
+                preguntaFrecuente.TenantId = BowConsts.TENANT_ID_ACR;
+                _preguntaFrecuenteRepositorio.Insert(preguntaFrecuente);
+            }
+            else
+            {
+                //var mensajeError = LocalizationHelper.GetString("Bow", "zonificacion_pais_validarNombrePais");
+                var mensajeError = "Ya existe la pregunta frecuente";
+                throw new UserFriendlyException(mensajeError);
+            }
+        }
+
+        public void DeletePreguntaFrecuente(DeletePreguntaFrecuenteInput faqEliminar)
+        {
+            _preguntaFrecuenteRepositorio.Delete(faqEliminar.Id);
+        }
+
+        public void UpdatePreguntaFrecuente(UpdatePreguntaFrecuenteInput faqUpdate)
+        {
+            PreguntaFrecuente existeFAQ = _preguntaFrecuenteRepositorio.FirstOrDefault(p => p.Pregunta.ToLower() == faqUpdate.Pregunta.ToLower() && p.Id != faqUpdate.Id);
+
+            if (existeFAQ == null)
+            {
+                PreguntaFrecuente preguntaFrecuente = _preguntaFrecuenteRepositorio.Get(faqUpdate.Id);
+                Mapper.Map(faqUpdate, preguntaFrecuente);
+                _preguntaFrecuenteRepositorio.Update(preguntaFrecuente);
+            }
+            else
+            {
+                var mensajeError = "Ya existe la pregunta frecuente.";
+                throw new UserFriendlyException(mensajeError);
+            }
+        }
+
+        /*********************************************************************************************
+         ***********************************  Reporte de Incidentes  *********************************
+         *********************************************************************************************/
+
         public GetAllTiposReporteOutput GetAllTiposReporte()
         {
             var listaTiposReporte = _tipoReporteRepositorio.GetAllList().OrderBy(p => p.Nombre);
@@ -75,62 +132,73 @@ namespace Bow.Administracion
             return new GetAllReporteIncidentesOutput { ReportesIncidentes = Mapper.Map<List<ReporteIncidenteOutput>>(listaReporteIncidentes) };
         }
 
+        public void SaveReporteIncidentes(SaveReporteIncidentesInput nuevoReporte)
+        {
+            ReporteIncidentes reporte = Mapper.Map<ReporteIncidentes>(nuevoReporte);
+            reporte.EsActivo = true;
+            reporte.TenantId = BowConsts.TENANT_ID_ACR;
+            _reporteIncidentesRepositorio.Insert(reporte);
+        }
+
+        /*********************************************************************************************
+         ******************************************  Noticias  ***************************************
+         *********************************************************************************************/
+
         public GetAllNoticiasOutput GetAllNoticias()
         {
             var listaNoticias = _noticiasRepositorio.GetAllList().OrderBy(p => p.Fecha);
             return new GetAllNoticiasOutput { Noticias = Mapper.Map<List<NoticiasOutput>>(listaNoticias) };
         }
 
-        public void SaveReporteIncidentes(SaveReporteIncidentesInput nuevoReporte)
+        /*********************************************************************************************
+         ***************************************  Historia Vial  *************************************
+         *********************************************************************************************/
+
+        public GetAllHistoriasVialesOutput GetAllHistoriasViales()
         {
-            ReporteIncidentes reporte = Mapper.Map<ReporteIncidentes>(nuevoReporte);
-            reporte.EsActivo = true;
-            _reporteIncidentesRepositorio.Insert(reporte);
+            var listaHistorias = _noticiasRepositorio.GetAllList().OrderBy(p => p.Fecha);
+            return new GetAllHistoriasVialesOutput { HistoriasViales = Mapper.Map<List<HistoriaVialOutput>>(listaHistorias) };
         }
 
-        //public void SavePreguntaFrecuente(SavePreguntaFrecuenteInput nuevaFaq)
-        //{
-        //    PreguntaFrecuente existeFAQ = _preguntaFrecuenteRepositorio.FirstOrDefault(p => p.Pregunta.ToLower() == nuevaFaq.Pregunta.ToLower());
+        public void SaveHistoriasVial(SaveHistoriasVialInput nuevaHistoria)
+        {
+            HistoriaVial existeHistoria = _historialVialRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == nuevaHistoria.Nombre.ToLower());
 
-        //    if (existeFAQ == null)
-        //    {
-        //        PreguntaFrecuente preguntaFrecuente = Mapper.Map<PreguntaFrecuente>(nuevaFaq);
-        //        preguntaFrecuente.FechaCreacion = DateTime.Now.ToString();
-        //        preguntaFrecuente.UsuarioIdCreacion = AbpSession.GetUserId();
-        //        preguntaFrecuente.TenantId = BowConsts.TENANT_ID_ACR;
-        //        _preguntaFrecuenteRepositorio.Insert(preguntaFrecuente);
-        //    }
-        //    else
-        //    {
-        //        //var mensajeError = LocalizationHelper.GetString("Bow", "zonificacion_pais_validarNombrePais");
-        //        var mensajeError = "Ya existe la pregunta frecuente.";
-        //        throw new UserFriendlyException(mensajeError);
-        //    }
-        //}
+            if (existeHistoria == null)
+            {
+                HistoriaVial historia = Mapper.Map<HistoriaVial>(nuevaHistoria);
+                historia.EsActiva = true;
+                historia.TenantId = BowConsts.TENANT_ID_ACR;
+                _historialVialRepositorio.Insert(historia);
+            }
+            else
+            {
+                var mensajeError = "Ya existe la historial vial.";
+                throw new UserFriendlyException(mensajeError);
+            }
+        }
 
-        //public void DeletePreguntaFrecuente(DeletePreguntaFrecuenteInput faqEliminar)
-        //{
-        //    _preguntaFrecuenteRepositorio.Delete(faqEliminar.Id);
-        //}
+        public void UpdateHistoriasVial(UpdateHistoriasVialInput historiaUpdate)
+        {
+            HistoriaVial existeHistoria = _historialVialRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == historiaUpdate.Nombre.ToLower() && p.Id != historiaUpdate.Id);
 
-        //public void UpdatePreguntaFrecuente(UpdatePreguntaFrecuenteInput faqUpdate)
-        //{
-        //    PreguntaFrecuente existeFAQ = _preguntaFrecuenteRepositorio.FirstOrDefault(p => p.Pregunta.ToLower() == faqUpdate.Pregunta.ToLower() && p.Id != faqUpdate.Id);
+            if (existeHistoria == null)
+            {
+                HistoriaVial historia = _historialVialRepositorio.Get(historiaUpdate.Id);
+                Mapper.Map(historiaUpdate, historia);
+                _historialVialRepositorio.Update(historia);
+            }
+            else
+            {
+                var mensajeError = "Ya existe la historial vial.";
+                throw new UserFriendlyException(mensajeError);
+            }
+        }
 
-        //    if (existeFAQ == null)
-        //    {
-        //        PreguntaFrecuente preguntaFrecuente = _preguntaFrecuenteRepositorio.Get(faqUpdate.Id);
-        //        Mapper.Map(faqUpdate, preguntaFrecuente);
-        //        preguntaFrecuente.FechaModificacion = DateTime.Now.ToString();
-        //        preguntaFrecuente.UsuarioIdModificacion = AbpSession.GetUserId();
-        //        _preguntaFrecuenteRepositorio.Update(preguntaFrecuente);
-        //    }
-        //    else
-        //    {
-        //        var mensajeError = "Ya existe la pregunta frecuente.";
-        //        throw new UserFriendlyException(mensajeError);
-        //    }
-        //}
+        public void DeleteHistoriasVial(DeleteHistoriasVialInput historiaEliminar)
+        {
+            _historialVialRepositorio.Delete(historiaEliminar.Id);
+        }
 
         ///*********************************************************************************************
         // *****************************************  Mensajes  ****************************************

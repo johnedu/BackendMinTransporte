@@ -14,19 +14,38 @@ namespace Bow.Administracion
     /// </summary>
     public interface IAdministracionService : IApplicationService
     {
+        // Preguntas Frecuentes
+
         GetPreguntaFrecuenteOutput GetPreguntaFrecuente(GetPreguntaFrecuenteInput paisInput);
 
         GetAllPreguntasFrecuentesOutput GetAllPreguntasFrecuentes();
 
         GetAllPreguntasFrecuentesActivasOutput GetAllPreguntasFrecuentesActivas();
 
+        //  Reporte Incidencias
+
         GetAllTiposReporteOutput GetAllTiposReporte();
 
         GetAllReporteIncidentesOutput GetAllReporteIncidentes();
 
+        void SaveReporteIncidentes(SaveReporteIncidentesInput nuevoReporte);
+
+        //  Noticias
+
         GetAllNoticiasOutput GetAllNoticias();
 
-        void SaveReporteIncidentes(SaveReporteIncidentesInput nuevoReporte);
+        //  Historia Vial
+
+        GetAllHistoriasVialesOutput GetAllHistoriasViales();
+
+        void SaveHistoriasVial(SaveHistoriasVialInput nuevaHistoria);
+
+        void UpdateHistoriasVial(UpdateHistoriasVialInput historiaUpdate);
+
+        void DeleteHistoriasVial(DeleteHistoriasVialInput historiaEliminar);
+
+
+
 
         //void SavePreguntaFrecuente(SavePreguntaFrecuenteInput nuevoPais);
 
