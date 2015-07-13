@@ -99,22 +99,45 @@
   <ItemGroup>
     <Compile Include="Administracion\AdministracionService.cs" />
     <Compile Include="Administracion\AutoMapperAdministracionProfile.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\DeleteDiagnosticoVialInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\DeleteItemDiagnosticoVialInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\DeletePasoHistoriaVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeleteHistoriasVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeletePreguntaFrecuenteInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\GetAllItemsByDiagnosticoVialInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\GetAllPasosByHistoriaVialInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\GetDiagnosticoVialInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\GetItemByDiagnosticoVialInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\GetPasoByHistoriaVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetHistoriaVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetPreguntaFrecuenteInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\SaveDiagnosticoVialInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\SaveItemDiagnosticoVialInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\SavePasoHistoriaVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SaveHistoriasVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SaveReporteIncidentesInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SavePreguntaFrecuenteInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\UpdateDiagnosticoVialInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\UpdateItemDiagnosticoVialInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\UpdatePasoHistoriaVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\UpdateHistoriasVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\UpdatePreguntaFrecuenteInput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetAllDiagnosticosVialesOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetAllItemsByDiagnosticoVialOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetAllPasosByHistoriaVialOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllHistoriasVialesOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllNoticiasOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllReporteIncidentesOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllTiposReporteOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetDiagnosticoVialOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetItemByDiagnosticoVialOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetPasoByHistoriaVialOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetHistoriaVialOutput.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Administracion\DTOs\OutputModels\DiagnosticoVialOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\ItemByDiagnosticoVialOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\PasoByHistoriaVialOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\HistoriaVialOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\ReporteIncidenteOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\NoticiasOutput.cs" />

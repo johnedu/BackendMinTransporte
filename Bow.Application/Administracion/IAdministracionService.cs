@@ -22,6 +22,12 @@ namespace Bow.Administracion
 
         GetAllPreguntasFrecuentesActivasOutput GetAllPreguntasFrecuentesActivas();
 
+        void SavePreguntaFrecuente(SavePreguntaFrecuenteInput nuevoPais);
+
+        void UpdatePreguntaFrecuente(UpdatePreguntaFrecuenteInput paisUpdate);
+
+        void DeletePreguntaFrecuente(DeletePreguntaFrecuenteInput paisEliminar);
+
         //  Reporte Incidencias
 
         GetAllTiposReporteOutput GetAllTiposReporte();
@@ -38,84 +44,46 @@ namespace Bow.Administracion
 
         GetAllHistoriasVialesOutput GetAllHistoriasViales();
 
+        GetHistoriaVialOutput GetHistoriaVial(GetHistoriaVialInput historiaInput);
+
         void SaveHistoriasVial(SaveHistoriasVialInput nuevaHistoria);
 
         void UpdateHistoriasVial(UpdateHistoriasVialInput historiaUpdate);
 
         void DeleteHistoriasVial(DeleteHistoriasVialInput historiaEliminar);
 
+        GetAllPasosByHistoriaVialOutput GetAllPasosByHistoriaVial(GetAllPasosByHistoriaVialInput historiaVial);
 
+        GetPasoByHistoriaVialOutput GetPasoByHistoriaVial(GetPasoByHistoriaVialInput pasoHistoriaInput);
 
+        void SavePasoHistoriaVial(SavePasoHistoriaVialInput nuevoPaso);
 
-        //void SavePreguntaFrecuente(SavePreguntaFrecuenteInput nuevoPais);
+        void UpdatePasoHistoriaVial(UpdatePasoHistoriaVialInput pasoHistoriaUpdate);
 
-        //void DeletePreguntaFrecuente(DeletePreguntaFrecuenteInput paisEliminar);
+        void DeletePasoHistoriaVial(DeletePasoHistoriaVialInput pasoHistoriaEliminar);
 
-        //PuedeEliminarPreguntaOutput PuedeEliminarPreguntaOutput(PuedeEliminarPreguntaOutputInput preguntaEliminar);
+        //  Diagnostico Vial
 
-        //void UpdatePreguntaFrecuente(UpdatePreguntaFrecuenteInput paisUpdate);
+        GetAllDiagnosticosVialesOutput GetAllDiagnosticosViales();
 
-        //GetPreguntaAleatoriaByDimensionAndJuegoOutput GetPreguntaAleatoriaByDimensionAndJuego(GetPreguntaAleatoriaByDimensionAndJuegoInput dimensionAndJuego);
+        GetDiagnosticoVialOutput GetDiagnosticoVial(GetDiagnosticoVialInput diagnosticoInput);
 
-        //void EnviarMensaje(EnviarMensajeInput mensaje);
+        void SaveDiagnosticoVial(SaveDiagnosticoVialInput nuevoDiagnostico);
 
-        //GetMensajeOutput GetMensaje(GetMensajeInput mensaje);
+        void UpdateDiagnosticoVial(UpdateDiagnosticoVialInput diagnosticoUpdate);
 
-        //GetAllMensajesByEmisorOutput GetAllMensajesByEmisor(GetAllMensajesByEmisorInput mensajeEmisor);
+        void DeleteDiagnosticoVial(DeleteDiagnosticoVialInput diagnosticoEliminar);
 
-        //GetAllMensajesByReceptorOutput GetAllMensajesByReceptor(GetAllMensajesByReceptorInput mensajeEmisor);
+        GetAllItemsByDiagnosticoVialOutput GetAllItemsByDiagnosticoVial(GetAllItemsByDiagnosticoVialInput itemDiagnostico);
 
-        //void DeleteMensaje(DeleteMensajeInput mensajeEliminar);
+        GetItemByDiagnosticoVialOutput GetItemByDiagnosticoVial(GetItemByDiagnosticoVialInput itemDiagnosticoInput);
 
-        //GetMensajesSinLeerByUsuarioOutput GetMensajesSinLeerByUsuario(GetMensajesSinLeerByUsuarioInput usuario);
+        void SaveItemDiagnosticoVial(SaveItemDiagnosticoVialInput nuevoItem);
 
-        //GetUsuarioByCODAOutput GetUsuarioByCODA(GetUsuarioByCODAInput usuario);
+        void UpdateItemDiagnosticoVial(UpdateItemDiagnosticoVialInput itemDiagnosticoUpdate);
 
-        //GetPuntajeUsuarioOutput GetPuntajeUsuario(GetPuntajeUsuarioInput usuario);
+        void DeleteItemDiagnosticoVial(DeleteItemDiagnosticoVialInput itemDiagnosticoEliminar);
 
-        //void SaveUsuario(SaveUsuarioInput usuario);
-
-        //GetHistorialPuntajesUsuarioOutput GetHistorialPuntajesUsuario(GetHistorialPuntajesUsuarioInput usuario);
-
-        //GetPreguntaOutput GetPregunta(GetPreguntaInput preguntaInput);
-
-        //GetAllPreguntasByDimensionOutput GetAllPreguntasByDimension(GetAllPreguntasByDimensionInput dimension);
-
-        //void SavePregunta(SavePreguntaInput nuevaPregunta);
-
-        //void DeletePregunta(DeletePreguntaInput preguntaEliminar);
-
-        //void UpdatePregunta(UpdatePreguntaInput preguntaUpdate);
-
-        //GetRespuestaOutput GetRespuesta(GetRespuestaInput respuestaInput);
-
-        //GetAllRespuestasByPreguntaOutput GetAllRespuestasByPregunta(GetAllRespuestasByPreguntaInput pregunta);
-
-        //void SaveRespuesta(SaveRespuestaInput nuevaRespuesta);
-
-        //void DeleteRespuesta(DeleteRespuestaInput respuestaEliminar);
-
-        //void UpdateRespuesta(UpdateRespuestaInput respuestaUpdate);
-
-        //GetTipoPPROutput GetTipoPPR();
-
-        //GetTipoProfesionalReintegradorOutput GetTipoProfesionalReintegrador();
-
-        //void SavePuntaje(SavePuntajeInput puntaje);
-
-        //GetAllJuegosOutput GetAllJuegos();
-
-        //GetAllDimensionesOutput GetAllDimensiones();
-
-        //GetEntidadOutput GetEntidad(GetEntidadInput entidadInput);
-
-        //GetAllEntidadesByDimensionOutput GetAllEntidadesByDimension(GetAllEntidadesByDimensionInput dimension);
-        
-        //void SaveEntidad(SaveEntidadInput nuevaEntidad);
-
-        //void DeleteEntidad(DeleteEntidadInput entidadEliminar);
-
-        //void UpdateEntidad(SaveEntidadInput entidadUpdate);
     }
 }
 

@@ -20,7 +20,7 @@ namespace Bow.Administracion.Mappings
             Property(d => d.Nombre).HasMaxLength(512);
             Property(d => d.Nombre).IsRequired();
 
-            Property(d => d.Observaciones).HasMaxLength(2058);
+            Property(d => d.Observaciones).HasMaxLength(2048);
             Property(d => d.Observaciones).IsRequired();
 
             //Tabla

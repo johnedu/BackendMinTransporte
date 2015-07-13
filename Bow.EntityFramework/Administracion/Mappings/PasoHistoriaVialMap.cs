@@ -20,8 +20,10 @@ namespace Bow.Administracion.Mappings
             Property(d => d.Nombre).HasMaxLength(512);
             Property(d => d.Nombre).IsRequired();
 
-            Property(d => d.Descripcion).HasMaxLength(2058);
+            Property(d => d.Descripcion).HasMaxLength(2048);
             Property(d => d.Descripcion).IsRequired();
+
+            Property(d => d.URLImagen).HasMaxLength(512);
 
             //Tabla
             ToTable("paso_historia_vial");
