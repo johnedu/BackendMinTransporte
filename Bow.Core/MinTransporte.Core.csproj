@@ -81,13 +81,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administracion\Entidades\HistoriaVial.cs" />
     <Compile Include="Administracion\Entidades\PreguntaFrecuente.cs" />
     <Compile Include="Administracion\Entidades\ReporteCalificaciones.cs" />
+    <Compile Include="Administracion\Entidades\ItemDiagnostico.cs" />
+    <Compile Include="Administracion\Entidades\DiagnosticoVial.cs" />
+    <Compile Include="Administracion\Entidades\PasoHistoriaVial.cs" />
     <Compile Include="Administracion\Entidades\TipoVehiculo.cs" />
     <Compile Include="Administracion\Entidades\TipoReporte.cs" />
     <Compile Include="Administracion\Entidades\ReporteIncidentes.cs" />
+    <Compile Include="Administracion\Repositorios\IHistorialVialRepositorio.cs" />
+    <Compile Include="Administracion\Repositorios\IPasoHistoriaVialRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\IPreguntaFrecuenteRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\IReporteCalificacionesRepositorio.cs" />
+    <Compile Include="Administracion\Repositorios\IItemDiagnosticoRepositorio.cs" />
+    <Compile Include="Administracion\Repositorios\IDiagnosticoVialRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\ITipoVehiculoRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\ITipoReporteRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\IReporteIncidentesRepositorio.cs" />
