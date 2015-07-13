@@ -104,9 +104,11 @@
     <Compile Include="Administracion\DTOs\InputModels\SaveReporteIncidentesInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SavePreguntaFrecuenteInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\UpdatePreguntaFrecuenteInput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetAllNoticiasOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllReporteIncidentesOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllTiposReporteOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\ReporteIncidenteOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\NoticiasOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\TipoReporteOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\PuedeEliminarPreguntaOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllPreguntasFrecuentesActivasOutput.cs" />

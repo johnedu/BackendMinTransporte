@@ -22,6 +22,7 @@ namespace Bow.Administracion
         private IPreguntaFrecuenteRepositorio _preguntaFrecuenteRepositorio;
         private IReporteIncidentesRepositorio _reporteIncidentesRepositorio;
         private ITipoReporteRepositorio _tipoReporteRepositorio;
+        private INoticiasRepositorio _noticiasRepositorio;
 
         public IAbpSession AbpSession { get; set; }
 
@@ -31,11 +32,13 @@ namespace Bow.Administracion
         public AdministracionService(
             IPreguntaFrecuenteRepositorio preguntaFrecuenteRepositorio,
             IReporteIncidentesRepositorio reporteIncidentesRepositorio,
-            ITipoReporteRepositorio tipoReporteRepositorio)
+            ITipoReporteRepositorio tipoReporteRepositorio, 
+            INoticiasRepositorio noticiasRepositorio)
         {
             _preguntaFrecuenteRepositorio = preguntaFrecuenteRepositorio;
             _reporteIncidentesRepositorio = reporteIncidentesRepositorio;
             _tipoReporteRepositorio = tipoReporteRepositorio;
+            _noticiasRepositorio = noticiasRepositorio;
             AbpSession = NullAbpSession.Instance;
         }
 
@@ -70,6 +73,12 @@ namespace Bow.Administracion
         {
             var listaReporteIncidentes = _reporteIncidentesRepositorio.GetAllReporteIncidentesWithTipo();
             return new GetAllReporteIncidentesOutput { ReportesIncidentes = Mapper.Map<List<ReporteIncidenteOutput>>(listaReporteIncidentes) };
+        }
+
+        public GetAllNoticiasOutput GetAllNoticias()
+        {
+            var listaNoticias = _noticiasRepositorio.GetAllList().OrderBy(p => p.Fecha);
+            return new GetAllNoticiasOutput { Noticias = Mapper.Map<List<NoticiasOutput>>(listaNoticias) };
         }
 
         public void SaveReporteIncidentes(SaveReporteIncidentesInput nuevoReporte)

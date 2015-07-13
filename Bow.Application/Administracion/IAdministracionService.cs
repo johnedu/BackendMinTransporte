@@ -24,6 +24,8 @@ namespace Bow.Administracion
 
         GetAllReporteIncidentesOutput GetAllReporteIncidentes();
 
+        GetAllNoticiasOutput GetAllNoticias();
+
         void SaveReporteIncidentes(SaveReporteIncidentesInput nuevoReporte);
 
         //void SavePreguntaFrecuente(SavePreguntaFrecuenteInput nuevoPais);
