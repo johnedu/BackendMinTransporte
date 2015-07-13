@@ -148,6 +148,10 @@
     <Compile Include="Migrations\201507130609555_add_tables_diagnostico_historiaVial.Designer.cs">
       <DependentUpon>201507130609555_add_tables_diagnostico_historiaVial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507130750495_add_table_deslizador.cs" />
+    <Compile Include="Migrations\201507130750495_add_table_deslizador.Designer.cs">
+      <DependentUpon>201507130750495_add_table_deslizador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="BowDataModule.cs" />
     <Compile Include="Migrations\Data\InitialDataBuilder.cs" />
@@ -176,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507130609555_add_tables_diagnostico_historiaVial.resx">
       <DependentUpon>201507130609555_add_tables_diagnostico_historiaVial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507130750495_add_table_deslizador.resx">
+      <DependentUpon>201507130750495_add_table_deslizador.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

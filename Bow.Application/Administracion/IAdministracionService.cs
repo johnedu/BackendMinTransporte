@@ -36,20 +36,21 @@ namespace Bow.Administracion
 
         void SaveReporteIncidentes(SaveReporteIncidentesInput nuevoReporte);
 
+        //  Deslizador
+
+        GetAllDeslizadorOutput GetAllDeslizador();
+
         //  Noticias
 
         GetAllNoticiasOutput GetAllNoticias();
 
-       GetNoticiasOutput GetNoticias(GetNoticiasInput noticiasInput)
-       
+        GetNoticiasOutput GetNoticias(GetNoticiasInput noticiasInput);
 
-        void SaveNoticias(SaveNoticiasInput nuevaNoticias)
-      
+        void SaveNoticias(SaveNoticiasInput nuevaNoticias);
 
-        void UpdateNoticias(UpdateNoticiasInput noticiaUpdate)
-        
+        void UpdateNoticias(UpdateNoticiasInput noticiaUpdate);
 
-        void DeleteNoticias(DeleteNoticiasInput noticiaEliminar)
+        void DeleteNoticias(DeleteNoticiasInput noticiaEliminar);
        
 
         //  Historia Vial
@@ -96,6 +97,7 @@ namespace Bow.Administracion
 
         void DeleteItemDiagnosticoVial(DeleteItemDiagnosticoVialInput itemDiagnosticoEliminar);
 
+        //  Diagnostico Vial
     }
 }
 
