@@ -114,12 +114,14 @@
     <Compile Include="Administracion\Mappings\ItemDiagnosticoMap.cs" />
     <Compile Include="Administracion\Mappings\DiagnosticoVialMap.cs" />
     <Compile Include="Administracion\Mappings\TipoVehiculoMap.cs" />
+    <Compile Include="Administracion\Mappings\NoticiasMap.cs" />
     <Compile Include="Administracion\Mappings\TipoReporteMap.cs" />
     <Compile Include="Administracion\Mappings\ReporteIncidentesMap.cs" />
     <Compile Include="Administracion\Repositorios\HistoriaVialRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\PasoHistoriaVialRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\PreguntaFrecuenteRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\ReporteCalificacionesRepositorio.cs" />
+    <Compile Include="Administracion\Repositorios\NoticiasRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\ItemDiagnosticoRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\DiagnosticoVialRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\TipoVehiculoRepositorio.cs" />
@@ -135,6 +137,10 @@
     <Compile Include="Migrations\201507130325493_update_table_preguntasFrecuentes.cs" />
     <Compile Include="Migrations\201507130325493_update_table_preguntasFrecuentes.Designer.cs">
       <DependentUpon>201507130325493_update_table_preguntasFrecuentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507130544291_add_table_noticias.cs" />
+    <Compile Include="Migrations\201507130544291_add_table_noticias.Designer.cs">
+      <DependentUpon>201507130544291_add_table_noticias.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="BowDataModule.cs" />
@@ -158,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507130325493_update_table_preguntasFrecuentes.resx">
       <DependentUpon>201507130325493_update_table_preguntasFrecuentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507130544291_add_table_noticias.resx">
+      <DependentUpon>201507130544291_add_table_noticias.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -43,6 +43,7 @@ namespace Bow.EntityFramework
             modelBuilder.Configurations.Add(new PreguntaFrecuenteMap());
             modelBuilder.Configurations.Add(new TipoReporteMap());
             modelBuilder.Configurations.Add(new ReporteIncidentesMap());
+            modelBuilder.Configurations.Add(new NoticiasMap());
             modelBuilder.Configurations.Add(new TipoVehiculoMap());
             modelBuilder.Configurations.Add(new ReporteCalificacionesMap());
 
