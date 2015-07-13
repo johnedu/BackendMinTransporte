@@ -101,6 +101,7 @@
     <Compile Include="Administracion\AutoMapperAdministracionProfile.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeleteHistoriasVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeletePreguntaFrecuenteInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\GetHistoriaVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetPreguntaFrecuenteInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SaveHistoriasVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SaveReporteIncidentesInput.cs" />
@@ -111,6 +112,9 @@
     <Compile Include="Administracion\DTOs\OutputModels\GetAllNoticiasOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllReporteIncidentesOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllTiposReporteOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetHistoriaVialOutput.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Administracion\DTOs\OutputModels\HistoriaVialOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\ReporteIncidenteOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\NoticiasOutput.cs" />

@@ -160,6 +160,11 @@ namespace Bow.Administracion
             return new GetAllHistoriasVialesOutput { HistoriasViales = Mapper.Map<List<HistoriaVialOutput>>(listaHistorias) };
         }
 
+        public GetHistoriaVialOutput GetHistoriaVial(GetHistoriaVialInput historiaInput)
+        {
+            return Mapper.Map<GetHistoriaVialOutput>(_historialVialRepositorio.Get(historiaInput.Id));
+        }
+
         public void SaveHistoriasVial(SaveHistoriasVialInput nuevaHistoria)
         {
             HistoriaVial existeHistoria = _historialVialRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == nuevaHistoria.Nombre.ToLower());

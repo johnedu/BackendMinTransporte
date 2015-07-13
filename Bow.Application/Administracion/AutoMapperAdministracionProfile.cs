@@ -30,6 +30,12 @@ namespace Bow.Administracion
             CreateMap<ReporteIncidentes, ReporteIncidenteOutput>()
                 .ForMember(dest => dest.TipoReporteIncidente, opt => opt.MapFrom(src => src.TipoReporteIncidente.Nombre));
             CreateMap<SaveReporteIncidentesInput, ReporteIncidentes>();
+
+            //  Historia Vial
+            CreateMap<SaveHistoriasVialInput, HistoriaVial>();
+            CreateMap<UpdateHistoriasVialInput, HistoriaVial>();
+            CreateMap<HistoriaVial, GetHistoriaVialInput>();
+            CreateMap<HistoriaVial, HistoriaVialOutput>();
         }
     }
 }
