@@ -230,6 +230,11 @@
     <Content Include="App\Main\app.js" />
     <Content Include="Abp\Framework\styles\abp.less" />
     <Content Include="Abp\Framework\styles\abp.css.map" />
+    <Content Include="App\Main\images\Icons\1.png" />
+    <Content Include="App\Main\images\Icons\2.png" />
+    <Content Include="App\Main\images\Icons\4.png" />
+    <Content Include="App\Main\images\Icons\5.png" />
+    <Content Include="App\Main\images\Icons\6.jpg" />
     <Content Include="App\Main\styles\bow.css.map">
       <DependentUpon>bow.css</DependentUpon>
     </Content>

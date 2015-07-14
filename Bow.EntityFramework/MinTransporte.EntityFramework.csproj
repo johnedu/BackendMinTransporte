@@ -109,23 +109,19 @@
   <ItemGroup>
     <Compile Include="Administracion\Mappings\HistoriaVialMap.cs" />
     <Compile Include="Administracion\Mappings\NoticiasMap.cs" />
-    <Compile Include="Administracion\Mappings\PasoHistoriaVialMap.cs" />
     <Compile Include="Administracion\Mappings\PreguntaFrecuenteMap.cs" />
     <Compile Include="Administracion\Mappings\ReporteCalificacionesMap.cs" />
     <Compile Include="Administracion\Mappings\ItemDiagnosticoMap.cs" />
-    <Compile Include="Administracion\Mappings\DiagnosticoVialMap.cs" />
     <Compile Include="Administracion\Mappings\TipoVehiculoMap.cs" />
     <Compile Include="Administracion\Mappings\DeslizadorMap.cs" />
     <Compile Include="Administracion\Mappings\TipoReporteMap.cs" />
     <Compile Include="Administracion\Mappings\ReporteIncidentesMap.cs" />
     <Compile Include="Administracion\Repositorios\HistoriaVialRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\DeslizadorRepositorio.cs" />
-    <Compile Include="Administracion\Repositorios\PasoHistoriaVialRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\PreguntaFrecuenteRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\ReporteCalificacionesRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\NoticiasRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\ItemDiagnosticoRepositorio.cs" />
-    <Compile Include="Administracion\Repositorios\DiagnosticoVialRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\TipoVehiculoRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\TipoReporteRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\ReporteIncidentesRepositorio.cs" />
@@ -151,6 +147,14 @@
     <Compile Include="Migrations\201507130750495_add_table_deslizador.cs" />
     <Compile Include="Migrations\201507130750495_add_table_deslizador.Designer.cs">
       <DependentUpon>201507130750495_add_table_deslizador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507140105448_changes_apiary_web_services.cs" />
+    <Compile Include="Migrations\201507140105448_changes_apiary_web_services.Designer.cs">
+      <DependentUpon>201507140105448_changes_apiary_web_services.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507140214234_drop_table_diagnostico.cs" />
+    <Compile Include="Migrations\201507140214234_drop_table_diagnostico.Designer.cs">
+      <DependentUpon>201507140214234_drop_table_diagnostico.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="BowDataModule.cs" />
@@ -183,6 +187,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507130750495_add_table_deslizador.resx">
       <DependentUpon>201507130750495_add_table_deslizador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507140105448_changes_apiary_web_services.resx">
+      <DependentUpon>201507140105448_changes_apiary_web_services.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507140214234_drop_table_diagnostico.resx">
+      <DependentUpon>201507140214234_drop_table_diagnostico.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

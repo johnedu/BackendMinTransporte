@@ -32,9 +32,13 @@ namespace Bow.Administracion
 
         GetAllTiposReporteOutput GetAllTiposReporte();
 
+        GetAllCategoriasOutput GetAllCategorias();
+
         GetAllReporteIncidentesOutput GetAllReporteIncidentes();
 
         void SaveReporteIncidentes(SaveReporteIncidentesInput nuevoReporte);
+
+        void SaveReporteCalificacion(SaveReporteCalificacionInput nuevaCalificacion);
 
         //  Deslizador
 
@@ -64,30 +68,10 @@ namespace Bow.Administracion
         void UpdateHistoriasVial(UpdateHistoriasVialInput historiaUpdate);
 
         void DeleteHistoriasVial(DeleteHistoriasVialInput historiaEliminar);
-
-        GetAllPasosByHistoriaVialOutput GetAllPasosByHistoriaVial(GetAllPasosByHistoriaVialInput historiaVial);
-
-        GetPasoByHistoriaVialOutput GetPasoByHistoriaVial(GetPasoByHistoriaVialInput pasoHistoriaInput);
-
-        void SavePasoHistoriaVial(SavePasoHistoriaVialInput nuevoPaso);
-
-        void UpdatePasoHistoriaVial(UpdatePasoHistoriaVialInput pasoHistoriaUpdate);
-
-        void DeletePasoHistoriaVial(DeletePasoHistoriaVialInput pasoHistoriaEliminar);
-
+        
         //  Diagnostico Vial
 
-        GetAllDiagnosticosVialesOutput GetAllDiagnosticosViales();
-
-        GetDiagnosticoVialOutput GetDiagnosticoVial(GetDiagnosticoVialInput diagnosticoInput);
-
-        void SaveDiagnosticoVial(SaveDiagnosticoVialInput nuevoDiagnostico);
-
-        void UpdateDiagnosticoVial(UpdateDiagnosticoVialInput diagnosticoUpdate);
-
-        void DeleteDiagnosticoVial(DeleteDiagnosticoVialInput diagnosticoEliminar);
-
-        GetAllItemsByDiagnosticoVialOutput GetAllItemsByDiagnosticoVial(GetAllItemsByDiagnosticoVialInput itemDiagnostico);
+        GetAllItemsByDiagnosticoVialOutput GetAllItemsDiagnosticoVial();
 
         GetItemByDiagnosticoVialOutput GetItemByDiagnosticoVial(GetItemByDiagnosticoVialInput itemDiagnosticoInput);
 

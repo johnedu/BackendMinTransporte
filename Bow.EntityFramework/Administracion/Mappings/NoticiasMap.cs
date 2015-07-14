@@ -20,10 +20,12 @@ namespace Bow.Administracion.Mappings
             Property(d => d.Descripcion).HasMaxLength(2048);
             Property(d => d.Descripcion).IsRequired();
 
-            Property(d => d.URLImagen).HasMaxLength(512);
-            Property(d => d.URLImagen).IsRequired();
+            Property(d => d.Url).HasMaxLength(512);
+            Property(d => d.Url).IsRequired();
 
-            
+            Property(d => d.UrlImagen).HasMaxLength(512);
+            Property(d => d.UrlImagen).IsRequired();
+
             Property(d => d.Fecha).IsRequired();
             
             Property(d => d.EsActiva).IsRequired();

@@ -18,5 +18,10 @@ namespace Bow.Administracion.Repositorios
         {
 
         }
+
+        public List<HistoriaVial> GetAllHistoriasWithTipo()
+        {
+            return GetAll().Include(m => m.CategoriaHistoria).OrderBy(m => m.CategoriaId).ToList();
+        }
     }
 }

@@ -14,9 +14,7 @@ namespace Bow.Administracion.Mappings
         public ItemDiagnosticoMap()
         {
             //Atributos
-
-            Property(d => d.DiagnosticoVialId).IsRequired();
-
+            
             Property(d => d.Nombre).HasMaxLength(512);
             Property(d => d.Nombre).IsRequired();
 

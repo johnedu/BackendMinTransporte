@@ -14,14 +14,10 @@ namespace Bow.Administracion.Entidades
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string NombrePersona { get; set; }
-        public int EdadPersona { get; set; }
+        public DateTime FechaPublicacion { get; set; }
+        public string Url { get; set; }
         public bool EsActiva { get; set; }
-
-        public virtual ICollection<PasoHistoriaVial> PasosHistorialVial { get; set; }
-
-        public HistoriaVial()
-        {
-            PasosHistorialVial = new List<PasoHistoriaVial>();
-        }
+        public int CategoriaId { get; set; }
+        public TipoReporte CategoriaHistoria { get; set; }
     }
 }

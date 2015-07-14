@@ -15,6 +15,7 @@ namespace Bow.Administracion.Entidades
         public string Direccion { get; set; }
         public string Latitud { get; set; }
         public string Longitud { get; set; }
+        public string Distancia { get; set; }
         public string Observaciones { get; set; }
         public bool EsActivo { get; set; }
     }

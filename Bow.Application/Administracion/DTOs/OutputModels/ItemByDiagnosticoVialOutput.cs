@@ -13,6 +13,5 @@ namespace Bow.Administracion.DTOs.OutputModels
         public string Observaciones { get; set; }
         public bool EsRequerido { get; set; }
         public bool EsActivo { get; set; }
-        public int DiagnosticoVialId { get; set; }
     }
 }

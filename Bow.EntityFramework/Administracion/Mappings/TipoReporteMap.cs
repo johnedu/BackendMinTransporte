@@ -17,10 +17,20 @@ namespace Bow.Administracion.Mappings
             Property(d => d.Nombre).HasMaxLength(512);
             Property(d => d.Nombre).IsRequired();
 
+            Property(d => d.TipoCategoria).HasMaxLength(512);
+            Property(d => d.TipoCategoria).IsRequired();
+
+            Property(d => d.UrlImagen).HasMaxLength(2048);
+
             //Llaves Foráneas
             HasMany<ReporteIncidentes>(tipoReporte => tipoReporte.ReporteIncidentes)
               .WithRequired(reporteIncidente => reporteIncidente.TipoReporteIncidente)
               .HasForeignKey(reporteIncidente => reporteIncidente.TipoReporteId)
+              .WillCascadeOnDelete(true);
+
+            HasMany<HistoriaVial>(tipoReporte => tipoReporte.HistoriasViales)
+              .WithRequired(historiaVial => historiaVial.CategoriaHistoria)
+              .HasForeignKey(historiaVial => historiaVial.CategoriaId)
               .WillCascadeOnDelete(true);
 
             //Tabla

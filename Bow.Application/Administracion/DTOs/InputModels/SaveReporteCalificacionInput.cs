@@ -8,21 +8,18 @@ using System.Threading.Tasks;
 
 namespace Bow.Administracion.DTOs.InputModels
 {
-    public class SaveReporteIncidentesInput : IInputDto
+    public class SaveReporteCalificacionInput : IInputDto
     {
         [Required]
-        public int TipoReporteId { get; set; }
+        public int TipoVehiculoId { get; set; }
+        [MaxLength(100)]
+        public string Placa { get; set; }
+        [Required]
         [MaxLength(512)]
-        public string Direccion { get; set; }
+        public string Empresa { get; set; }
         [Required]
-        [MaxLength(100)]
-        public string Latitud { get; set; }
-        [Required]
-        [MaxLength(100)]
-        public string Longitud { get; set; }
-        [MaxLength(100)]
-        public string Distancia { get; set; }
         [MaxLength(2048)]
         public string Observaciones { get; set; }
+        public string Calificacion { get; set; }
     }
 }

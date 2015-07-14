@@ -113,6 +113,7 @@
     <Compile Include="Administracion\DTOs\InputModels\GetNoticiasInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetHistoriaVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetPreguntaFrecuenteInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\SaveReporteCalificacionInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\UpdateNoticiasInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SaveNoticiasInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SaveDiagnosticoVialInput.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Administracion\DTOs\OutputModels\GetAllDeslizadorOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllNoticiasOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllReporteIncidentesOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetAllCategoriasOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllTiposReporteOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetDiagnosticoVialOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetItemByDiagnosticoVialOutput.cs" />

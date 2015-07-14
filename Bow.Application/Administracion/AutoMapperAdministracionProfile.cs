@@ -42,19 +42,11 @@ namespace Bow.Administracion
             CreateMap<SaveHistoriasVialInput, HistoriaVial>();
             CreateMap<UpdateHistoriasVialInput, HistoriaVial>();
             CreateMap<HistoriaVial, GetHistoriaVialInput>();
-            CreateMap<HistoriaVial, HistoriaVialOutput>();
-
-            CreateMap<SavePasoHistoriaVialInput, PasoHistoriaVial>();
-            CreateMap<UpdatePasoHistoriaVialInput, PasoHistoriaVial>();
-            CreateMap<PasoHistoriaVial, GetPasoByHistoriaVialInput>();
-            CreateMap<PasoHistoriaVial, PasoByHistoriaVialOutput>();
+            CreateMap<HistoriaVial, HistoriaVialOutput>()
+                .ForMember(dest => dest.CategoriaNombre, opt => opt.MapFrom(src => src.CategoriaHistoria.Nombre))
+                .ForMember(dest => dest.CategoriaImage, opt => opt.MapFrom(src => src.CategoriaHistoria.UrlImagen));
 
             //  Diagnostico Vial
-            CreateMap<SaveDiagnosticoVialInput, DiagnosticoVial>();
-            CreateMap<UpdateDiagnosticoVialInput, DiagnosticoVial>();
-            CreateMap<DiagnosticoVial, GetDiagnosticoVialInput>();
-            CreateMap<DiagnosticoVial, DiagnosticoVialOutput>();
-
             CreateMap<SaveItemDiagnosticoVialInput, ItemDiagnostico>();
             CreateMap<UpdateItemDiagnosticoVialInput, ItemDiagnostico>();
             CreateMap<ItemDiagnostico, GetItemByDiagnosticoVialInput>();

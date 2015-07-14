@@ -21,17 +21,10 @@ namespace Bow.Administracion.Mappings
             Property(d => d.Descripcion).IsRequired();
 
             Property(d => d.NombrePersona).HasMaxLength(512);
-            Property(d => d.NombrePersona).IsRequired();
 
-            Property(d => d.EdadPersona).IsRequired();
+            Property(d => d.Url).HasMaxLength(2048);
 
             Property(d => d.EsActiva).IsRequired();
-
-            //Llaves Foráneas
-            HasMany<PasoHistoriaVial>(historiaVial => historiaVial.PasosHistorialVial)
-              .WithRequired(pasoHistoria => pasoHistoria.HistoriaVialPaso)
-              .HasForeignKey(pasoHistoria => pasoHistoria.HistoriaVialId)
-              .WillCascadeOnDelete(true);
 
             //Tabla
             ToTable("historia_vial");

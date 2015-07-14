@@ -22,11 +22,10 @@ namespace Bow.Administracion
         private IPreguntaFrecuenteRepositorio _preguntaFrecuenteRepositorio;
         private IReporteIncidentesRepositorio _reporteIncidentesRepositorio;
         private ITipoReporteRepositorio _tipoReporteRepositorio;
+        private IReporteCalificacionesRepositorio _reporteCalificacionesRepositorio;
         private ITipoVehiculoRepositorio _tipoVehiculoRepositorio;
         private INoticiasRepositorio _noticiasRepositorio;
         private IItemDiagnosticoRepositorio _itemDiagnosticoRepositorio;
-        private IDiagnosticoVialRepositorio _diagnosticoVialRepositorio;
-        private IPasoHistoriaVialRepositorio _pasoHistoriaVialRepositorio;
         private IHistoriaVialRepositorio _historiaVialRepositorio;
         private IDeslizadorRepositorio _deslizadorRepositorio;
 
@@ -38,23 +37,21 @@ namespace Bow.Administracion
         public AdministracionService(
             IPreguntaFrecuenteRepositorio preguntaFrecuenteRepositorio,
             IReporteIncidentesRepositorio reporteIncidentesRepositorio,
-            ITipoReporteRepositorio tipoReporteRepositorio, 
+            ITipoReporteRepositorio tipoReporteRepositorio,
+            IReporteCalificacionesRepositorio reporteCalificacionesRepositorio,
             ITipoVehiculoRepositorio tipoVehiculoRepositorio,
             INoticiasRepositorio noticiasRepositorio,
             IItemDiagnosticoRepositorio itemDiagnosticoRepositorio,
-            IDiagnosticoVialRepositorio diagnosticoVialRepositorio,
-            IPasoHistoriaVialRepositorio pasoHistoriaVialRepositorio,
             IHistoriaVialRepositorio historiaVialRepositorio,
             IDeslizadorRepositorio deslizadorRepositorio)
         {
             _preguntaFrecuenteRepositorio = preguntaFrecuenteRepositorio;
             _reporteIncidentesRepositorio = reporteIncidentesRepositorio;
             _tipoReporteRepositorio = tipoReporteRepositorio;
+            _reporteCalificacionesRepositorio = reporteCalificacionesRepositorio;
             _tipoVehiculoRepositorio = tipoVehiculoRepositorio;
             _noticiasRepositorio = noticiasRepositorio;
             _itemDiagnosticoRepositorio = itemDiagnosticoRepositorio;
-            _diagnosticoVialRepositorio = diagnosticoVialRepositorio;
-            _pasoHistoriaVialRepositorio = pasoHistoriaVialRepositorio;
             _historiaVialRepositorio = historiaVialRepositorio;
             _deslizadorRepositorio = deslizadorRepositorio;
             AbpSession = NullAbpSession.Instance;
@@ -128,8 +125,14 @@ namespace Bow.Administracion
 
         public GetAllTiposReporteOutput GetAllTiposReporte()
         {
-            var listaTiposReporte = _tipoReporteRepositorio.GetAllList().OrderBy(p => p.Nombre);
+            var listaTiposReporte = _tipoReporteRepositorio.GetAll().Where(t => t.TipoCategoria.Equals(BowConsts.CATEGORIA_REPORTE)).ToList().OrderBy(p => p.Nombre);
             return new GetAllTiposReporteOutput { TiposReporte = Mapper.Map<List<TipoReporteOutput>>(listaTiposReporte) };
+        }
+
+        public GetAllCategoriasOutput GetAllCategorias()
+        {
+            var listaCategorias = _tipoReporteRepositorio.GetAll().Where(t => t.TipoCategoria.Equals(BowConsts.CATEGORIA_HISTORIA)).ToList().OrderBy(p => p.Nombre);
+            return new GetAllCategoriasOutput { TiposReporte = Mapper.Map<List<TipoReporteOutput>>(listaCategorias) };
         }
 
         public GetAllReporteIncidentesOutput GetAllReporteIncidentes()
@@ -144,6 +147,14 @@ namespace Bow.Administracion
             reporte.EsActivo = true;
             reporte.TenantId = BowConsts.TENANT_ID_ACR;
             _reporteIncidentesRepositorio.Insert(reporte);
+        }
+
+        public void SaveReporteCalificacion(SaveReporteCalificacionInput nuevaCalificacion)
+        {
+            ReporteCalificaciones reporte = Mapper.Map<ReporteCalificaciones>(nuevaCalificacion);
+            reporte.EsActiva = true;
+            reporte.TenantId = BowConsts.TENANT_ID_ACR;
+            _reporteCalificacionesRepositorio.Insert(reporte);
         }
 
         /*********************************************************************************************
@@ -217,7 +228,7 @@ namespace Bow.Administracion
 
         public GetAllHistoriasVialesOutput GetAllHistoriasViales()
         {
-            var listaHistorias = _historiaVialRepositorio.GetAllList().OrderByDescending(h => h.Id);
+            var listaHistorias = _historiaVialRepositorio.GetAllHistoriasWithTipo();
             return new GetAllHistoriasVialesOutput { HistoriasViales = Mapper.Map<List<HistoriaVialOutput>>(listaHistorias) };
         }
 
@@ -234,6 +245,7 @@ namespace Bow.Administracion
             {
                 HistoriaVial historia = Mapper.Map<HistoriaVial>(nuevaHistoria);
                 historia.EsActiva = true;
+                historia.FechaPublicacion = DateTime.Now;
                 historia.TenantId = BowConsts.TENANT_ID_ACR;
                 _historiaVialRepositorio.Insert(historia);
             }
@@ -266,114 +278,13 @@ namespace Bow.Administracion
             _historiaVialRepositorio.Delete(historiaEliminar.Id);
         }
 
-        public GetAllPasosByHistoriaVialOutput GetAllPasosByHistoriaVial(GetAllPasosByHistoriaVialInput historiaVial)
-        {
-            var listaPasosHistoria = _pasoHistoriaVialRepositorio.GetAll().Where(p => p.HistoriaVialId == historiaVial.Id).OrderBy(p => p.Id);
-            return new GetAllPasosByHistoriaVialOutput { PasosHistoriaVial = Mapper.Map<List<PasoByHistoriaVialOutput>>(listaPasosHistoria) };
-        }
-
-        public GetPasoByHistoriaVialOutput GetPasoByHistoriaVial(GetPasoByHistoriaVialInput pasoHistoriaInput)
-        {
-            return Mapper.Map<GetPasoByHistoriaVialOutput>(_pasoHistoriaVialRepositorio.Get(pasoHistoriaInput.Id));
-        }
-
-        public void SavePasoHistoriaVial(SavePasoHistoriaVialInput nuevoPaso)
-        {
-            PasoHistoriaVial existePasoHistoria = _pasoHistoriaVialRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == nuevoPaso.Nombre.ToLower());
-
-            if (existePasoHistoria == null)
-            {
-                PasoHistoriaVial pasoHistoria = Mapper.Map<PasoHistoriaVial>(nuevoPaso);
-                pasoHistoria.TenantId = BowConsts.TENANT_ID_ACR;
-                _pasoHistoriaVialRepositorio.Insert(pasoHistoria);
-            }
-            else
-            {
-                var mensajeError = "Ya existe el paso de la historial vial.";
-                throw new UserFriendlyException(mensajeError);
-            }
-        }
-
-        public void UpdatePasoHistoriaVial(UpdatePasoHistoriaVialInput pasoHistoriaUpdate)
-        {
-            PasoHistoriaVial existePasoHistoria = _pasoHistoriaVialRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == pasoHistoriaUpdate.Nombre.ToLower() && p.Id != pasoHistoriaUpdate.Id);
-
-            if (existePasoHistoria == null)
-            {
-                PasoHistoriaVial pasoHistoria = _pasoHistoriaVialRepositorio.Get(pasoHistoriaUpdate.Id);
-                Mapper.Map(pasoHistoriaUpdate, pasoHistoria);
-                _pasoHistoriaVialRepositorio.Update(pasoHistoria);
-            }
-            else
-            {
-                var mensajeError = "Ya existe el paso de la historial vial.";
-                throw new UserFriendlyException(mensajeError);
-            }
-        }
-
-        public void DeletePasoHistoriaVial(DeletePasoHistoriaVialInput pasoHistoriaEliminar)
-        {
-            _pasoHistoriaVialRepositorio.Delete(pasoHistoriaEliminar.Id);
-        }
-
         ///*********************************************************************************************
         // *************************************  Diagnostico Vial  ************************************
         // *********************************************************************************************/
 
-        public GetAllDiagnosticosVialesOutput GetAllDiagnosticosViales()
+        public GetAllItemsByDiagnosticoVialOutput GetAllItemsDiagnosticoVial()
         {
-            var listaDiagnosticos = _diagnosticoVialRepositorio.GetAllList().OrderBy(d => d.Nombre);
-            return new GetAllDiagnosticosVialesOutput { DiagnosticosViales = Mapper.Map<List<DiagnosticoVialOutput>>(listaDiagnosticos) };
-        }
-
-        public GetDiagnosticoVialOutput GetDiagnosticoVial(GetDiagnosticoVialInput diagnosticoInput)
-        {
-            return Mapper.Map<GetDiagnosticoVialOutput>(_diagnosticoVialRepositorio.Get(diagnosticoInput.Id));
-        }
-
-        public void SaveDiagnosticoVial(SaveDiagnosticoVialInput nuevoDiagnostico)
-        {
-            DiagnosticoVial existeDiagnostico = _diagnosticoVialRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == nuevoDiagnostico.Nombre.ToLower());
-
-            if (existeDiagnostico == null)
-            {
-                DiagnosticoVial diagnostico = Mapper.Map<DiagnosticoVial>(nuevoDiagnostico);
-                diagnostico.EsActivo = true;
-                diagnostico.TenantId = BowConsts.TENANT_ID_ACR;
-                _diagnosticoVialRepositorio.Insert(diagnostico);
-            }
-            else
-            {
-                var mensajeError = "Ya existe el diagnóstico vial.";
-                throw new UserFriendlyException(mensajeError);
-            }
-        }
-
-        public void UpdateDiagnosticoVial(UpdateDiagnosticoVialInput diagnosticoUpdate)
-        {
-            DiagnosticoVial existeDiagnostico = _diagnosticoVialRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == diagnosticoUpdate.Nombre.ToLower() && p.Id != diagnosticoUpdate.Id);
-
-            if (existeDiagnostico == null)
-            {
-                DiagnosticoVial diagnostico = _diagnosticoVialRepositorio.Get(diagnosticoUpdate.Id);
-                Mapper.Map(diagnosticoUpdate, diagnostico);
-                _diagnosticoVialRepositorio.Update(diagnostico);
-            }
-            else
-            {
-                var mensajeError = "Ya existe el diagnóstico vial.";
-                throw new UserFriendlyException(mensajeError);
-            }
-        }
-
-        public void DeleteDiagnosticoVial(DeleteDiagnosticoVialInput diagnosticoEliminar)
-        {
-            _diagnosticoVialRepositorio.Delete(diagnosticoEliminar.Id);
-        }
-
-        public GetAllItemsByDiagnosticoVialOutput GetAllItemsByDiagnosticoVial(GetAllItemsByDiagnosticoVialInput itemDiagnostico)
-        {
-            var listaItemsDiagnostico = _itemDiagnosticoRepositorio.GetAll().Where(p => p.DiagnosticoVialId == itemDiagnostico.Id).OrderBy(p => p.Id);
+            var listaItemsDiagnostico = _itemDiagnosticoRepositorio.GetAllList().OrderBy(p => p.Id);
             return new GetAllItemsByDiagnosticoVialOutput { ItemsDiagnosticoVial = Mapper.Map<List<ItemByDiagnosticoVialOutput>>(listaItemsDiagnostico) };
         }
 

@@ -14,7 +14,5 @@ namespace Bow.Administracion.Entidades
         public string Observaciones { get; set; }
         public bool EsRequerido { get; set; }
         public bool EsActivo { get; set; }
-        public int DiagnosticoVialId { get; set; }
-        public DiagnosticoVial DiagnosticoVialItem { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace Bow.Administracion.Mappings
             Property(d => d.Latitud).IsRequired();
             Property(d => d.Longitud).HasMaxLength(100);
             Property(d => d.Longitud).IsRequired();
+            Property(d => d.Distancia).HasMaxLength(100);
 
             Property(d => d.Observaciones).HasMaxLength(2048);
 

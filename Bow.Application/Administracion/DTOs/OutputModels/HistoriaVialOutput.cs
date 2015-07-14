@@ -12,7 +12,11 @@ namespace Bow.Administracion.DTOs.OutputModels
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string NombrePersona { get; set; }
-        public int EdadPersona { get; set; }
+        public string FechaPublicacion { get; set; }
+        public string Url { get; set; }
         public bool EsActiva { get; set; }
+        public int CategoriaId { get; set; }
+        public string CategoriaNombre { get; set; }
+        public string CategoriaImage { get; set; }
     }
 }
