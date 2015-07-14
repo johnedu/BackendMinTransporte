@@ -38,6 +38,8 @@ namespace Bow.Administracion
             CreateMap<Noticias, GetNoticiasInput>();
             CreateMap<Noticias, NoticiasOutput>();
 
+            CreateMap<Deslizador, DeslizadorOutput>();
+
             //  Historia Vial
             CreateMap<SaveHistoriasVialInput, HistoriaVial>();
             CreateMap<UpdateHistoriasVialInput, HistoriaVial>();
@@ -51,6 +53,9 @@ namespace Bow.Administracion
             CreateMap<UpdateItemDiagnosticoVialInput, ItemDiagnostico>();
             CreateMap<ItemDiagnostico, GetItemByDiagnosticoVialInput>();
             CreateMap<ItemDiagnostico, ItemByDiagnosticoVialOutput>();
+
+            CreateMap<SaveReporteCalificacionInput, ReporteCalificaciones>();
+            
         }
     }
 }
