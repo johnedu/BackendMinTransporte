@@ -33,13 +33,20 @@ namespace Bow.Web
                                 url: "#/administracion/historiasViales"
                             )
                         )
-                        //.AddItem(
-                        //    new MenuItemDefinition(
-                        //        "menu_administracion_noticias",
-                        //        new LocalizableString("menu_administracion_noticias", BowConsts.LocalizationSourceName),
-                        //        url: "#/administracion/noticias"
-                        //    )
-                        //)
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menu_administracion_noticias",
+                                new LocalizableString("menu_administracion_noticias", BowConsts.LocalizationSourceName),
+                                url: "#/administracion/noticias"
+                            )
+                        )
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menu_administracion_categorias",
+                                new LocalizableString("menu_administracion_categorias", BowConsts.LocalizationSourceName),
+                                url: "#/administracion/categorias"
+                            )
+                        )
                 );
         }
     }
