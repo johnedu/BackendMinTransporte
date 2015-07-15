@@ -26,13 +26,14 @@ namespace Bow.Web
                                 url: "#/administracion/preguntasFrecuentes"
                             )
                         )
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menu_administracion_historiasViales",
+                                new LocalizableString("menu_administracion_historiasViales", BowConsts.LocalizationSourceName),
+                                url: "#/administracion/historiasViales"
+                            )
+                        )
                         //.AddItem(
-                        //    new MenuItemDefinition(
-                        //        "menu_administracion_historiasViales",
-                        //        new LocalizableString("menu_administracion_historiasViales", BowConsts.LocalizationSourceName),
-                        //        url: "#/administracion/historiasViales"
-                        //    )
-                        //).AddItem(
                         //    new MenuItemDefinition(
                         //        "menu_administracion_noticias",
                         //        new LocalizableString("menu_administracion_noticias", BowConsts.LocalizationSourceName),

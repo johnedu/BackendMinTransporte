@@ -23,5 +23,10 @@ namespace Bow.Administracion.Repositorios
         {
             return GetAll().Include(m => m.CategoriaHistoria).OrderBy(m => m.CategoriaId).ToList();
         }
+
+        public List<HistoriaVial> GetAllHistoriasActivasWithTipo()
+        {
+            return GetAll().Where(h => h.EsActiva).Include(m => m.CategoriaHistoria).OrderBy(m => m.CategoriaId).ToList();
+        }
     }
 }

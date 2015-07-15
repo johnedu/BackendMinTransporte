@@ -44,7 +44,7 @@
     <script src="~/AbpScripts/GetScripts" type="text/javascript"></script>
     <script src="~/AbpLocalization/GetScripts" type="text/javascript"></script>
 </head>
-<body ng-app="app" ng-cloak="" ng-class="{ 'layout-fixed' : app.layout.isFixed, 'layout-boxed' : app.layout.isBoxed, 'layout-dock' : app.layout.isDocked, 'layout-material': app.layout.isMaterial, 'aside-offscreen' : app.sidebar.isOffscreen, 'footer-hidden': app.footer.hidden, 'in-app': !$state.includes('page')}">
+<body ng-app="app" ng-cloak="" class="aside-offscreen" ng-class="{ 'layout-fixed' : app.layout.isFixed, 'layout-boxed' : app.layout.isBoxed, 'layout-dock' : app.layout.isDocked, 'layout-material': app.layout.isMaterial, 'aside-offscreen' : !app.sidebar.isOffscreen, 'footer-hidden': app.footer.hidden, 'in-app': !$state.includes('page')}">
 
     <div class="app-container" ng-controller="CoreController">
         <!-- top navbar-->

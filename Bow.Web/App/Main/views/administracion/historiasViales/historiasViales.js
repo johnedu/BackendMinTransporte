@@ -4,7 +4,7 @@
 
     /*****************************************************************
     * 
-    * CONTROLADOR DE HISTORIAS VIALES
+    * CONTROLADOR DE HISTORIAS EN LA VÍA
     * 
     *****************************************************************/
 
@@ -14,148 +14,100 @@
 
            //Inicializando Modelos
 
-           vm.listaHistorias = [];
+           vm.historiasViales = [];
 
-           vm.pregunta = {
-               id: '',
-               pregunta: '',
-               respuesta: ''
-           };
-
-           //Funcion encargada de consultar las preguntas de un juego y una dimensión seleccionada
-           vm.cargarPreguntas = function () {
+           //Funcion encargada de consultar las historias en la base de datos
+           function cargarHistoriasViales() {
                administracionService.getAllHistoriasViales().success(function (data) {
-                   vm.listaPreguntas = data.historiasViales;
+                   vm.historiasViales = data.historiasViales;
+               }).error(function (error) {
+                   console.log(error);
                });
            }
+           cargarHistoriasViales();
 
            /************************************************************************
-            * Llamado para abrir Modal para Nueva Pregunta Frecuente
+            * Llamado para abrir Modal para Nueva Historia en la Vía
             ************************************************************************/
 
            vm.abrirModalNueva= function () {
                var modalInstance = $modal.open({
-                   templateUrl: '/App/Main/views/administracion/preguntasJuegos/partials/modalNuevoPreguntasJuego.cshtml',
-                   controller: 'modalNuevoPreguntasJuegoController',
+                   templateUrl: '/App/Main/views/administracion/historiasViales/partials/modalNuevaHistoriaVial.cshtml',
+                   controller: 'modalNuevaHistoriaVialController',
                    size: 'md'
                });
 
-               modalInstance.result.then(function () {
-                   vm.cargarPreguntas();
-                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se guardó correctamente la pregunta', abp.localization.localize('', 'Bow') + 'Información');
+               modalInstance.result.then(function (historia) {
+                   cargarHistoriasViales();
+                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se guardó correctamente la historia: ' + historia, abp.localization.localize('', 'Bow') + 'Información');
                }, function () {
-                   vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al guardar la pregunta'
+                   vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al guardar la hisotoria'
                });
            }
 
            /************************************************************************
-           * Llamado para abrir Modal para Editar Pregunta Frecuente
+           * Llamado para abrir Modal para Editar una Historia
            ************************************************************************/
-           vm.abrirModalEditar = function (preguntaId, preguntaTexto) {
+           vm.abrirModalEditar = function (historiaId) {
                var modalInstance = $modal.open({
-                   templateUrl: '/App/Main/views/administracion/preguntasJuegos/partials/modalEditarPreguntasJuego.cshtml',
-                   controller: 'modalEditarPreguntasJuegoController',
+                   templateUrl: '/App/Main/views/administracion/historiasViales/partials/modalEditarHistoriaVial.cshtml',
+                   controller: 'modalEditarHistoriaVialController',
                    size: 'md',
                    resolve: {
-                       preguntaEditar: function () {
-                           return preguntaId;
-                       },
-                       preguntaTexto: function () {
-                           return preguntaTexto;
+                       historiaEditar: function () {
+                           return historiaId;
                        }
                    }
                });
 
-               modalInstance.result.then(function () {
-                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se actualizó correctamente la pregunta', abp.localization.localize('', 'Bow') + 'Información');
-                   vm.cargarPreguntas();
+               modalInstance.result.then(function (historia) {
+                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se actualizó correctamente la historia: ' + historia, abp.localization.localize('', 'Bow') + 'Información');
+                   cargarHistoriasViales();
 
                }, function () {
-                   vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la pregunta';
+                   vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la historia vial'
                });
            }
 
            /************************************************************************
-           * Llamado para abrir Modal para Eliminar Pregunta Frecuente
+           * Llamado para abrir Modal para Eliminar una Historia
            ************************************************************************/
-           vm.abrirModalEliminar = function (preguntaId) {
-               administracionService.puedeEliminarPreguntaOutput({ id: preguntaId })
-                   .success(function (data) {
-                       if (data.puedeEliminar) {
-                           var modalInstance = $modal.open({
-                               templateUrl: '/App/Main/views/administracion/preguntasJuegos/partials/modalEliminarPreguntasJuego.cshtml',
-                               controller: 'modalEliminarPreguntasJuegoController',
-                               size: 'md',
-                               resolve: {
-                                   preguntaEliminar: function () {
-                                       return preguntaId;
-                                   }
-                               }
-                           });
+           vm.abrirModalEliminar = function (historiaId) {
+                var modalInstance = $modal.open({
+                    templateUrl: '/App/Main/views/administracion/historiasViales/partials/modalEliminarHistoriaVial.cshtml',
+                    controller: 'modalEliminarHistoriaVialController',
+                    size: 'md',
+                    resolve: {
+                        historiaEliminar: function () {
+                            return historiaId;
+                        }
+                    }
+                });
 
-                           modalInstance.result.then(function () {
-                               vm.cargarPreguntas();
-                               abp.notify.success(abp.localization.localize('', 'Bow') + 'Se eliminó correctamente la pregunta', abp.localization.localize('', 'Bow') + 'Información');
-                           }, function () {
-                               vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la pregunta';
-                           });
-                       }
-                       else {
-                           abp.notify.error(abp.localization.localize('', 'Bow') + 'No se puede eliminar la pregunta, porque ya tiene puntajes asociados.', abp.localization.localize('' + 'Información', 'Bow'));
-                       }
-                   }).error(function (error) {
-                       $scope.mensajeError = error.message;
-                   });
+                modalInstance.result.then(function (historia) {
+                    cargarHistoriasViales();
+                    abp.notify.success(abp.localization.localize('', 'Bow') + 'Se eliminó correctamente la historia: ' + historia, abp.localization.localize('', 'Bow') + 'Información');
+                }, function () {
+                    vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la historia vial'
+                });
            }
 
            /************************************************************************
-           * Llamado para abrir Modal para Eliminar Pregunta Frecuente
+           * Llamado para modificar el estado de la historia vial
            ************************************************************************/
-           vm.cambiarEstado = function (pregunta) {
-               if (pregunta.estadoActiva) {
-                   pregunta.estadoActiva = false;
+           vm.modificarEstadoHistoria = function (historia) {
+               if (historia.esActiva) {
+                   historia.esActiva = false;
+               } else {
+                   historia.esActiva = true;
                }
-               else {
-                   pregunta.estadoActiva = true;
-               }
-               
-               administracionService.updatePregunta(pregunta)
+               administracionService.updateHistoriasVial(historia)
                    .success(function () {
-                       abp.notify.success(abp.localization.localize('', 'Bow') + 'Se actualizó correctamente el estado de la pregunta', abp.localization.localize('', 'Bow') + 'Información');
+                       abp.notify.success(abp.localization.localize('', 'Bow') + 'Se modificó correctamente el estado de la historia: ' + historia.nombre, abp.localization.localize('', 'Bow') + 'Información');
+                       cargarHistoriasViales();
                    }).error(function (error) {
                        $scope.mensajeError = error.message;
                    });
-           };
-
-           /************************************************************************
-            * Llamado para abrir Modal para Gestionar Opciones
-            ************************************************************************/
-           vm.abrirModalPreguntas = function (preguntaId, preguntaTexto, juego) {
-               var modalInstance = $modal.open({
-                   templateUrl: '/App/Main/views/administracion/preguntasJuegos/partials/modalGestionarRespuestas.cshtml',
-                   controller: 'modalGestionarRespuestasController',
-                   keyboard: false,
-                   backdrop: 'static',
-                   size: 'lg',
-                   resolve: {
-                       preguntaId: function () {
-                           return preguntaId;
-                       },
-                       preguntaTexto: function () {
-                           return preguntaTexto;
-                       },
-                       juego: function () {
-                           return juego;
-                       }
-                   }
-               });
-
-               modalInstance.result.then(function () {
-
-               }, function () {
-                   console.log("Ocurrió un problema al cargar el modal de administración de respuestas");
-               });
            }
-
        }]);
 })();

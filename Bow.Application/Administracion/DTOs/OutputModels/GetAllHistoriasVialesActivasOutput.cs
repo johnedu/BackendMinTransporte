@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Bow.Administracion.DTOs.OutputModels
 {
-    public class GetAllDiagnosticosVialesOutput : IOutputDto
+    public class GetAllHistoriasVialesActivasOutput : IOutputDto
     {
-        public List<DiagnosticoVialOutput> DiagnosticosViales { get; set; }
+        public List<HistoriaVialOutput> HistoriasViales { get; set; }
     }
 }

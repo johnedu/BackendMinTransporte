@@ -19,8 +19,8 @@ namespace Bow.Administracion.DTOs.InputModels
         [Required]
         [MaxLength(512)]
         public string NombrePersona { get; set; }
-        [Required]
-        public int EdadPersona { get; set; }
-        public bool EstadoActiva { get; set; }
+        public string Url { get; set; }
+        public int CategoriaId { get; set; }
+        public bool EsActiva { get; set; }
     }
 }

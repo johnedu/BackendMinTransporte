@@ -6,6 +6,9 @@
         background-color: #f3872a;
         border-color: #2f3130;
     }
+    .text-orange {
+        color: #f3872a;
+    }
 </style>
 <nav role="navigation" class="navbar topnavbar">
     <!-- START navbar header-->
@@ -33,7 +36,7 @@
             <li>
                 <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
                 <a href="" ng-click="app.sidebar.isOffscreen = !app.sidebar.isOffscreen" class="hidden-xs">
-                    <em ng-class="app.sidebar.isOffscreen ? 'fa-caret-right':'fa-caret-left'" class="fa fa-2x"></em>
+                    <em ng-class="!app.sidebar.isOffscreen ? 'fa-caret-right':'fa-caret-left'" class="fa fa-2x"></em>
                 </a>
             </li>
             <li>

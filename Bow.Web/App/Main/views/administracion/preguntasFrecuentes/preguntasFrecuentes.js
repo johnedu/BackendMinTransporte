@@ -96,11 +96,10 @@
            * Llamado para modificar el estado de la pregunta frecuente
            ************************************************************************/
            vm.modificarEstadoPregunta = function (pregunta) {
-               if (pregunta.estadoActiva) {
-                   pregunta.estadoActiva = false;
-               }
-               else {
-                   pregunta.estadoActiva = true;
+               if (pregunta.esActiva) {
+                   pregunta.esActiva = false;
+               } else {
+                   pregunta.esActiva = true;
                }
                administracionService.updatePreguntaFrecuente(pregunta)
                    .success(function () {

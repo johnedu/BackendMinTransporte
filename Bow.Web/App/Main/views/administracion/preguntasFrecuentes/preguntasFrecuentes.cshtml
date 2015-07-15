@@ -36,21 +36,21 @@
                                     {{pregunta.respuesta}}
                                 </td>
                                 <td>
-                                    <span ng-show="pregunta.estadoActiva">
+                                    <span ng-show="pregunta.esActiva">
                                         Activa
                                     </span>
-                                    <span ng-show="!pregunta.estadoActiva">
+                                    <span ng-show="!pregunta.esActiva">
                                         Inactiva
                                     </span>
                                 </td>
                                 <td class="text-center">
-                                    <a class="clickable" ng-click="vm.modificarEstadoPregunta(pregunta)" title="@L("")Cambiar el estado de la pregunta frecuente"><span class="fa fa-refresh fa-2x"></span></a>
+                                    <a class="clickable" ng-click="vm.modificarEstadoPregunta(pregunta)" title="@L("")Cambiar el estado de la pregunta frecuente"><span class="fa fa-refresh fa-2x text-orange"></span></a>
                                 </td>
                                 <td class="text-center">
-                                    <a class="clickable" ng-click="vm.abrirModalEditar(pregunta.id)" title="@L("")Editar pregunta frecuente"><span class="fa fa-pencil fa-2x"></span></a>
+                                    <a class="clickable" ng-click="vm.abrirModalEditar(pregunta.id)" title="@L("")Editar pregunta frecuente"><span class="fa fa-pencil fa-2x text-orange"></span></a>
                                 </td>
                                 <td class="text-center">
-                                    <a class="clickable" ng-click="vm.abrirModalEliminar(pregunta.id)" title="@L("")Eliminar pregunta frecuente"><span class="fa fa-trash fa-2x"></span></a>
+                                    <a class="clickable" ng-click="vm.abrirModalEliminar(pregunta.id)" title="@L("")Eliminar pregunta frecuente"><span class="fa fa-trash fa-2x text-orange"></span></a>
                                 </td>
                             </tr>
                         </tbody>

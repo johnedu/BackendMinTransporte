@@ -43,7 +43,7 @@ namespace Bow.Administracion
             //  Historia Vial
             CreateMap<SaveHistoriasVialInput, HistoriaVial>();
             CreateMap<UpdateHistoriasVialInput, HistoriaVial>();
-            CreateMap<HistoriaVial, GetHistoriaVialInput>();
+            CreateMap<HistoriaVial, GetHistoriaVialOutput>();
             CreateMap<HistoriaVial, HistoriaVialOutput>()
                 .ForMember(dest => dest.CategoriaNombre, opt => opt.MapFrom(src => src.CategoriaHistoria.Nombre))
                 .ForMember(dest => dest.CategoriaImage, opt => opt.MapFrom(src => src.CategoriaHistoria.UrlImagen));

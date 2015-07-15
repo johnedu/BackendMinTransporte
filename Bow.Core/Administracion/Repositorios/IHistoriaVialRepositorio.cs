@@ -11,5 +11,6 @@ namespace Bow.Administracion.Repositorios
     public interface IHistoriaVialRepositorio : IRepository<HistoriaVial>
     {
         List<HistoriaVial> GetAllHistoriasWithTipo();
+        List<HistoriaVial> GetAllHistoriasActivasWithTipo();
     }
 }

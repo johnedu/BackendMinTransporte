@@ -86,6 +86,7 @@ namespace Bow.Administracion
             {
                 PreguntaFrecuente preguntaFrecuente = Mapper.Map<PreguntaFrecuente>(nuevaFaq);
                 preguntaFrecuente.EsActiva = true;
+                preguntaFrecuente.FechaPublicacion = DateTime.Now;
                 preguntaFrecuente.TenantId = BowConsts.TENANT_ID_ACR;
                 _preguntaFrecuenteRepositorio.Insert(preguntaFrecuente);
             }
@@ -232,6 +233,12 @@ namespace Bow.Administracion
             return new GetAllHistoriasVialesOutput { HistoriasViales = Mapper.Map<List<HistoriaVialOutput>>(listaHistorias) };
         }
 
+        public GetAllHistoriasVialesActivasOutput GetAllHistoriasVialesActivas()
+        {
+            var listaHistorias = _historiaVialRepositorio.GetAllHistoriasActivasWithTipo();
+            return new GetAllHistoriasVialesActivasOutput { HistoriasViales = Mapper.Map<List<HistoriaVialOutput>>(listaHistorias) };
+        }
+
         public GetHistoriaVialOutput GetHistoriaVial(GetHistoriaVialInput historiaInput)
         {
             return Mapper.Map<GetHistoriaVialOutput>(_historiaVialRepositorio.Get(historiaInput.Id));
@@ -244,7 +251,7 @@ namespace Bow.Administracion
             if (existeHistoria == null)
             {
                 HistoriaVial historia = Mapper.Map<HistoriaVial>(nuevaHistoria);
-                historia.EsActiva = true;
+                historia.EsActiva = false;
                 historia.FechaPublicacion = DateTime.Now;
                 historia.TenantId = BowConsts.TENANT_ID_ACR;
                 _historiaVialRepositorio.Insert(historia);
