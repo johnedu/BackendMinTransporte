@@ -1,0 +1,62 @@
+﻿<div class="container" ng-controller="app.views.administracion.noticias as vm">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>@L("")Noticias</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <a class="clickable" ng-click="vm.abrirModalNueva()" title="">@L("")Registrar Nueva Noticia <span class="fa fa-plus"></span></a>
+        </div>
+        <div class="col-md-6 text-right">
+            <p>{{vm.noticias.length}} @L("")Noticias</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-row-12">
+            <div class="panel panel-default">
+                <div class="table-responsive">
+                    <table id="table-ext-3" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">@L("")Titulo</th>
+                                <th class="text-center">@L("")Fecha</th>
+                                <th class="text-center">@L("")Estado</th>
+                                <th class="text-center">@L("")Cambiar Estado</th>
+                                <th class="text-center">@L("")Editar</th>
+                                <th class="text-center">@L("")Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="noticia in vm.noticias">
+                                <td>
+                                    {{noticia.titulo}}
+                                </td>
+                                <td>
+                                    {{noticia.fecha}}
+                                </td>
+                                <td>
+                                    <span ng-show="noticia.esActiva">
+                                        Activa
+                                    </span>
+                                    <span ng-show="!noticia.esActiva">
+                                        Inactiva
+                                    </span>
+                                </td>
+                                <td class="text-center">
+                                    <a class="clickable" ng-click="vm.modificarEstadoNoticia(noticia)" title="@L("")Cambiar el estado de la noticia"><span class="fa fa-refresh fa-2x text-orange"></span></a>
+                                </td>
+                                <td class="text-center">
+                                    <a class="clickable" ng-click="vm.abrirModalEditar(noticia.id)" title="@L("")Editar noticia"><span class="fa fa-pencil fa-2x text-orange"></span></a>
+                                </td>
+                                <td class="text-center">
+                                    <a class="clickable" ng-click="vm.abrirModalEliminar(noticia.id)" title="@L("")Eliminar noticia"><span class="fa fa-trash fa-2x text-orange"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

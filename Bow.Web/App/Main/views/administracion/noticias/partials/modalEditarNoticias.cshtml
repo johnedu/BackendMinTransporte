@@ -1,0 +1,44 @@
+﻿<div class="modal-header">
+    <h2>@L("")Editar Noticias</h2>
+</div>
+<div class="modal-body">
+    <div class="alert alert-danger text-center" ng-show="mensajeError">
+        <strong>{{mensajeError}}</strong>
+    </div>
+    <form role="form" name="modalEditarNoticias">
+        <div class="form-group" ng-class="{'has-error' : modalEditarNoticias.iptTitulo.$dirty && modalEditarNoticias.iptTitulo.$invalid}">
+            <label class="control-label" for="iptPregunta">@L("")Titulo</label>
+            <textarea class="form-control" id="iptTitulo" name="iptTitulo" placeholder="@L("")Ingrese el titulo" ng-model="noticia.titulo" required maxlength="4096" rows="5"></textarea>
+            <div ng-show="modalEditarNoticias.iptTitulo.$dirty && modalEditarNoticias.iptPregunta.$invalid">
+                <small ng-show="modalEditarNoticias.iptTitulo.$error.required" class="text-danger">
+                    @L("")El titulo es requerida
+                </small>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : modalEditarNoticias.iptDescripcion.$dirty && modalEditarNoticias.iptDescripcion.$invalid}">
+            <label class="control-label" for="iptDescripcion">@L("")Descripcion</label>
+            <textarea class="form-control" id="iptDescripcion" name="iptRespuesta" placeholder="@L("")Ingrese la respuesta" ng-model="noticia.descripcion" required maxlength="4096" rows="5"></textarea>
+            <div ng-show="modalEditarNoticias.iptDescripcion.$dirty && modalEditarNoticias.iptDescripcion.$invalid">
+                <small ng-show="modalEditarNoticias.iptDescripcion.$error.required" class="text-danger">
+                    @L("")La descripcion es requerida
+                </small>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : modalEditarNoticias.iptImagen.$dirty && modalEditarNoticias.iptImagen.$invalid}">
+            <label class="control-label" for="iptImagen">@L("")URL Imagen</label>
+            <input type="text" class="form-control" id="iptImagen" name="iptImagen" placeholder="@L("")Ingrese la URL de la imagen" ng-model="noticia.urlImagen" required maxlength="4096" />
+            <div ng-show="modalEditarNoticias.iptImagen.$dirty && modalEditarNoticias.iptImagen.$invalid">
+                <small ng-show="modalEditarNoticias.iptImagen.$error.required" class="text-danger">
+                    @L("")La URL de la imagen es requerida
+                </small>
+            </div>
+            <div>
+                <img class="img-responsive" width="100" src="{{noticia.urlImagen}}" />
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="okModal()" ng-disabled="modalEditarNoticias.$invalid">@L("")Guardar</button>
+    <button class="btn btn-danger" ng-click="cancelModal()">@L("")Cancelar</button>
+</div>

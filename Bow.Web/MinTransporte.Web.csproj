@@ -271,6 +271,10 @@
     <Content Include="App\Main\views\administracion\historiasViales\partials\modalEliminarHistoriaVial.js" />
     <Content Include="App\Main\views\administracion\historiasViales\partials\modalNuevaHistoriaVial.js" />
     <Content Include="App\Main\views\administracion\historiasViales\historiasViales.js" />
+    <Content Include="App\Main\views\administracion\noticias\partials\modalEditarNoticias.js" />
+    <Content Include="App\Main\views\administracion\noticias\partials\modalEliminarNoticias.js" />
+    <Content Include="App\Main\views\administracion\noticias\partials\modalNuevoNoticias.js" />
+    <Content Include="App\Main\views\administracion\noticias\noticias.js" />
     <Content Include="App\Main\views\administracion\preguntasFrecuentes\partials\modalEditarPreguntasFrecuentes.js" />
     <Content Include="App\Main\views\administracion\preguntasFrecuentes\partials\modalEliminarPreguntasFrecuentes.js" />
     <Content Include="App\Main\views\administracion\preguntasFrecuentes\partials\modalNuevoPreguntasFrecuentes.js" />
@@ -434,6 +438,10 @@
     <Content Include="App\Main\views\administracion\historiasViales\partials\modalEliminarHistoriaVial.cshtml" />
     <Content Include="App\Main\views\administracion\historiasViales\partials\modalNuevaHistoriaVial.cshtml" />
     <Content Include="App\Main\views\administracion\historiasViales\historiasViales.cshtml" />
+    <Content Include="App\Main\views\administracion\noticias\partials\modalEditarNoticias.cshtml" />
+    <Content Include="App\Main\views\administracion\noticias\partials\modalEliminarNoticias.cshtml" />
+    <Content Include="App\Main\views\administracion\noticias\partials\modalNuevoNoticias.cshtml" />
+    <Content Include="App\Main\views\administracion\noticias\noticias.cshtml" />
     <None Include="Properties\PublishProfiles\Bow Local.pubxml" />
     <None Include="Properties\PublishProfiles\IIS Pruebas.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
