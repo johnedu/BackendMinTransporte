@@ -266,11 +266,18 @@
     <Content Include="App\Main\styles\layout.min.css">
       <DependentUpon>layout.css</DependentUpon>
     </Content>
-    <Content Include="App\Main\views\administracion\index.js" />
     <Content Include="App\Main\views\administracion\historiasViales\partials\modalEditarHistoriaVial.js" />
+    <Content Include="App\Main\views\administracion\index.js" />
     <Content Include="App\Main\views\administracion\historiasViales\partials\modalEliminarHistoriaVial.js" />
     <Content Include="App\Main\views\administracion\historiasViales\partials\modalNuevaHistoriaVial.js" />
     <Content Include="App\Main\views\administracion\historiasViales\historiasViales.js" />
+    <Content Include="App\Main\views\administracion\categorias\partials\modalEditarCategoria.js" />
+    <Content Include="App\Main\views\administracion\categorias\partials\modalEliminarCategoria.js" />
+    <Content Include="App\Main\views\administracion\categorias\partials\modalNuevaCategoria.js" />
+    <Content Include="App\Main\views\administracion\categorias\categorias.js" />
+    <Content Include="App\Main\views\administracion\preguntasFrecuentes\partials\modalEditarPreguntasFrecuentes.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="App\Main\views\administracion\noticias\partials\modalEditarNoticias.js" />
     <Content Include="App\Main\views\administracion\noticias\partials\modalEliminarNoticias.js" />
     <Content Include="App\Main\views\administracion\noticias\partials\modalNuevoNoticias.js" />
@@ -429,7 +436,6 @@
     <Content Include="Langs\pt.json" />
     <Content Include="Langs\zh-cn.json" />
     <Content Include="App\Main\views\administracion\index.cshtml" />
-    <Content Include="App\Main\views\administracion\preguntasFrecuentes\partials\modalEditarPreguntasFrecuentes.cshtml" />
     <Content Include="App\Main\views\administracion\preguntasFrecuentes\partials\modalEliminarPreguntasFrecuentes.cshtml" />
     <Content Include="App\Main\views\administracion\preguntasFrecuentes\partials\modalNuevoPreguntasFrecuentes.cshtml" />
     <Content Include="App\Main\views\administracion\preguntasFrecuentes\preguntasFrecuentes.cshtml" />
@@ -438,6 +444,10 @@
     <Content Include="App\Main\views\administracion\historiasViales\partials\modalEliminarHistoriaVial.cshtml" />
     <Content Include="App\Main\views\administracion\historiasViales\partials\modalNuevaHistoriaVial.cshtml" />
     <Content Include="App\Main\views\administracion\historiasViales\historiasViales.cshtml" />
+    <Content Include="App\Main\views\administracion\categorias\partials\modalEditarCategoria.cshtml" />
+    <Content Include="App\Main\views\administracion\categorias\partials\modalEliminarCategoria.cshtml" />
+    <Content Include="App\Main\views\administracion\categorias\partials\modalNuevaCategoria.cshtml" />
+    <Content Include="App\Main\views\administracion\categorias\categorias.cshtml" />
     <Content Include="App\Main\views\administracion\noticias\partials\modalEditarNoticias.cshtml" />
     <Content Include="App\Main\views\administracion\noticias\partials\modalEliminarNoticias.cshtml" />
     <Content Include="App\Main\views\administracion\noticias\partials\modalNuevoNoticias.cshtml" />

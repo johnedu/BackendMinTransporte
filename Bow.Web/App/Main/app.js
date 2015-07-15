@@ -59,6 +59,11 @@
                     templateUrl: '/App/Main/views/administracion/historiasViales/historiasViales.cshtml',
                     menu: 'menu_administracion_historiasViales'
                 })
+                .state('categorias', {
+                    url: '/administracion/categorias',
+                    templateUrl: '/App/Main/views/administracion/categorias/categorias.cshtml',
+                    menu: 'menu_administracion_categorias'
+                })
                 .state('noticias', {
                     url: '/administracion/noticias',
                     templateUrl: '/App/Main/views/administracion/noticias/noticias.cshtml',

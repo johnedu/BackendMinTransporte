@@ -138,7 +138,7 @@ namespace Bow.Administracion
 
         public GetAllTiposReporteOutput GetAllTipos()
         {
-            var listaTiposReporte = _tipoReporteRepositorio.GetAll().ToList().OrderBy(p => p.Nombre);
+            var listaTiposReporte = _tipoReporteRepositorio.GetAll().ToList().OrderBy(p => p.TipoCategoria);
             return new GetAllTiposReporteOutput { TiposReporte = Mapper.Map<List<TipoReporteOutput>>(listaTiposReporte) };
         }
 

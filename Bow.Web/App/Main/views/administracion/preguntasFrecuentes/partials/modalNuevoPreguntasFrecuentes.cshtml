@@ -9,7 +9,7 @@
         <div class="form-group" ng-class="{'has-error' : modalNuevaPreguntaFrecuente.iptPregunta.$dirty && modalNuevaPreguntaFrecuente.iptPregunta.$invalid}">
             <label class="control-label" for="iptPregunta">@L("")Pregunta</label>
             <textarea class="form-control" id="iptPregunta" name="iptPregunta" placeholder="@L("")Ingrese la pregunta" ng-model="preguntaFrecuente.pregunta" required maxlength="4096" rows="5"></textarea>
-            <div ng-show="modalNuevaPreguntaFrecuente.iptNombrePais.$dirty && modalNuevaPreguntaFrecuente.iptPregunta.$invalid">
+            <div ng-show="modalNuevaPreguntaFrecuente.iptPregunta.$dirty && modalNuevaPreguntaFrecuente.iptPregunta.$invalid">
                 <small ng-show="modalNuevaPreguntaFrecuente.iptPregunta.$error.required" class="text-danger">
                     @L("")La pregunta es requerida
                 </small>
