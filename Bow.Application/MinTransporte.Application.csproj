@@ -99,16 +99,20 @@
   <ItemGroup>
     <Compile Include="Administracion\AdministracionService.cs" />
     <Compile Include="Administracion\AutoMapperAdministracionProfile.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\DeleteTipoInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeleteNoticiasInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeleteItemDiagnosticoVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeleteHistoriasVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeletePreguntaFrecuenteInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetAllItemsByDiagnosticoVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetItemByDiagnosticoVialInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\GetTipoReporteInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetNoticiasInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetHistoriaVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetPreguntaFrecuenteInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\SaveTipoInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SaveReporteCalificacionInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\UpdateTipoInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\UpdateNoticiasInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SaveNoticiasInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\SaveItemDiagnosticoVialInput.cs" />
@@ -130,6 +134,7 @@
     <Compile Include="Administracion\DTOs\OutputModels\GetHistoriaVialOutput.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Administracion\DTOs\OutputModels\GetTipoReporteOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\ItemByDiagnosticoVialOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\PasoByHistoriaVialOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\HistoriaVialOutput.cs" />

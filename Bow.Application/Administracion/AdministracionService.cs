@@ -136,6 +136,56 @@ namespace Bow.Administracion
             return new GetAllCategoriasOutput { TiposReporte = Mapper.Map<List<TipoReporteOutput>>(listaCategorias) };
         }
 
+        public GetAllTiposReporteOutput GetAllTipos()
+        {
+            var listaTiposReporte = _tipoReporteRepositorio.GetAll().ToList().OrderBy(p => p.Nombre);
+            return new GetAllTiposReporteOutput { TiposReporte = Mapper.Map<List<TipoReporteOutput>>(listaTiposReporte) };
+        }
+
+        public GetTipoReporteOutput GetTipoReporte(GetTipoReporteInput categoriaInput)
+        {
+            return Mapper.Map<GetTipoReporteOutput>(_tipoReporteRepositorio.Get(categoriaInput.Id));
+        }
+
+        public void SaveTipo(SaveTipoInput nuevoTipo)
+        {
+            TipoReporte existeTipo = _tipoReporteRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == nuevoTipo.Nombre.ToLower());
+
+            if (existeTipo == null)
+            {
+                TipoReporte tipo = Mapper.Map<TipoReporte>(nuevoTipo);
+                tipo.TenantId = BowConsts.TENANT_ID_ACR;
+                _tipoReporteRepositorio.Insert(tipo);
+            }
+            else
+            {
+                var mensajeError = "Ya existe el tipo o categoría.";
+                throw new UserFriendlyException(mensajeError);
+            }
+        }
+
+        public void UpdateTipo(UpdateTipoInput tipoUpdate)
+        {
+            TipoReporte existeTipo = _tipoReporteRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == tipoUpdate.Nombre.ToLower() && p.Id != tipoUpdate.Id);
+
+            if (existeTipo == null)
+            {
+                TipoReporte tipo = _tipoReporteRepositorio.Get(tipoUpdate.Id);
+                Mapper.Map(tipoUpdate, tipo);
+                _tipoReporteRepositorio.Update(tipo);
+            }
+            else
+            {
+                var mensajeError = "Ya existe el tipo o categoría.";
+                throw new UserFriendlyException(mensajeError);
+            }
+        }
+
+        public void DeleteTipo(DeleteTipoInput tipoEliminar)
+        {
+            _tipoReporteRepositorio.Delete(tipoEliminar.Id);
+        }
+
         public GetAllReporteIncidentesOutput GetAllReporteIncidentes()
         {
             var listaReporteIncidentes = _reporteIncidentesRepositorio.GetAllReporteIncidentesWithTipo();

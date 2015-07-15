@@ -27,10 +27,16 @@ namespace Bow.Administracion
 
             //  Reporte Incidentes
 
+            CreateMap<SaveTipoInput, TipoReporte>();
+            CreateMap<UpdateTipoInput, TipoReporte>();
+            CreateMap<TipoReporte, GetTipoReporteOutput>();
             CreateMap<TipoReporte, TipoReporteOutput>();
+
             CreateMap<ReporteIncidentes, ReporteIncidenteOutput>()
-                .ForMember(dest => dest.TipoReporteIncidente, opt => opt.MapFrom(src => src.TipoReporteIncidente.Nombre));
+                .ForMember(dest => dest.TipoReporteIncidente, opt => opt.MapFrom(src => src.TipoReporteIncidente.Nombre))
+                .ForMember(dest => dest.TipoReporteImagen, opt => opt.MapFrom(src => src.TipoReporteIncidente.UrlImagen));
             CreateMap<SaveReporteIncidentesInput, ReporteIncidentes>();
+            CreateMap<SaveReporteCalificacionInput, ReporteCalificaciones>();
 
             //  Noticias
             CreateMap<SaveNoticiasInput, Noticias>();
@@ -54,8 +60,6 @@ namespace Bow.Administracion
             CreateMap<ItemDiagnostico, GetItemByDiagnosticoVialInput>();
             CreateMap<ItemDiagnostico, ItemByDiagnosticoVialOutput>();
 
-            CreateMap<SaveReporteCalificacionInput, ReporteCalificaciones>();
-            
         }
     }
 }

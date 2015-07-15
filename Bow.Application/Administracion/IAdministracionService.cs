@@ -34,6 +34,16 @@ namespace Bow.Administracion
 
         GetAllCategoriasOutput GetAllCategorias();
 
+        GetAllTiposReporteOutput GetAllTipos();
+
+        GetTipoReporteOutput GetTipoReporte(GetTipoReporteInput categoriaInput);
+
+        void SaveTipo(SaveTipoInput nuevoTipo);
+
+        void UpdateTipo(UpdateTipoInput tipoUpdate);
+
+        void DeleteTipo(DeleteTipoInput tipoEliminar);
+
         GetAllReporteIncidentesOutput GetAllReporteIncidentes();
 
         void SaveReporteIncidentes(SaveReporteIncidentesInput nuevoReporte);
@@ -60,6 +70,8 @@ namespace Bow.Administracion
         //  Historia Vial
 
         GetAllHistoriasVialesOutput GetAllHistoriasViales();
+
+        GetAllHistoriasVialesActivasOutput GetAllHistoriasVialesActivas();
 
         GetHistoriaVialOutput GetHistoriaVial(GetHistoriaVialInput historiaInput);
 

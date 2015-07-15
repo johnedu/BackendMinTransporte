@@ -11,6 +11,7 @@ namespace Bow.Administracion.DTOs.OutputModels
     {
         public int TipoReporteId { get; set; }
         public string TipoReporteIncidente { get; set; }
+        public string TipoReporteImagen { get; set; }
         public string Direccion { get; set; }
         public string Latitud { get; set; }
         public string Longitud { get; set; }
