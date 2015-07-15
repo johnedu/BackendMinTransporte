@@ -18,7 +18,7 @@
 
            //Funcion encargada de consultar las noticias en la base de datos
            function cargarNoticias() {
-               administracionService.getAllNoticias.success(function (data) {
+               administracionService.getAllNoticias().success(function (data) {
                    vm.noticias = data.noticias;
                }).error(function (error) {
                    console.log(error);
@@ -38,7 +38,7 @@
                });
 
                modalInstance.result.then(function (noticia) {
-                   cargarNoticias;
+                   cargarNoticias();
                    abp.notify.success(abp.localization.localize('', 'Bow') + 'Se guardó correctamente la noticia: ' + noticia, abp.localization.localize('', 'Bow') + 'Información');
                }, function () {
                    vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al guardar la noticia'
@@ -50,7 +50,7 @@
            ************************************************************************/
            vm.abrirModalEditar = function (noticiaid) {
                var modalInstance = $modal.open({
-                   templateUrl: '/App/Main/views/administracion/preguntasFrecuentes/partials/modalEditarNoticias.cshtml',
+                   templateUrl: '/App/Main/views/administracion/noticias/partials/modalEditarNoticias.cshtml',
                    controller: 'modalEditarNoticiaController',
                    size: 'md',
                    resolve: {
@@ -63,7 +63,6 @@
                modalInstance.result.then(function (noticia) {
                    abp.notify.success(abp.localization.localize('', 'Bow') + 'Se actualizó correctamente la noticia: ' + noticia, abp.localization.localize('', 'Bow') + 'Información');
                    cargarNoticias();
-
                }, function () {
                    vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la noticia '
                });
@@ -72,14 +71,14 @@
            /************************************************************************
            * Llamado para abrir Modal para Eliminar noticia
            ************************************************************************/
-           vm.abrirModalEliminar = function (noticiaid) {
+           vm.abrirModalEliminar = function (noticiaId) {
                 var modalInstance = $modal.open({
-                    templateUrl: '/App/Main/views/administracion/preguntasFrecuentes/partials/modalEliminarNoticias.cshtml',
+                    templateUrl: '/App/Main/views/administracion/noticias/partials/modalEliminarNoticias.cshtml',
                     controller: 'modalEliminarNoticiaController',
                     size: 'md',
                     resolve: {
                         noticiaEliminar: function () {
-                            return noticiaid;
+                            return noticiaId;
                         }
                     }
                 });
@@ -95,14 +94,13 @@
            /************************************************************************
            * Llamado para modificar el estado de la noticia
            ************************************************************************/
-           vm.modificarEstadoPregunta = function (noticia) {
+           vm.modificarEstadoNoticia = function (noticia) {
                if (noticia.esActiva) {
                    noticia.esActiva = false;
                } else {
                    noticia.esActiva = true;
                }
-               administracionService.updateNoticia(noticia)
-                   .success(function () {
+               administracionService.updateNoticias(noticia).success(function () {
                        abp.notify.success(abp.localization.localize('', 'Bow') + 'Se modificó correctamente el estado de la noticia: ' + noticia.titulo, abp.localization.localize('', 'Bow') + 'Información');
                        cargarNoticias();
                    }).error(function (error) {

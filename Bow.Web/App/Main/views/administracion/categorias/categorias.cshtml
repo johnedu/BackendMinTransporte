@@ -21,8 +21,6 @@
                             <tr>
                                 <th class="text-center">@L("")Nombre</th>
                                 <th class="text-center">@L("")Tipo de Categoría</th>
-                                <th class="text-center">@L("")Estado</th>
-                                <th class="text-center">@L("")Cambiar Estado</th>
                                 <th class="text-center">@L("")Editar</th>
                                 <th class="text-center">@L("")Eliminar</th>
                             </tr>
@@ -33,18 +31,7 @@
                                     {{categoria.nombre}}
                                 </td>
                                 <td class="text-center">
-                                    <i ng-show="categoria.tipoCategoria == 'reporte'" class="fa fa-cogs"></i><i ng-hide="categoria.tipoCategoria == 'reporte'" class="fa fa-cubes"></i> {{categoria.tipoCategoria}}
-                                </td>
-                                <td>
-                                    <span ng-show="categoria.esActiva">
-                                        Activa
-                                    </span>
-                                    <span ng-show="!categoria.esActiva">
-                                        Inactiva
-                                    </span>
-                                </td>
-                                <td class="text-center">
-                                    <a class="clickable" ng-click="vm.modificarEstadoCategoria(categoria)" title="@L("")Cambiar el estado de la categoría"><span class="fa fa-refresh fa-2x text-orange"></span></a>
+                                    <i ng-show="categoria.tipoCategoria == 'reporte'" class="fa fa-cogs fa-2x"></i><i ng-hide="categoria.tipoCategoria == 'reporte'" class="fa fa-cubes fa-2x"></i>&nbsp;&nbsp; {{categoria.tipoCategoria}}
                                 </td>
                                 <td class="text-center">
                                     <a class="clickable" ng-click="vm.abrirModalEditar(categoria.id)" title="@L("")Editar categoría"><span class="fa fa-pencil fa-2x text-orange"></span></a>

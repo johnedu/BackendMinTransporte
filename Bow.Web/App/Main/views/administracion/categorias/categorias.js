@@ -90,23 +90,5 @@
                     vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la categoría'
                 });
            }
-
-           /************************************************************************
-           * Llamado para modificar el estado de la categoría
-           ************************************************************************/
-           vm.modificarEstadoCategoria = function (categoria) {
-               if (categoria.esActiva) {
-                   categoria.esActiva = false;
-               } else {
-                   categoria.esActiva = true;
-               }
-               administracionService.updateTipo(categoria)
-                   .success(function () {
-                       abp.notify.success(abp.localization.localize('', 'Bow') + 'Se modificó correctamente el estado de la categoría: ' + categoria.nombre, abp.localization.localize('', 'Bow') + 'Información');
-                       cargarCategorias();
-                   }).error(function (error) {
-                       $scope.mensajeError = error.message;
-                   });
-           }
        }]);
 })();

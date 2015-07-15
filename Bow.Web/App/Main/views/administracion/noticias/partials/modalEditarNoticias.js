@@ -1,8 +1,6 @@
 ﻿(function () {
-    angular.module('app').controller('modalEditarNoticiaController', ['$scope', '$modalInstance', 'preguntaEditar', 'abp.services.app.administracion',
+    angular.module('app').controller('modalEditarNoticiaController', ['$scope', '$modalInstance', 'noticiaEditar', 'abp.services.app.administracion',
         function ($scope, $modalInstance, noticiaEditar, administracionService) {
-
-            $scope.noticia = noticiaEditar;
 
             $scope.noticia = {
                 titulo: '',

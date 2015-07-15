@@ -6,12 +6,10 @@
                 titulo: '',
                 descripcion: '',
                 urlImagen: ''
-               
             };
 
             $scope.okModal = function () {
-
-                administracionService.saveNoticia($scope.noticia)
+                administracionService.saveNoticias($scope.noticia)
                     .success(function () {
                         $modalInstance.close($scope.noticia.titulo);
                     }).error(function (error) {

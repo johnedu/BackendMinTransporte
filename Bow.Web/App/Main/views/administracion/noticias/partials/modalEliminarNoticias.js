@@ -1,5 +1,5 @@
 ﻿(function () {
-    angular.module('app').controller('modalEliminarNoticiaController', ['$scope', '$modalInstance', 'preguntaEliminar', 'abp.services.app.administracion',
+    angular.module('app').controller('modalEliminarNoticiaController', ['$scope', '$modalInstance', 'noticiaEliminar', 'abp.services.app.administracion',
         function ($scope, $modalInstance, noticiaEliminar, administracionService) {
 
             administracionService.getNoticias({ id: noticiaEliminar })

@@ -241,6 +241,8 @@ namespace Bow.Administracion
             {
                 Noticias noticia = Mapper.Map<Noticias>(nuevaNoticias);
                 noticia.EsActiva = true;
+                noticia.Url = "www.google.com";
+                noticia.Fecha = DateTime.Now;
                 noticia.TenantId = BowConsts.TENANT_ID_ACR;
                 _noticiasRepositorio.Insert(noticia);
             }

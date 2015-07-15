@@ -41,7 +41,7 @@ namespace Bow.Administracion
             //  Noticias
             CreateMap<SaveNoticiasInput, Noticias>();
             CreateMap<UpdateNoticiasInput, Noticias>();
-            CreateMap<Noticias, GetNoticiasInput>();
+            CreateMap<Noticias, GetNoticiasOutput>();
             CreateMap<Noticias, NoticiasOutput>();
 
             CreateMap<Deslizador, DeslizadorOutput>();
