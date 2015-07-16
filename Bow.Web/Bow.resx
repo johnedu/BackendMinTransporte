@@ -123,6 +123,9 @@
   <data name="menu_administracion_categorias" xml:space="preserve">
     <value>Categorías</value>
   </data>
+  <data name="menu_administracion_diagnostico" xml:space="preserve">
+    <value>Diagnóstico</value>
+  </data>
   <data name="menu_administracion_historiasViales" xml:space="preserve">
     <value>Historias en la Vía</value>
   </data>

@@ -275,6 +275,10 @@
     <Content Include="App\Main\views\administracion\categorias\partials\modalEliminarCategoria.js" />
     <Content Include="App\Main\views\administracion\categorias\partials\modalNuevaCategoria.js" />
     <Content Include="App\Main\views\administracion\categorias\categorias.js" />
+    <Content Include="App\Main\views\administracion\diagnostico\diagnostico.js" />
+    <Content Include="App\Main\views\administracion\diagnostico\partials\modalEditarDiagnostico.js" />
+    <Content Include="App\Main\views\administracion\diagnostico\partials\modalEliminarDiagnostico.js" />
+    <Content Include="App\Main\views\administracion\diagnostico\partials\modalNuevoDiagnostico.js" />
     <Content Include="App\Main\views\administracion\preguntasFrecuentes\partials\modalEditarPreguntasFrecuentes.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -452,6 +456,10 @@
     <Content Include="App\Main\views\administracion\noticias\partials\modalEliminarNoticias.cshtml" />
     <Content Include="App\Main\views\administracion\noticias\partials\modalNuevoNoticias.cshtml" />
     <Content Include="App\Main\views\administracion\noticias\noticias.cshtml" />
+    <Content Include="App\Main\views\administracion\diagnostico\diagnostico.cshtml" />
+    <Content Include="App\Main\views\administracion\diagnostico\partials\modalEditarDiagnostico.cshtml" />
+    <Content Include="App\Main\views\administracion\diagnostico\partials\modalEliminarDiagnostico.cshtml" />
+    <Content Include="App\Main\views\administracion\diagnostico\partials\modalNuevoDiagnostico.cshtml" />
     <None Include="Properties\PublishProfiles\Bow Local.pubxml" />
     <None Include="Properties\PublishProfiles\IIS Pruebas.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />

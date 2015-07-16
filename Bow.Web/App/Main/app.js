@@ -69,11 +69,17 @@
                     templateUrl: '/App/Main/views/administracion/noticias/noticias.cshtml',
                     menu: 'menu_administracion_noticias'
                 })
+                 .state('diagnostico', {
+                     url: '/administracion/diagnostico',
+                     templateUrl: '/App/Main/views/administracion/diagnostico/diagnostico.cshtml',
+                     menu: 'menu_administracion_diagnostico' //Matches to name of 'About' menu in BowNavigationProvider
+                 })
                 .state('about', {
                     url: '/about',
                     templateUrl: '/App/Main/views/about/about.cshtml',
                     menu: 'About' //Matches to name of 'About' menu in BowNavigationProvider
                 })
+               
 
             /*$stateProvider.when('departamentos', {
                 url: '/zonificacion/pais/:paisId'

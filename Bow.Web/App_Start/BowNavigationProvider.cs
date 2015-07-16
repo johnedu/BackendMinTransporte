@@ -47,6 +47,13 @@ namespace Bow.Web
                                 url: "#/administracion/categorias"
                             )
                         )
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menu_administracion_diagnostico",
+                                new LocalizableString("menu_administracion_diagnostico", BowConsts.LocalizationSourceName),
+                                url: "#/administracion/diagnostico"
+                            )
+                        )
                 );
         }
     }

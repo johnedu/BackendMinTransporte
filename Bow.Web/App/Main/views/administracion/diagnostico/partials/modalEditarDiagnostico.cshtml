@@ -1,0 +1,32 @@
+﻿<div class="modal-header">
+    <h2>@L("")Editar Diagnosticos</h2>
+</div>
+<div class="modal-body">
+    <div class="alert alert-danger text-center" ng-show="mensajeError">
+        <strong>{{mensajeError}}</strong>
+    </div>
+    <form role="form" name="modalEditarDiagnostico">
+        <div class="form-group" ng-class="{'has-error' : modalEditarDiagnostico.iptNombre.$dirty && modalEditarDiagnostico.iptNombre.$invalid}">
+            <label class="control-label" for="iptNombre">@L("")Nombre</label>
+            <textarea class="form-control" id="iptNombre" name="iptNombre" placeholder="@L("")Ingrese el nombre" ng-model="diagnostico.nombre" required maxlength="4096" rows="5"></textarea>
+            <div ng-show="modalEditarDiagnostico.iptNombre.$dirty && modalEditarDiagnostico.iptNombre.$invalid">
+                <small ng-show="modalEditarDiagnostico.iptNombre.$error.required" class="text-danger">
+                    @L("")El nombre es requerido
+                </small>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : modalEditarDiagnostico.iptObservaciones.$dirty && modalEditarDiagnostico.iptObservaciones.$invalid}">
+            <label class="control-label" for="iptObservaciones">@L("")Observaciones</label>
+            <textarea class="form-control" id="iptObservaciones" name="iptObservaciones" placeholder="@L("")Ingrese las Observaciones" ng-model="diagnostico.observaciones" required maxlength="4096" rows="5"></textarea>
+            <div ng-show="modalEditarDiagnostico.iptObservaciones.$dirty && modalEditarDiagnostico.iptObservaciones.$invalid">
+                <small ng-show="modalEditarDiagnostico.iptObservaciones.$error.required" class="text-danger">
+                    @L("")Las Observaciones son requeridas
+                </small>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="okModal()" ng-disabled="modalEditarDiagnosticos.$invalid">@L("")Guardar</button>
+    <button class="btn btn-danger" ng-click="cancelModal()">@L("")Cancelar</button>
+</div>

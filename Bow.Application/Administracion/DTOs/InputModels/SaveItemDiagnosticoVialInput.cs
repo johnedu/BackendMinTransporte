@@ -9,9 +9,7 @@ using System.Threading.Tasks;
 namespace Bow.Administracion.DTOs.InputModels
 {
     public class SaveItemDiagnosticoVialInput : IInputDto
-    {
-        [Required]
-        public int DiagnosticoVialId { get; set; }
+    {       
         [Required]
         [MaxLength(512)]
         public string Nombre { get; set; }
