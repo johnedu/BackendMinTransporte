@@ -31,7 +31,10 @@
                                     {{categoria.nombre}}
                                 </td>
                                 <td class="text-center">
-                                    <i ng-show="categoria.tipoCategoria == 'reporte'" class="fa fa-cogs fa-2x"></i><i ng-hide="categoria.tipoCategoria == 'reporte'" class="fa fa-cubes fa-2x"></i>&nbsp;&nbsp; {{categoria.tipoCategoria}}
+                                    <i ng-show="categoria.tipoCategoria == 'reporte'" class="fa fa-cogs fa-2x"></i>
+                                    <i ng-show="categoria.tipoCategoria == 'historia'" class="fa fa-cubes fa-2x"></i>
+                                    <i ng-show="categoria.tipoCategoria == 'vehiculo'" class="fa fa-car fa-2x"></i>
+                                    &nbsp;&nbsp; {{categoria.tipoCategoria}}
                                 </td>
                                 <td class="text-center">
                                     <a class="clickable" ng-click="vm.abrirModalEditar(categoria.id)" title="@L("")Editar categoría"><span class="fa fa-pencil fa-2x text-orange"></span></a>

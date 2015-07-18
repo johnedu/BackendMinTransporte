@@ -9,6 +9,6 @@
 
         public const string CATEGORIA_REPORTE = "reporte";
         public const string CATEGORIA_HISTORIA = "historia";
-
+        public const string CATEGORIA_VEHICULO = "vehiculo";
     }
 }

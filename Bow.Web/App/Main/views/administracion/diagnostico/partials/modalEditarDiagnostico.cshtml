@@ -1,5 +1,5 @@
 ﻿<div class="modal-header">
-    <h2>@L("")Editar Diagnosticos</h2>
+    <h2>@L("")Editar Diagnósticos</h2>
 </div>
 <div class="modal-body">
     <div class="alert alert-danger text-center" ng-show="mensajeError">
@@ -22,6 +22,30 @@
                 <small ng-show="modalEditarDiagnostico.iptObservaciones.$error.required" class="text-danger">
                     @L("")Las Observaciones son requeridas
                 </small>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : modalEditarDiagnostico.chkRequerido.$dirty && modalEditarDiagnostico.chkRequerido.$invalid}">
+            <div class="checkbox c-checkbox needsclick">
+                <label class="needsclick">
+                    <input id="chkRequerido" name="chkRequerido" type="checkbox" class="needsclick" ng-model="diagnostico.esRequerido">
+                    <span class="fa fa-check"></span>@L("")El item es obligatorio para viajar?
+                </label>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : modalEditarDiagnostico.iptImagen.$dirty && modalEditarDiagnostico.iptImagen.$invalid}">
+            <div class="row">
+                <div class="col-md-9">
+                    <label class="control-label" for="iptImagen">@L("")URL Imagen</label>
+                    <input type="text" class="form-control" id="iptImagen" name="iptImagen" placeholder="@L("")Ingrese la URL de la imagen" ng-model="diagnostico.urlImagen" required maxlength="4096" />
+                    <div ng-show="modalEditarDiagnostico.iptImagen.$dirty && modalEditarDiagnostico.iptImagen.$invalid">
+                        <small ng-show="modalEditarDiagnostico.iptImagen.$error.required" class="text-danger">
+                            @L("")La URL de la imagen es requerida
+                        </small>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <img class="img-responsive" src="{{diagnostico.urlImagen}}" />
+                </div>
             </div>
         </div>
     </form>

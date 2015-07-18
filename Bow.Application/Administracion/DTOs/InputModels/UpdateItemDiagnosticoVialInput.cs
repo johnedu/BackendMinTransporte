@@ -11,15 +11,14 @@ namespace Bow.Administracion.DTOs.InputModels
     public class UpdateItemDiagnosticoVialInput : EntityDto, IInputDto
     {
         [Required]
-        public int DiagnosticoVialId { get; set; }
-        [Required]
         [MaxLength(512)]
         public string Nombre { get; set; }
         [Required]
         [MaxLength(2048)]
         public string Observaciones { get; set; }
-        [MaxLength(512)]
+        public string UrlImagen { get; set; }
         public bool EsRequerido { get; set; }
         public bool EsActivo { get; set; }
+        
     }
 }

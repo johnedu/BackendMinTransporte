@@ -130,6 +130,12 @@ namespace Bow.Administracion
             return new GetAllTiposReporteOutput { TiposReporte = Mapper.Map<List<TipoReporteOutput>>(listaTiposReporte) };
         }
 
+        public GetAllTiposReporteOutput GetAllTiposVehiculo()
+        {
+            var listaTiposVehiculo = _tipoReporteRepositorio.GetAll().Where(t => t.TipoCategoria.Equals(BowConsts.CATEGORIA_VEHICULO)).ToList().OrderBy(p => p.Nombre);
+            return new GetAllTiposReporteOutput { TiposReporte = Mapper.Map<List<TipoReporteOutput>>(listaTiposVehiculo) };
+        }
+
         public GetAllCategoriasOutput GetAllCategorias()
         {
             var listaCategorias = _tipoReporteRepositorio.GetAll().Where(t => t.TipoCategoria.Equals(BowConsts.CATEGORIA_HISTORIA)).ToList().OrderBy(p => p.Nombre);
@@ -149,7 +155,7 @@ namespace Bow.Administracion
 
         public void SaveTipo(SaveTipoInput nuevoTipo)
         {
-            TipoReporte existeTipo = _tipoReporteRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == nuevoTipo.Nombre.ToLower());
+            TipoReporte existeTipo = _tipoReporteRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == nuevoTipo.Nombre.ToLower() && p.TipoCategoria.ToLower() == nuevoTipo.TipoCategoria.ToLower());
 
             if (existeTipo == null)
             {
@@ -166,7 +172,7 @@ namespace Bow.Administracion
 
         public void UpdateTipo(UpdateTipoInput tipoUpdate)
         {
-            TipoReporte existeTipo = _tipoReporteRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == tipoUpdate.Nombre.ToLower() && p.Id != tipoUpdate.Id);
+            TipoReporte existeTipo = _tipoReporteRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == tipoUpdate.Nombre.ToLower() && p.TipoCategoria.ToLower() == tipoUpdate.TipoCategoria.ToLower() && p.Id != tipoUpdate.Id);
 
             if (existeTipo == null)
             {

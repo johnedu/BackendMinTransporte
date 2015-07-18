@@ -20,8 +20,6 @@ namespace Bow.Administracion.Mappings
             Property(faq => faq.Respuesta).HasMaxLength(4096);
             Property(faq => faq.Respuesta).IsRequired();
 
-            Property(faq => faq.UrlImagen).HasMaxLength(1024);
-
             Property(faq => faq.EsActiva).IsRequired();
 
             //Tabla

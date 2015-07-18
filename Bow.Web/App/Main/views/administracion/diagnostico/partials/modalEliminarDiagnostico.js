@@ -2,7 +2,7 @@
     angular.module('app').controller('modalEliminarDiagnosticoController', ['$scope', '$modalInstance', 'diagnosticoEliminar', 'abp.services.app.administracion',
         function ($scope, $modalInstance, diagnosticoEliminar, administracionService) {
 
-            administracionService.getNotGetItemByDiagnosticoVialicias({ id: diagnosticoEliminar })
+            administracionService.getItemByDiagnosticoVial({ id: diagnosticoEliminar })
                 .success(function (data) {
                     $scope.diagnosticoEliminar = data;
                 });

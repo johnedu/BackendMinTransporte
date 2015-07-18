@@ -25,7 +25,6 @@
                    console.log(error);
                });
            }
-           
            cargarDiagnostico();
 
            /************************************************************************
@@ -57,13 +56,13 @@
                    size: 'md',
                    resolve: {
                        diagnosticoEditar: function () {
-                           return diagnosticoid;
+                           return diagnostico;
                        }
                    }
                });
 
                modalInstance.result.then(function (diagnostico) {
-                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se actualizó correctamente el diagnostico: ' + noticia, abp.localization.localize('', 'Bow') + 'Información');
+                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se actualizó correctamente el diagnostico: ' + diagnostico, abp.localization.localize('', 'Bow') + 'Información');
                    cargarDiagnostico();
                }, function () {
                    vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar el diagnostico '
@@ -96,13 +95,14 @@
            /************************************************************************
            * Llamado para modificar el estado de la diagnostico
            ************************************************************************/
-           vm.modificarEstadoNoticia = function (diagnostico) {
+           vm.modificarEstadoDiagnostico = function (diagnostico) {
+               alert();
                if (diagnostico.esActivo) {
                    diagnostico.esActivo = false;
                } else {
                    diagnostico.esActivo = true;
                }
-               administracionService.UpdateItemDiagnosticoVial(diagnostico).success(function () {
+               administracionService.updateItemDiagnosticoVial(diagnostico).success(function () {
                    abp.notify.success(abp.localization.localize('', 'Bow') + 'Se modificó correctamente el estado del diagnostico: ' + diagnostico.Nombre, abp.localization.localize('', 'Bow') + 'Información');
                    cargarDiagnostico();
                    }).error(function (error) {

@@ -1,21 +1,21 @@
 ﻿<div class="modal-header">
-    <h2>@L("")Agregar Categoría</h2>
+    <h2>@L("")Editar Categoría</h2>
 </div>
 <div class="modal-body">
     <div class="alert alert-danger text-center" ng-show="mensajeError">
         <strong>{{mensajeError}}</strong>
     </div>
-    <form role="form" name="modalNuevaCategoria">
-        <div class="form-group" ng-class="{'has-error' : modalNuevaCategoria.iptNombre.$dirty && modalNuevaCategoria.iptNombre.$invalid}">
+    <form role="form" name="modalEditarCategoria">
+        <div class="form-group" ng-class="{'has-error' : modalEditarCategoria.iptNombre.$dirty && modalEditarCategoria.iptNombre.$invalid}">
             <label class="control-label" for="iptNombre">@L("")Nombre</label>
             <input type="text" class="form-control" id="iptNombre" name="iptNombre" placeholder="@L("")Ingrese el nombre de la categoría" ng-model="categoria.nombre" required maxlength="4096" />
-            <div ng-show="modalNuevaCategoria.iptNombre.$dirty && modalNuevaCategoria.iptNombre.$invalid">
-                <small ng-show="modalNuevaCategoria.iptNombre.$error.required" class="text-danger">
+            <div ng-show="modalEditarCategoria.iptNombre.$dirty && modalEditarCategoria.iptNombre.$invalid">
+                <small ng-show="modalEditarCategoria.iptNombre.$error.required" class="text-danger">
                     @L("")El nombre es requerido
                 </small>
             </div>
         </div>
-        <div class="form-group" ng-class="{'has-error' : modalNuevaCategoria.selectedCategoria.$dirty && modalNuevaCategoria.selectedCategoria.$invalid }">
+        <div class="form-group" ng-class="{'has-error' : modalEditarCategoria.selectedCategoria.$dirty && modalEditarCategoria.selectedCategoria.$invalid }">
             <label class="control-label" for="selectedCategoria">@L("")Tipo de Categoria</label>
             <select ng-model="categoria.tipoCategoria" class="form-control" name="selectedCategoria" id="selectedCategoria">
                 <option value="">@L("")Seleccione...</option>
@@ -23,19 +23,19 @@
                 <option value="historia">@L("")Tipo para Historias en la Vía</option>
                 <option value="vehiculo">@L("")Tipo para Vehiculos</option>
             </select>
-            <div ng-show="modalNuevaCategoria.selectedCategoria.$dirty && modalNuevaCategoria.selectedCategoria.$invalid">
-                <small ng-show="modalNuevaCategoria.selectedCategoria.$error.required" class="text-danger">
+            <div ng-show="modalEditarCategoria.selectedCategoria.$dirty && modalEditarCategoria.selectedCategoria.$invalid">
+                <small ng-show="modalEditarCategoria.selectedCategoria.$error.required" class="text-danger">
                     @L("")Debe seleccionar un tipo
                 </small>
             </div>
         </div>
-        <div class="form-group" ng-class="{'has-error' : modalNuevaCategoria.iptUrlImagen.$dirty && modalNuevaCategoria.iptUrlImagen.$invalid}">
+        <div class="form-group" ng-class="{'has-error' : modalEditarCategoria.iptUrlImagen.$dirty && modalEditarCategoria.iptUrlImagen.$invalid}">
             <div class="row">
                 <div class="col-md-9">
                     <label class="control-label" for="iptUrlImagen">@L("")URL Imagen</label>
                     <input type="text" class="form-control" id="iptUrlImagen" name="iptUrlImagen" placeholder="@L("")Ingrese la URL de la imagen" ng-model="categoria.urlImagen" required maxlength="4096" />
-                    <div ng-show="modalNuevaCategoria.iptUrlImagen.$dirty && modalNuevaCategoria.iptUrlImagen.$invalid">
-                        <small ng-show="modalNuevaCategoria.iptUrlImagen.$error.required" class="text-danger">
+                    <div ng-show="modalEditarCategoria.iptUrlImagen.$dirty && modalEditarCategoria.iptUrlImagen.$invalid">
+                        <small ng-show="modalEditarCategoria.iptUrlImagen.$error.required" class="text-danger">
                             @L("")La URL de la imagen es requerida
                         </small>
                     </div>
@@ -48,6 +48,6 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-success" ng-click="okModal()" ng-disabled="modalNuevaCategoria.$invalid">@L("")Aceptar</button>
+    <button class="btn btn-success" ng-click="okModal()" ng-disabled="modalEditarCategoria.$invalid">@L("")Guardar</button>
     <button class="btn btn-danger" ng-click="cancelModal()">@L("")Cancelar</button>
 </div>

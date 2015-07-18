@@ -13,6 +13,7 @@ namespace Bow.Administracion.Entidades
         public string Nombre { get; set; }
         public string Observaciones { get; set; }
         public bool EsRequerido { get; set; }
+        public string UrlImagen { get; set; }
         public bool EsActivo { get; set; }
     }
 }

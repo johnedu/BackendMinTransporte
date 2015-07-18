@@ -3,11 +3,14 @@
         function ($scope, $modalInstance, diagnosticoEditar, administracionService) {
 
             $scope.diagnostico = {
+                id: '',
                 nombre: '',
-                observaciones: ''
+                observaciones: '',
+                urlImagen: '',
+                esRequerido: ''
             };
 
-            administracionService.getGetItemByDiagnosticoVialNoticias({ id: diagnosticoEditar })
+            administracionService.getItemByDiagnosticoVial({ id: diagnosticoEditar })
                 .success(function (data) {
                     $scope.diagnostico = data;
                 });

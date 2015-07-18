@@ -54,6 +54,27 @@ namespace Bow.Web
                                 url: "#/administracion/diagnostico"
                             )
                         )
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menu_administracion_deslizador",
+                                new LocalizableString("menu_administracion_deslizador", BowConsts.LocalizationSourceName),
+                                url: "#/administracion/deslizador"
+                            )
+                        )
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menu_administracion_reporteIncidentes",
+                                new LocalizableString("menu_administracion_reporteIncidentes", BowConsts.LocalizationSourceName),
+                                url: "#/administracion/reporteIncidentes"
+                            )
+                        )
+                        .AddItem(
+                            new MenuItemDefinition(
+                                "menu_administracion_calificacionConductores",
+                                new LocalizableString("menu_administracion_calificacionConductores", BowConsts.LocalizationSourceName),
+                                url: "#/administracion/calificacionConductores"
+                            )
+                        )
                 );
         }
     }

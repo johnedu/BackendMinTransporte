@@ -120,8 +120,14 @@
   <data name="menu_administracion" xml:space="preserve">
     <value>ADMINISTRACIÓN</value>
   </data>
+  <data name="menu_administracion_calificacionConductores" xml:space="preserve">
+    <value>Reporte de Calificaciones</value>
+  </data>
   <data name="menu_administracion_categorias" xml:space="preserve">
     <value>Categorías</value>
+  </data>
+  <data name="menu_administracion_deslizador" xml:space="preserve">
+    <value>Deslizador</value>
   </data>
   <data name="menu_administracion_diagnostico" xml:space="preserve">
     <value>Diagnóstico</value>
@@ -134,5 +140,8 @@
   </data>
   <data name="menu_administracion_preguntasFrecuentes" xml:space="preserve">
     <value>Preguntas Frecuentes</value>
+  </data>
+  <data name="menu_administracion_reporteIncidentes" xml:space="preserve">
+    <value>Reporte de Incidentes</value>
   </data>
 </root>

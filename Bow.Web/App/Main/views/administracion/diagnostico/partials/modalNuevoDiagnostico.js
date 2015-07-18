@@ -4,10 +4,13 @@
 
             $scope.diagnostico = {
                 nombre: '',
-                observaciones: ''               
+                observaciones: '',
+                urlImagen: '',
+                esRequerido: false
             };
 
             $scope.okModal = function () {
+                console.log($scope.diagnostico);
                 administracionService.saveItemDiagnosticoVial($scope.diagnostico)
                     .success(function () {
                         $modalInstance.close($scope.diagnostico.nombre);

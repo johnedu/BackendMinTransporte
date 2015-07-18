@@ -34,6 +34,8 @@ namespace Bow.Administracion
 
         GetAllCategoriasOutput GetAllCategorias();
 
+        GetAllTiposReporteOutput GetAllTiposVehiculo();
+
         GetAllTiposReporteOutput GetAllTipos();
 
         GetTipoReporteOutput GetTipoReporte(GetTipoReporteInput categoriaInput);

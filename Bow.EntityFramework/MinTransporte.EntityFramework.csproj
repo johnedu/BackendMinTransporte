@@ -156,6 +156,10 @@
     <Compile Include="Migrations\201507140214234_drop_table_diagnostico.Designer.cs">
       <DependentUpon>201507140214234_drop_table_diagnostico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507181253280_update_tables_diagnostico_faqs.cs" />
+    <Compile Include="Migrations\201507181253280_update_tables_diagnostico_faqs.Designer.cs">
+      <DependentUpon>201507181253280_update_tables_diagnostico_faqs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="BowDataModule.cs" />
     <Compile Include="Migrations\Data\InitialDataBuilder.cs" />
@@ -193,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507140214234_drop_table_diagnostico.resx">
       <DependentUpon>201507140214234_drop_table_diagnostico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507181253280_update_tables_diagnostico_faqs.resx">
+      <DependentUpon>201507181253280_update_tables_diagnostico_faqs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

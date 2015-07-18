@@ -57,7 +57,7 @@ namespace Bow.Administracion
             //  Diagnostico Vial
             CreateMap<SaveItemDiagnosticoVialInput, ItemDiagnostico>();
             CreateMap<UpdateItemDiagnosticoVialInput, ItemDiagnostico>();
-            CreateMap<ItemDiagnostico, GetItemByDiagnosticoVialInput>();
+            CreateMap<ItemDiagnostico, GetItemByDiagnosticoVialOutput>();
             CreateMap<ItemDiagnostico, ItemByDiagnosticoVialOutput>();
 
         }

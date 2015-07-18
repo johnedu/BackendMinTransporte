@@ -21,6 +21,7 @@
                             <tr>
                                 <th class="text-center">@L("")Nombre</th>
                                 <th class="text-center">@L("")Observaciones</th>
+                                <th class="text-center">@L("")Obligatorio para viajar</th>
                                 <th class="text-center">@L("")Estado</th>
                                 <th class="text-center">@L("")Cambiar Estado</th>
                                 <th class="text-center">@L("")Editar</th>
@@ -34,6 +35,9 @@
                                 </td>
                                 <td>
                                     {{diagnostico.observaciones}}
+                                </td>
+                                <td class="text-center">
+                                    <i ng-show="diagnostico.esRequerido" class="fa fa-check fa-2x text-success"></i>
                                 </td>
                                 <td>
                                     <span ng-show="diagnostico.esActivo">

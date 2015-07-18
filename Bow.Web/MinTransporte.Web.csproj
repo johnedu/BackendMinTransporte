@@ -266,6 +266,11 @@
     <Content Include="App\Main\styles\layout.min.css">
       <DependentUpon>layout.css</DependentUpon>
     </Content>
+    <Content Include="App\Main\views\administracion\categorias\partials\modalEditarCategoria.cshtml" />
+    <Content Include="App\Main\views\administracion\deslizador\deslizador.js" />
+    <Content Include="App\Main\views\administracion\deslizador\partials\modalEditarDeslizador.js" />
+    <Content Include="App\Main\views\administracion\deslizador\partials\modalEliminarDeslizador.js" />
+    <Content Include="App\Main\views\administracion\deslizador\partials\modalNuevaDeslizador.js" />
     <Content Include="App\Main\views\administracion\historiasViales\partials\modalEditarHistoriaVial.js" />
     <Content Include="App\Main\views\administracion\index.js" />
     <Content Include="App\Main\views\administracion\historiasViales\partials\modalEliminarHistoriaVial.js" />
@@ -279,6 +284,8 @@
     <Content Include="App\Main\views\administracion\diagnostico\partials\modalEditarDiagnostico.js" />
     <Content Include="App\Main\views\administracion\diagnostico\partials\modalEliminarDiagnostico.js" />
     <Content Include="App\Main\views\administracion\diagnostico\partials\modalNuevoDiagnostico.js" />
+    <Content Include="App\Main\views\administracion\calificacionConductores\calificacionConductores.js" />
+    <Content Include="App\Main\views\administracion\reporteIncidentes\reporteIncidentes.js" />
     <Content Include="App\Main\views\administracion\preguntasFrecuentes\partials\modalEditarPreguntasFrecuentes.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -448,7 +455,6 @@
     <Content Include="App\Main\views\administracion\historiasViales\partials\modalEliminarHistoriaVial.cshtml" />
     <Content Include="App\Main\views\administracion\historiasViales\partials\modalNuevaHistoriaVial.cshtml" />
     <Content Include="App\Main\views\administracion\historiasViales\historiasViales.cshtml" />
-    <Content Include="App\Main\views\administracion\categorias\partials\modalEditarCategoria.cshtml" />
     <Content Include="App\Main\views\administracion\categorias\partials\modalEliminarCategoria.cshtml" />
     <Content Include="App\Main\views\administracion\categorias\partials\modalNuevaCategoria.cshtml" />
     <Content Include="App\Main\views\administracion\categorias\categorias.cshtml" />
@@ -460,6 +466,12 @@
     <Content Include="App\Main\views\administracion\diagnostico\partials\modalEditarDiagnostico.cshtml" />
     <Content Include="App\Main\views\administracion\diagnostico\partials\modalEliminarDiagnostico.cshtml" />
     <Content Include="App\Main\views\administracion\diagnostico\partials\modalNuevoDiagnostico.cshtml" />
+    <Content Include="App\Main\views\administracion\reporteIncidentes\reporteIncidentes.cshtml" />
+    <Content Include="App\Main\views\administracion\calificacionConductores\calificacionConductores.cshtml" />
+    <Content Include="App\Main\views\administracion\deslizador\deslizador.cshtml" />
+    <Content Include="App\Main\views\administracion\deslizador\partials\modalEditarDeslizador.cshtml" />
+    <Content Include="App\Main\views\administracion\deslizador\partials\modalEliminarDeslizador.cshtml" />
+    <Content Include="App\Main\views\administracion\deslizador\partials\modalNuevaDeslizador.cshtml" />
     <None Include="Properties\PublishProfiles\Bow Local.pubxml" />
     <None Include="Properties\PublishProfiles\IIS Pruebas.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />

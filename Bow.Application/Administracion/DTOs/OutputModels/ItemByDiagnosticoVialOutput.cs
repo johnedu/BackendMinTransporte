@@ -11,6 +11,7 @@ namespace Bow.Administracion.DTOs.OutputModels
     {
         public string Nombre { get; set; }
         public string Observaciones { get; set; }
+        public string UrlImagen { get; set; }
         public bool EsRequerido { get; set; }
         public bool EsActivo { get; set; }
     }

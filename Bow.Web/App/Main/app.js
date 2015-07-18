@@ -72,8 +72,23 @@
                  .state('diagnostico', {
                      url: '/administracion/diagnostico',
                      templateUrl: '/App/Main/views/administracion/diagnostico/diagnostico.cshtml',
-                     menu: 'menu_administracion_diagnostico' //Matches to name of 'About' menu in BowNavigationProvider
+                     menu: 'menu_administracion_diagnostico'
                  })
+                .state('deslizador', {
+                    url: '/administracion/deslizador',
+                    templateUrl: '/App/Main/views/administracion/deslizador/deslizador.cshtml',
+                    menu: 'menu_administracion_deslizador'
+                })
+                .state('reporteIncidentes', {
+                    url: '/administracion/reporteIncidentes',
+                    templateUrl: '/App/Main/views/administracion/reporteIncidentes/reporteIncidentes.cshtml',
+                    menu: 'menu_administracion_reporteIncidentes' 
+                })
+                .state('calificacionConductores', {
+                    url: '/administracion/calificacionConductores',
+                    templateUrl: '/App/Main/views/administracion/calificacionConductores/calificacionConductores.cshtml',
+                    menu: 'menu_administracion_calificacionConductores'
+                })
                 .state('about', {
                     url: '/about',
                     templateUrl: '/App/Main/views/about/about.cshtml',

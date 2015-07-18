@@ -16,7 +16,7 @@ namespace Bow.Administracion.DTOs.InputModels
         [Required]
         [MaxLength(2048)]
         public string Observaciones { get; set; }
-        [MaxLength(512)]
+        public string UrlImagen { get; set; }
         public bool EsRequerido { get; set; }
     }
 }

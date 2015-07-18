@@ -16,6 +16,5 @@ namespace Bow.Administracion.DTOs.InputModels
         [Required]
         [MaxLength(4096)]
         public string Respuesta { get; set; }
-        public string UrlImagen { get; set; }
     }
 }

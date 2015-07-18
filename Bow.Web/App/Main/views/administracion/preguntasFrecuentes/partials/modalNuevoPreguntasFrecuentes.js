@@ -5,7 +5,6 @@
             $scope.preguntaFrecuente = {
                 pregunta: '',
                 respuesta: '',
-                urlImagen: '',
                 estadoActiva: 'true'
             };
 
