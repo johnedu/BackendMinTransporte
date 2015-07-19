@@ -1,70 +1,39 @@
 ﻿<div class="modal-header">
-    <h2>@L("")Agregar Historia en la Vía</h2>
+    <h2>@L("")Agregar Imagen de slider</h2>
 </div>
 <div class="modal-body">
     <div class="alert alert-danger text-center" ng-show="mensajeError">
         <strong>{{mensajeError}}</strong>
     </div>
-    <form role="form" name="modalNuevaHistoriaVial">
-        <div class="form-group" ng-class="{'has-error' : modalNuevaHistoriaVial.iptNombre.$dirty && modalNuevaHistoriaVial.iptNombre.$invalid}">
-            <label class="control-label" for="iptNombre">@L("")Título</label>
-            <input type="text" class="form-control" id="iptNombre" name="iptNombre" placeholder="@L("")Ingrese el título de la historia" ng-model="historiaVial.nombre" required maxlength="1024" />
-            <div ng-show="modalNuevaHistoriaVial.iptNombre.$dirty && modalNuevaHistoriaVial.iptNombre.$invalid">
-                <small ng-show="modalNuevaHistoriaVial.iptNombre.$error.required" class="text-danger">
-                    @L("")El título de la historia es requerido
+    <form role="form" name="modalNuevaDeslizador">
+        <div class="form-group" ng-class="{'has-error' : modalNuevaDeslizador.iptNombre.$dirty && modalNuevaDeslizador.iptNombre.$invalid}">
+            <label class="control-label" for="iptNombre">@L("")Titulo</label>
+            <textarea class="form-control" id="iptNombre" name="iptNombre" placeholder="@L("")Ingrese el nombre de la imagen" ng-model="deslizador.nombre" required maxlength="2048" rows="5"></textarea>
+            <div ng-show="modalNuevaDeslizador.iptNombre.$dirty && modalNuevaDeslizador.iptNombre.$invalid">
+                <small ng-show="modalNuevaDeslizador.iptNombre.$error.required" class="text-danger">
+                    @L("")El titulo es requerido
                 </small>
             </div>
-        </div>
-        <div class="form-group" ng-class="{'has-error' : modalNuevaHistoriaVial.iptDescripcion.$dirty && modalNuevaHistoriaVial.iptDescripcion.$invalid}">
-            <label class="control-label" for="iptDescripcion">@L("")Descripción</label>
-            <textarea class="form-control" id="iptDescripcion" name="iptDescripcion" placeholder="@L("")Ingrese el contenido de la historia" ng-model="historiaVial.descripcion" required maxlength="4096" rows="5"></textarea>
-            <div ng-show="modalNuevaHistoriaVial.iptDescripcion.$dirty && modalNuevaHistoriaVial.iptDescripcion.$invalid">
-                <small ng-show="modalNuevaHistoriaVial.iptDescripcion.$error.required" class="text-danger">
-                    @L("")La descripción del historia es requerida
-                </small>
-            </div>
-        </div>
-        <div class="form-group" ng-class="{'has-error' : modalNuevaHistoriaVial.iptNombrePersona.$dirty && modalNuevaHistoriaVial.iptNombrePersona.$invalid}">
-            <label class="control-label" for="iptNombrePersona">@L("")Título</label>
-            <input type="text" class="form-control" id="iptNombrePersona" name="iptNombrePersona" placeholder="@L("")Ingrese la persona de la historia" ng-model="historiaVial.nombrePersona" required maxlength="1024" />
-            <div ng-show="modalNuevaHistoriaVial.iptNombrePersona.$dirty && modalNuevaHistoriaVial.iptNombrePersona.$invalid">
-                <small ng-show="modalNuevaHistoriaVial.iptNombrePersona.$error.required" class="text-danger">
-                    @L("")El título de la historia es requerido
-                </small>
-            </div>
-        </div>
-        <div class="form-group" ng-class="{'has-error' : modalNuevaHistoriaVial.selectedCategoria.$dirty && modalNuevaHistoriaVial.selectedCategoria.$invalid }">
-            <label class="control-label" for="selectedCategoria">@L("")Categoría</label>
-            <select ng-model="historiaVial.categoriaId" ng-options="categoria.id as categoria.nombre for categoria in listaCategorias" class="form-control" name="selectedCategoria" id="selectedCategoria">
-                <option value="">@L("")Seleccione...</option>
-            </select>
-            <div ng-show="modalNuevaHistoriaVial.selectedCategoria.$dirty && modalNuevaHistoriaVial.selectedCategoria.$invalid">
-                <small ng-show="modalNuevaHistoriaVial.selectedCategoria.$error.required" class="text-danger">
-                    @L("")Debe seleccionar una categoría
-                </small>
-            </div>
-        </div>
-        <div class="form-group" ng-class="{'has-error' : modalNuevaHistoriaVial.iptImagen.$dirty && modalNuevaHistoriaVial.iptImagen.$invalid}">
+        </div>       
+        <div class="form-group" ng-class="{'has-error' : modalNuevaDeslizador.iptImagen.$dirty && modalNuevaDeslizador.iptImagen.$invalid}">
             <div class="row">
                 <div class="col-md-9">
                     <label class="control-label" for="iptImagen">@L("")URL Imagen</label>
-                    <input type="text" class="form-control" id="iptImagen" name="iptImagen" placeholder="@L("")Ingrese la URL de la imagen" ng-model="historiaVial.url" required maxlength="4096" />
-                    <div ng-show="modalNuevaHistoriaVial.iptImagen.$dirty && modalNuevaHistoriaVial.iptImagen.$invalid">
-                        <small ng-show="modalNuevaHistoriaVial.iptImagen.$error.required" class="text-danger">
+                    <input type="text" class="form-control" id="iptImagen" name="iptImagen" placeholder="@L("")Ingrese la URL de la imagen" ng-model="deslizador.urlImagen" required maxlength="2048" />
+                    <div ng-show="modalNuevaDeslizador.iptImagen.$dirty && modalNuevaDeslizador.iptImagen.$invalid">
+                        <small ng-show="modalNuevaDeslizador.iptImagen.$error.required" class="text-danger">
                             @L("")La URL de la imagen es requerida
                         </small>
                     </div>
                 </div>
-                <div class="col-md-3 text-center">
-                    <div>
-                        <img class="img-responsive" src="{{historiaVial.url}}" />
-                    </div>
+                <div class="col-md-3">
+                    <img class="img-responsive" src="{{deslizador.urlImagen}}" />
                 </div>
             </div>
         </div>
     </form>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-success" ng-click="okModal()" ng-disabled="modalNuevaHistoriaVial.$invalid">@L("")Aceptar</button>
+    <button class="btn btn-success" ng-click="okModal()" ng-disabled="modalNuevaDeslizador.$invalid">@L("")Aceptar</button>
     <button class="btn btn-danger" ng-click="cancelModal()">@L("")Cancelar</button>
 </div>

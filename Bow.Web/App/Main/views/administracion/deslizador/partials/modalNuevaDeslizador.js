@@ -1,31 +1,17 @@
 ﻿(function () {
-    angular.module('app').controller('modalNuevaHistoriaVialController', ['$scope', '$modalInstance', 'abp.services.app.administracion',
+    angular.module('app').controller('modalNuevoDeslizadorController', ['$scope', '$modalInstance', 'abp.services.app.administracion',
         function ($scope, $modalInstance, administracionService) {
 
-            $scope.historiaVial = {
+            $scope.deslizador = {
                 nombre: '',
-                descripcion: '',
-                nombrePersona: '',
-                url: '',
-                categoriaId: ''
+                urlImagen: ''
+                
             };
 
-            $scope.listaCategorias = '';
-
-            //Funcion encargada de consultar las categorias disponibles
-            function cargarCategorias() {
-                administracionService.getAllCategorias().success(function (data) {
-                    $scope.listaCategorias = data.tiposReporte;
-                }).error(function (error) {
-                    console.log(error);
-                });
-            }
-            cargarCategorias();
-
             $scope.okModal = function () {
-                administracionService.saveHistoriasVial($scope.historiaVial)
+                administracionService.saveDeslizador($scope.deslizador)
                     .success(function () {
-                        $modalInstance.close($scope.historiaVial.nombre);
+                        $modalInstance.close($scope.deslizador.nombre);
                     }).error(function (error) {
                         $scope.mensajeError = error.message;
                     });

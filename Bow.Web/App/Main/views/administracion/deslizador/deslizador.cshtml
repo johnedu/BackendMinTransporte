@@ -1,15 +1,15 @@
-﻿<div class="container" ng-controller="app.views.administracion.historiasViales as vm">
+﻿<div class="container" ng-controller="app.views.administracion.deslizador as vm">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>@L("")Historias en la Vía</h1>
+            <h1>@L("")Imagenes Slider</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <a class="clickable" ng-click="vm.abrirModalNueva(vm.paisId)" title="">@L("")Registrar Nueva Historia <span class="fa fa-plus"></span></a>
+            <a class="clickable" ng-click="vm.abrirModalNueva(vm.paisId)" title="">@L("")Registrar Nueva Imagen <span class="fa fa-plus"></span></a>
         </div>
         <div class="col-md-6 text-right">
-            <p>{{vm.historiasViales.length}} @L("")Historias Registradas</p>
+            <p>{{vm.deslizador.length}} @L("")Imagenes Registradas</p>
         </div>
     </div>
     <div class="row">
@@ -20,41 +20,24 @@
                         <thead>
                             <tr>
                                 <th class="text-center">@L("")Nombre</th>
-                                <th class="text-center">@L("")Persona</th>
-                                <th class="text-center">@L("")Fecha</th>
-                                <th class="text-center">@L("")Estado</th>
-                                <th class="text-center">@L("")Cambiar Estado</th>
+                                <th class="text-center">@L("")Persona</th>                                
                                 <th class="text-center">@L("")Editar</th>
                                 <th class="text-center">@L("")Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="historia in vm.historiasViales">
+                            <tr ng-repeat="deslizador in vm.deslizador">
                                 <td>
-                                    {{historia.nombre}}
+                                    {{deslizador.nombre}}
                                 </td>
                                 <td>
-                                    {{historia.nombrePersona}}
+                                    {{deslizador.urlImagen}}
                                 </td>
                                 <td class="text-center">
-                                    {{historia.fechaPublicacion | date:'MM/dd/yyyy' }}
+                                    <a class="clickable" ng-click="vm.abrirModalEditar(deslizador.id)" title="@L("")Editar Imagen del slider"><span class="fa fa-pencil fa-2x text-orange"></span></a>
                                 </td>
                                 <td class="text-center">
-                                    <span ng-show="historia.esActiva">
-                                        Activa
-                                    </span>
-                                    <span ng-show="!historia.esActiva">
-                                        Inactiva
-                                    </span>
-                                </td>
-                                <td class="text-center">
-                                    <a class="clickable" ng-click="vm.modificarEstadoHistoria(historia)" title="@L("")Cambiar el estado de la historia"><span class="fa fa-refresh fa-2x text-orange"></span></a>
-                                </td>
-                                <td class="text-center">
-                                    <a class="clickable" ng-click="vm.abrirModalEditar(historia.id)" title="@L("")Editar Historia Vial"><span class="fa fa-pencil fa-2x text-orange"></span></a>
-                                </td>
-                                <td class="text-center">
-                                    <a class="clickable" ng-click="vm.abrirModalEliminar(historia.id)" title="@L("")Eliminar Historia Vial"><span class="fa fa-trash fa-2x text-orange"></span></a>
+                                    <a class="clickable" ng-click="vm.abrirModalEliminar(deslizador.id)" title="@L("")Eliminar Imagen del slider"><span class="fa fa-trash fa-2x text-orange"></span></a>
                                 </td>
                             </tr>
                         </tbody>

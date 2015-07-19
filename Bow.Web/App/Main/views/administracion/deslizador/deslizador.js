@@ -1,10 +1,10 @@
 ﻿(function () {
     //Nombre del controlador   
-    var controllerId = 'app.views.administracion.historiasViales';
+    var controllerId = 'app.views.administracion.deslizador';
 
     /*****************************************************************
     * 
-    * CONTROLADOR DE HISTORIAS EN LA VÍA
+    * CONTROLADOR DE DESLIZADOR
     * 
     *****************************************************************/
 
@@ -14,100 +14,100 @@
 
            //Inicializando Modelos
 
-           vm.historiasViales = [];
+           vm.deslizador = [];
 
-           //Funcion encargada de consultar las historias en la base de datos
-           function cargarHistoriasViales() {
-               administracionService.getAllHistoriasViales().success(function (data) {
-                   vm.historiasViales = data.historiasViales;
+           //Funcion encargada de consultar las imagenes del slider
+           function cargarDeslizador() {
+               administracionService.getAllDeslizador().success(function (data) {
+                   vm.deslizador = data.deslizador;
                }).error(function (error) {
                    console.log(error);
                });
            }
-           cargarHistoriasViales();
+           cargarDeslizador();
 
            /************************************************************************
-            * Llamado para abrir Modal para Nueva Historia en la Vía
+            * Llamado para abrir Modal para Nueva Imagen del slider
             ************************************************************************/
 
            vm.abrirModalNueva= function () {
                var modalInstance = $modal.open({
-                   templateUrl: '/App/Main/views/administracion/historiasViales/partials/modalNuevaHistoriaVial.cshtml',
-                   controller: 'modalNuevaHistoriaVialController',
+                   templateUrl: '/App/Main/views/administracion/deslizador/partials/modalNuevaDeslizador.cshtml',
+                   controller: 'modalNuevoDeslizadorController',
                    size: 'md'
                });
 
-               modalInstance.result.then(function (historia) {
-                   cargarHistoriasViales();
-                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se guardó correctamente la historia: ' + historia, abp.localization.localize('', 'Bow') + 'Información');
+               modalInstance.result.then(function (deslizador) {
+                   cargarDeslizador();
+                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se guardó correctamente la imagen nueva del slider: ' + deslizador, abp.localization.localize('', 'Bow') + 'Información');
                }, function () {
-                   vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al guardar la hisotoria'
+                   vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al guardar la imagen nueva del slider'
                });
            }
 
            /************************************************************************
-           * Llamado para abrir Modal para Editar una Historia
+           * Llamado para abrir Modal para Imagen del slider
            ************************************************************************/
-           vm.abrirModalEditar = function (historiaId) {
+           vm.abrirModalEditar = function (delizadorId) {
                var modalInstance = $modal.open({
-                   templateUrl: '/App/Main/views/administracion/historiasViales/partials/modalEditarHistoriaVial.cshtml',
-                   controller: 'modalEditarHistoriaVialController',
+                   templateUrl: '/App/Main/views/administracion/deslizador/partials/modalEditarDeslizador.cshtml',
+                   controller: 'modalEditarDeslizadorController',
                    size: 'md',
                    resolve: {
-                       historiaEditar: function () {
-                           return historiaId;
+                       deslizadorEditar: function () {
+                           return delizadorId;
                        }
                    }
                });
 
-               modalInstance.result.then(function (historia) {
-                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se actualizó correctamente la historia: ' + historia, abp.localization.localize('', 'Bow') + 'Información');
-                   cargarHistoriasViales();
+               modalInstance.result.then(function (deslizador) {
+                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se actualizó correctamente la imagen nueva del slider: ' + deslizador, abp.localization.localize('', 'Bow') + 'Información');
+                   cargarDeslizador();
 
                }, function () {
-                   vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la historia vial'
+                   vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la imagen nueva del slider'
                });
            }
 
            /************************************************************************
-           * Llamado para abrir Modal para Eliminar una Historia
+           * Llamado para abrir Modal para Eliminar una Imagen del slider
            ************************************************************************/
-           vm.abrirModalEliminar = function (historiaId) {
+           vm.abrirModalEliminar = function (delizadorId) {
                 var modalInstance = $modal.open({
-                    templateUrl: '/App/Main/views/administracion/historiasViales/partials/modalEliminarHistoriaVial.cshtml',
-                    controller: 'modalEliminarHistoriaVialController',
+                    templateUrl: '/App/Main/views/administracion/deslizador/partials/modalEliminarDeslizador.cshtml',
+                    controller: 'modalEliminarDeslizadorController',
                     size: 'md',
                     resolve: {
-                        historiaEliminar: function () {
-                            return historiaId;
+                        deslizadorEliminar: function () {
+                            return delizadorId;
                         }
                     }
                 });
 
-                modalInstance.result.then(function (historia) {
-                    cargarHistoriasViales();
-                    abp.notify.success(abp.localization.localize('', 'Bow') + 'Se eliminó correctamente la historia: ' + historia, abp.localization.localize('', 'Bow') + 'Información');
+                modalInstance.result.then(function (deslizador) {
+                    cargarDeslizador();
+                    abp.notify.success(abp.localization.localize('', 'Bow') + 'Se eliminó correctamente la imagen nueva del slider: ' + deslizador, abp.localization.localize('', 'Bow') + 'Información');
                 }, function () {
-                    vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la historia vial'
+                    vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la imagen nueva del slider'
                 });
            }
 
            /************************************************************************
-           * Llamado para modificar el estado de la historia vial
-           ************************************************************************/
-           vm.modificarEstadoHistoria = function (historia) {
-               if (historia.esActiva) {
-                   historia.esActiva = false;
+           * Llamado para modificar el estado de la Imagen del slider
+           ****************************************************************
+           vm.modificarEstadoDeslizador = function (deslizador) {
+               if (deslizador.esActiva) {
+                   deslizador.esActiva = false;
                } else {
-                   historia.esActiva = true;
+                   deslizador.esActiva = true;
                }
-               administracionService.updateHistoriasVial(historia)
+               administracionService.updateDeslizador(deslizador)
                    .success(function () {
-                       abp.notify.success(abp.localization.localize('', 'Bow') + 'Se modificó correctamente el estado de la historia: ' + historia.nombre, abp.localization.localize('', 'Bow') + 'Información');
+                       abp.notify.success(abp.localization.localize('', 'Bow') + 'Se modificó correctamente el estado de la imagen nueva del slider: ' + deslizador.nombre, abp.localization.localize('', 'Bow') + 'Información');
                        cargarHistoriasViales();
                    }).error(function (error) {
                        $scope.mensajeError = error.message;
                    });
-           }
+           }********/
        }]);
 })();
