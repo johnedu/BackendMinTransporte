@@ -92,22 +92,5 @@
                 });
            }
 
-           /************************************************************************
-           * Llamado para modificar el estado de la Imagen del slider
-           ****************************************************************
-           vm.modificarEstadoDeslizador = function (deslizador) {
-               if (deslizador.esActiva) {
-                   deslizador.esActiva = false;
-               } else {
-                   deslizador.esActiva = true;
-               }
-               administracionService.updateDeslizador(deslizador)
-                   .success(function () {
-                       abp.notify.success(abp.localization.localize('', 'Bow') + 'Se modificó correctamente el estado de la imagen nueva del slider: ' + deslizador.nombre, abp.localization.localize('', 'Bow') + 'Información');
-                       cargarHistoriasViales();
-                   }).error(function (error) {
-                       $scope.mensajeError = error.message;
-                   });
-           }********/
        }]);
 })();
