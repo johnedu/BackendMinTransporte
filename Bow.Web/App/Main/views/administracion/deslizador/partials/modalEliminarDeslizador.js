@@ -1,16 +1,16 @@
 ﻿(function () {
-    angular.module('app').controller('modalEliminarHistoriaVialController', ['$scope', '$modalInstance', 'historiaEliminar', 'abp.services.app.administracion',
-        function ($scope, $modalInstance, historiaEliminar, administracionService) {
+    angular.module('app').controller('modalEliminarDeslizadorController', ['$scope', '$modalInstance', 'deslizadorEliminar', 'abp.services.app.administracion',
+        function ($scope, $modalInstance, deslizadorEliminar, administracionService) {
 
-            administracionService.getHistoriaVial({ id: historiaEliminar })
+            administracionService.getDeslizador({ id: deslizadorEliminar })
                 .success(function (data) {
-                    $scope.historiaVial = data;
+                    $scope.deslizador = data;
                 });
 
             $scope.okModal = function () {
-                administracionService.deleteHistoriasVial({ id: historiaEliminar })
+                administracionService.deleteDeslizador({ id: deslizadorEliminar })
                     .success(function () {
-                        $modalInstance.close($scope.historiaVial.nombre);
+                        $modalInstance.close($scope.deslizador.nombre);
                     }).error(function (error) {
                        
                         $scope.mensajeError = error.message;

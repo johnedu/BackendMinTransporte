@@ -1,38 +1,21 @@
 ﻿(function () {
-    angular.module('app').controller('modalEditarHistoriaVialController', ['$scope', '$modalInstance', 'historiaEditar', 'abp.services.app.administracion',
-        function ($scope, $modalInstance, historiaEditar, administracionService) {
+    angular.module('app').controller('modalEditarDeslizadorController', ['$scope', '$modalInstance', 'deslizadorEditar', 'abp.services.app.administracion',
+        function ($scope, $modalInstance, deslizadorEditar, administracionService) {
 
-            $scope.codigoHistoria = historiaEditar;
-
-            $scope.historiaVial = {
-                id: '',
-                nombre: '',
-                descripcion: '',
-                nombrePersona: '',
-                url: '',
-                categoriaId: '',
-                esActiva: true
+            $scope.deslizador = {
+                nombre: '',              
+                urlImagen: ''
             };
 
-            //Funcion encargada de consultar las categorias disponibles
-            function cargarCategorias() {
-                administracionService.getAllCategorias().success(function (data) {
-                    $scope.listaCategorias = data.tiposReporte;
-                }).error(function (error) {
-                    console.log(error);
-                });
-            }
-            cargarCategorias();
-
-            administracionService.getHistoriaVial({ id: historiaEditar })
+            administracionService.getDeslizador({ id: deslizadorEditar })
                 .success(function (data) {
-                    $scope.historiaVial = data;
+                    $scope.deslizador = data;
                 });
 
             $scope.okModal = function () {
-                administracionService.updateHistoriasVial($scope.historiaVial)
+                administracionService.updateDeslizador($scope.deslizador)
                     .success(function () {
-                        $modalInstance.close($scope.historiaVial.nombre);
+                        $modalInstance.close($scope.deslizador.nombre);
                     }).error(function (error) {
                         $scope.mensajeError = error.message;
                     });
