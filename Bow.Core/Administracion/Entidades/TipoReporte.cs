@@ -16,11 +16,13 @@ namespace Bow.Administracion.Entidades
 
         public virtual ICollection<ReporteIncidentes> ReporteIncidentes { get; set; }
         public virtual ICollection<HistoriaVial> HistoriasViales { get; set; }
+        public virtual ICollection<ReporteCalificaciones> ReportesCalificaciones { get; set; }
 
         public TipoReporte()
         {
             ReporteIncidentes = new List<ReporteIncidentes>();
             HistoriasViales = new List<HistoriaVial>();
+            ReportesCalificaciones = new List<ReporteCalificaciones>();
         }
     }
 }

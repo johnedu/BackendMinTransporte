@@ -1,10 +1,10 @@
 ﻿(function () {
     //Nombre del controlador   
-    var controllerId = 'app.views.administracion.preguntasFrecuentes';
+    var controllerId = 'app.views.administracion.calificacionConductores';
 
     /*****************************************************************
     * 
-    * CONTROLADOR DE PREGUNTAS FRECUENTES
+    * CONTROLADOR DE CALIFICACION DE CONDUCTORES
     * 
     *****************************************************************/
 
@@ -14,100 +14,56 @@
 
            //Inicializando Modelos
 
-           vm.preguntasFrecuentes = [];
+           vm.listaReporteConductores = [];
 
            //Funcion encargada de consultar las preguntas frecuentes en la base de datos
-           function cargarPreguntasFrecuentes() {
-               administracionService.getAllPreguntasFrecuentes().success(function (data) {
-                   vm.preguntasFrecuentes = data.preguntasFrecuentes;
+           function cargarReporteConductores() {
+               administracionService.getAllReporteCalificaciones().success(function (data) {
+                   vm.listaReporteConductores = data.reportesCalificaciones;
                }).error(function (error) {
                    console.log(error);
                });
            }
-           cargarPreguntasFrecuentes();
+           cargarReporteConductores();
 
            /************************************************************************
-            * Llamado para abrir Modal para Nueva Pregunta Frecuente
-            ************************************************************************/
-
-           vm.abrirModalNueva= function () {
-               var modalInstance = $modal.open({
-                   templateUrl: '/App/Main/views/administracion/preguntasFrecuentes/partials/modalNuevoPreguntasFrecuentes.cshtml',
-                   controller: 'modalNuevoPreguntasFrecuentesController',
-                   size: 'md'
-               });
-
-               modalInstance.result.then(function (pregunta) {
-                   cargarPreguntasFrecuentes();
-                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se guardó correctamente la pregunta: ' + pregunta, abp.localization.localize('', 'Bow') + 'Información');
-               }, function () {
-                   vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al guardar la pregunta frecuente'
-               });
-           }
-
-           /************************************************************************
-           * Llamado para abrir Modal para Editar Pregunta Frecuente
+           * Llamado para abrir Modal para consultar detalle del reporte
            ************************************************************************/
-           vm.abrirModalEditar = function (preguntaId) {
+           vm.abrirModalConsultar = function (reporteId) {
                var modalInstance = $modal.open({
-                   templateUrl: '/App/Main/views/administracion/preguntasFrecuentes/partials/modalEditarPreguntasFrecuentes.cshtml',
-                   controller: 'modalEditarPreguntasFrecuentesController',
+                   templateUrl: '/App/Main/views/administracion/calificacionConductores/partials/modalConsultarCalificacionConductores.cshtml',
+                   controller: 'modalConsultarCalificacionConductoresController',
                    size: 'md',
                    resolve: {
-                       preguntaEditar: function () {
-                           return preguntaId;
+                       reporteEditar: function () {
+                           return reporteId;
                        }
                    }
                });
-
-               modalInstance.result.then(function (pregunta) {
-                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se actualizó correctamente la pregunta: ' + pregunta, abp.localization.localize('', 'Bow') + 'Información');
-                   cargarPreguntasFrecuentes();
-
-               }, function () {
-                   vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la pregunta frecuente'
-               });
            }
 
            /************************************************************************
-           * Llamado para abrir Modal para Eliminar Pregunta Frecuente
+           * Llamado para abrir Modal para Inactivar el reporte de calificación
            ************************************************************************/
-           vm.abrirModalEliminar = function (preguntaId) {
+           vm.abrirModalEliminar = function (reporteId) {
                 var modalInstance = $modal.open({
-                    templateUrl: '/App/Main/views/administracion/preguntasFrecuentes/partials/modalEliminarPreguntasFrecuentes.cshtml',
-                    controller: 'modalEliminarPreguntasFrecuentesController',
+                    templateUrl: '/App/Main/views/administracion/calificacionConductores/partials/modalEliminarCalificacionConductores.cshtml',
+                    controller: 'modalEliminarCalificacionConductoresController',
                     size: 'md',
                     resolve: {
-                        preguntaEliminar: function () {
-                            return preguntaId;
+                        reporteInactivar: function () {
+                            return reporteId;
                         }
                     }
                 });
 
                 modalInstance.result.then(function (pregunta) {
                     cargarPreguntasFrecuentes();
-                    abp.notify.success(abp.localization.localize('', 'Bow') + 'Se eliminó correctamente la pregunta: ' + pregunta, abp.localization.localize('', 'Bow') + 'Información');
+                    abp.notify.success(abp.localization.localize('', 'Bow') + 'Se inactivó correctamente el reporte.', abp.localization.localize('', 'Bow') + 'Información');
                 }, function () {
-                    vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la pregunta frecuente'
+                    vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al modificar el reporte'
                 });
            }
 
-           /************************************************************************
-           * Llamado para modificar el estado de la pregunta frecuente
-           ************************************************************************/
-           vm.modificarEstadoPregunta = function (pregunta) {
-               if (pregunta.esActiva) {
-                   pregunta.esActiva = false;
-               } else {
-                   pregunta.esActiva = true;
-               }
-               administracionService.updatePreguntaFrecuente(pregunta)
-                   .success(function () {
-                       abp.notify.success(abp.localization.localize('', 'Bow') + 'Se modificó correctamente el estado de la pregunta: ' + pregunta.pregunta, abp.localization.localize('', 'Bow') + 'Información');
-                       cargarPreguntasFrecuentes();
-                   }).error(function (error) {
-                       $scope.mensajeError = error.message;
-                   });
-           }
        }]);
 })();

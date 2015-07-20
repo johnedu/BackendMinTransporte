@@ -28,7 +28,7 @@ namespace Bow.Administracion
 
         void DeletePreguntaFrecuente(DeletePreguntaFrecuenteInput paisEliminar);
 
-        //  Reporte Incidencias
+        //  Tipos y Categorías
 
         GetAllTiposReporteOutput GetAllTiposReporte();
 
@@ -46,11 +46,25 @@ namespace Bow.Administracion
 
         void DeleteTipo(DeleteTipoInput tipoEliminar);
 
+        //  Reporte Incidencias
+
+        GetReporteIncidentesOutput GetReporteIncidentes(GetReporteIncidentesInput reporteInput);
+
         GetAllReporteIncidentesOutput GetAllReporteIncidentes();
 
         void SaveReporteIncidentes(SaveReporteIncidentesInput nuevoReporte);
 
+        void UpdateStateReporteIncidentes(UpdateStateReporteIncidentesInput reporteUpdate);
+
+        //  Reporte Calificaciones
+
+        GetReporteCalificacionesOutput GetReporteCalificaciones(GetReporteCalificacionesInput reporteInput);
+
+        GetAllReportesCalificacionesOutput GetAllReporteCalificaciones();
+
         void SaveReporteCalificacion(SaveReporteCalificacionInput nuevaCalificacion);
+
+        void UpdateStateCalificacionIncidentes(UpdateStateCalificacionIncidentesInput reporteUpdate);
 
         //  Deslizador
 

@@ -11,5 +11,6 @@ namespace Bow.Administracion.Repositorios
     public interface IReporteIncidentesRepositorio : IRepository<ReporteIncidentes>
     {
         List<ReporteIncidentes> GetAllReporteIncidentesWithTipo();
+        ReporteIncidentes GetWithTipo(int reporteId);
     }
 }

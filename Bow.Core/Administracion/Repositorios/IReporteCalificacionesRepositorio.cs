@@ -10,5 +10,7 @@ namespace Bow.Administracion.Repositorios
 {
     public interface IReporteCalificacionesRepositorio : IRepository<ReporteCalificaciones>
     {
+        List<ReporteCalificaciones> GetAllReporteCalificacionesWithTipo();
+        ReporteCalificaciones GetWithTipo(int reporteId);
     }
 }

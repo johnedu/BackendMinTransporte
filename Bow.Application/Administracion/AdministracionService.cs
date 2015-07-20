@@ -23,7 +23,6 @@ namespace Bow.Administracion
         private IReporteIncidentesRepositorio _reporteIncidentesRepositorio;
         private ITipoReporteRepositorio _tipoReporteRepositorio;
         private IReporteCalificacionesRepositorio _reporteCalificacionesRepositorio;
-        private ITipoVehiculoRepositorio _tipoVehiculoRepositorio;
         private INoticiasRepositorio _noticiasRepositorio;
         private IItemDiagnosticoRepositorio _itemDiagnosticoRepositorio;
         private IHistoriaVialRepositorio _historiaVialRepositorio;
@@ -39,7 +38,6 @@ namespace Bow.Administracion
             IReporteIncidentesRepositorio reporteIncidentesRepositorio,
             ITipoReporteRepositorio tipoReporteRepositorio,
             IReporteCalificacionesRepositorio reporteCalificacionesRepositorio,
-            ITipoVehiculoRepositorio tipoVehiculoRepositorio,
             INoticiasRepositorio noticiasRepositorio,
             IItemDiagnosticoRepositorio itemDiagnosticoRepositorio,
             IHistoriaVialRepositorio historiaVialRepositorio,
@@ -49,7 +47,6 @@ namespace Bow.Administracion
             _reporteIncidentesRepositorio = reporteIncidentesRepositorio;
             _tipoReporteRepositorio = tipoReporteRepositorio;
             _reporteCalificacionesRepositorio = reporteCalificacionesRepositorio;
-            _tipoVehiculoRepositorio = tipoVehiculoRepositorio;
             _noticiasRepositorio = noticiasRepositorio;
             _itemDiagnosticoRepositorio = itemDiagnosticoRepositorio;
             _historiaVialRepositorio = historiaVialRepositorio;
@@ -192,6 +189,15 @@ namespace Bow.Administracion
             _tipoReporteRepositorio.Delete(tipoEliminar.Id);
         }
 
+        /*********************************************************************************************
+        ************************************  Reporte de Incidentes  *********************************
+        *********************************************************************************************/
+
+        public GetReporteIncidentesOutput GetReporteIncidentes(GetReporteIncidentesInput reporteInput)
+        {
+            return Mapper.Map<GetReporteIncidentesOutput>(_reporteIncidentesRepositorio.GetWithTipo(reporteInput.Id));
+        }
+
         public GetAllReporteIncidentesOutput GetAllReporteIncidentes()
         {
             var listaReporteIncidentes = _reporteIncidentesRepositorio.GetAllReporteIncidentesWithTipo();
@@ -206,12 +212,41 @@ namespace Bow.Administracion
             _reporteIncidentesRepositorio.Insert(reporte);
         }
 
+        public void UpdateStateReporteIncidentes(UpdateStateReporteIncidentesInput reporteUpdate)
+        {
+            ReporteIncidentes reporte = _reporteIncidentesRepositorio.Get(reporteUpdate.Id);
+            reporte.EsActivo = false;
+            _reporteIncidentesRepositorio.Update(reporte);
+        }
+
+        /*********************************************************************************************
+        *********************************  Calificación de Conductores  ******************************
+        *********************************************************************************************/
+
+        public GetReporteCalificacionesOutput GetReporteCalificaciones(GetReporteCalificacionesInput reporteInput)
+        {
+            return Mapper.Map<GetReporteCalificacionesOutput>(_reporteCalificacionesRepositorio.GetWithTipo(reporteInput.Id));
+        }
+
+        public GetAllReportesCalificacionesOutput GetAllReporteCalificaciones()
+        {
+            var listaReporteCalificaciones = _reporteCalificacionesRepositorio.GetAllReporteCalificacionesWithTipo();
+            return new GetAllReportesCalificacionesOutput { ReportesCalificaciones = Mapper.Map<List<ReporteCalificacionesOutput>>(listaReporteCalificaciones) };
+        }
+
         public void SaveReporteCalificacion(SaveReporteCalificacionInput nuevaCalificacion)
         {
             ReporteCalificaciones reporte = Mapper.Map<ReporteCalificaciones>(nuevaCalificacion);
             reporte.EsActiva = true;
             reporte.TenantId = BowConsts.TENANT_ID_ACR;
             _reporteCalificacionesRepositorio.Insert(reporte);
+        }
+
+        public void UpdateStateCalificacionIncidentes(UpdateStateCalificacionIncidentesInput reporteUpdate)
+        {
+            ReporteCalificaciones reporte = _reporteCalificacionesRepositorio.Get(reporteUpdate.Id);
+            reporte.EsActiva = false;
+            _reporteCalificacionesRepositorio.Update(reporte);
         }
 
         /*********************************************************************************************

@@ -112,7 +112,6 @@
     <Compile Include="Administracion\Mappings\PreguntaFrecuenteMap.cs" />
     <Compile Include="Administracion\Mappings\ReporteCalificacionesMap.cs" />
     <Compile Include="Administracion\Mappings\ItemDiagnosticoMap.cs" />
-    <Compile Include="Administracion\Mappings\TipoVehiculoMap.cs" />
     <Compile Include="Administracion\Mappings\DeslizadorMap.cs" />
     <Compile Include="Administracion\Mappings\TipoReporteMap.cs" />
     <Compile Include="Administracion\Mappings\ReporteIncidentesMap.cs" />
@@ -122,7 +121,6 @@
     <Compile Include="Administracion\Repositorios\ReporteCalificacionesRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\NoticiasRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\ItemDiagnosticoRepositorio.cs" />
-    <Compile Include="Administracion\Repositorios\TipoVehiculoRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\TipoReporteRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\ReporteIncidentesRepositorio.cs" />
     <Compile Include="EntityFramework\BowDbContext.cs" />

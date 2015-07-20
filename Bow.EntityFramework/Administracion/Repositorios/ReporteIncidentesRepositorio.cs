@@ -23,5 +23,10 @@ namespace Bow.Administracion.Repositorios
         {
             return GetAll().Include(m => m.TipoReporteIncidente).OrderBy(m => m.TipoReporteId).ToList();
         }
+
+        public ReporteIncidentes GetWithTipo(int reporteId)
+        {
+            return GetAll().Where(r => r.Id == reporteId).Include(m => m.TipoReporteIncidente).FirstOrDefault();
+        }
     }
 }

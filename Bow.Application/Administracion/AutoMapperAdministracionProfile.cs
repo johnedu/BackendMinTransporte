@@ -32,10 +32,24 @@ namespace Bow.Administracion
             CreateMap<TipoReporte, GetTipoReporteOutput>();
             CreateMap<TipoReporte, TipoReporteOutput>();
 
+            //  Reporte de Incidentes
+
+            CreateMap<ReporteIncidentes, GetReporteIncidentesOutput>()
+                .ForMember(dest => dest.TipoReporteIncidente, opt => opt.MapFrom(src => src.TipoReporteIncidente.Nombre))
+                .ForMember(dest => dest.TipoReporteImagen, opt => opt.MapFrom(src => src.TipoReporteIncidente.UrlImagen));
             CreateMap<ReporteIncidentes, ReporteIncidenteOutput>()
                 .ForMember(dest => dest.TipoReporteIncidente, opt => opt.MapFrom(src => src.TipoReporteIncidente.Nombre))
                 .ForMember(dest => dest.TipoReporteImagen, opt => opt.MapFrom(src => src.TipoReporteIncidente.UrlImagen));
             CreateMap<SaveReporteIncidentesInput, ReporteIncidentes>();
+
+            //  Reporte de Calificaciones
+
+            CreateMap<ReporteCalificaciones, GetReporteCalificacionesOutput>()
+                .ForMember(dest => dest.TipoVehiculoReporte, opt => opt.MapFrom(src => src.TipoVehiculoReporte.Nombre))
+                .ForMember(dest => dest.TipoReporteImagen, opt => opt.MapFrom(src => src.TipoVehiculoReporte.UrlImagen));
+            CreateMap<ReporteCalificaciones, ReporteCalificacionesOutput>()
+                .ForMember(dest => dest.TipoVehiculoReporte, opt => opt.MapFrom(src => src.TipoVehiculoReporte.Nombre))
+                .ForMember(dest => dest.TipoReporteImagen, opt => opt.MapFrom(src => src.TipoVehiculoReporte.UrlImagen));
             CreateMap<SaveReporteCalificacionInput, ReporteCalificaciones>();
 
             //  Noticias

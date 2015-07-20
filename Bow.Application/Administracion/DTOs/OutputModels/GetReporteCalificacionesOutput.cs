@@ -1,17 +1,17 @@
-﻿using Abp.Domain.Entities;
-using Bow.EntidadBase;
+﻿using Abp.Application.Services.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bow.Administracion.Entidades
+namespace Bow.Administracion.DTOs.OutputModels
 {
-    public class ReporteCalificaciones : EntidadMultiTenant
+    public class GetReporteCalificacionesOutput : EntityDto, IOutputDto
     {
         public int TipoVehiculoId { get; set; }
-        public TipoReporte TipoVehiculoReporte { get; set; }
+        public string TipoVehiculoReporte { get; set; }
+        public string TipoReporteImagen { get; set; }
         public string Placa { get; set; }
         public string Empresa { get; set; }
         public string Observaciones { get; set; }

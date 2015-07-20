@@ -1,15 +1,14 @@
-﻿<div class="container" ng-controller="app.views.administracion.preguntasFrecuentes as vm">
+﻿<div class="container" ng-controller="app.views.administracion.calificacionConductores as vm">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>@L("")Preguntas Frecuentes</h1>
+            <h1>@L("")Reportes de Conductores</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <a class="clickable" ng-click="vm.abrirModalNueva()" title="">@L("")Registrar Nueva Pregunta Frecuente <span class="fa fa-plus"></span></a>
         </div>
         <div class="col-md-6 text-right">
-            <p>{{vm.preguntasFrecuentes.length}} @L("")Preguntas Frecuentes</p>
+            <p>{{vm.listaReporteConductores.length}} @L("")Reportes</p>
         </div>
     </div>
     <div class="row">
@@ -19,38 +18,37 @@
                     <table id="table-ext-3" class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th class="text-center">@L("")Pregunta</th>
-                                <th class="text-center">@L("")Respuesta</th>
-                                <th class="text-center">@L("")Estado</th>
-                                <th class="text-center">@L("")Cambiar Estado</th>
-                                <th class="text-center">@L("")Editar</th>
-                                <th class="text-center">@L("")Eliminar</th>
+                                <th class="text-center">@L("")Tipo de Vehiculo</th>
+                                <th class="text-center">@L("")Placa</th>
+                                <th class="text-center">@L("")Empresa</th>
+                                <th class="text-center">@L("")Observaciones</th>
+                                <th class="text-center">@L("")Calificación</th>
+                                <th class="text-center">@L("")Consultar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="pregunta in vm.preguntasFrecuentes">
+                            <tr ng-repeat="reporte in vm.listaReporteConductores">
                                 <td>
-                                    {{pregunta.pregunta}}
-                                </td>
-                                <td>
-                                    {{pregunta.respuesta}}
+                                    {{reporte.tipoVehiculoReporte}}
                                 </td>
                                 <td>
-                                    <span ng-show="pregunta.esActiva">
-                                        Activa
-                                    </span>
-                                    <span ng-show="!pregunta.esActiva">
-                                        Inactiva
-                                    </span>
+                                    {{reporte.placa}}
+                                </td>
+                                <td>
+                                    {{reporte.empresa}}
+                                </td>
+                                <td>
+                                    {{reporte.observaciones}}
                                 </td>
                                 <td class="text-center">
-                                    <a class="clickable" ng-click="vm.modificarEstadoPregunta(pregunta)" title="@L("")Cambiar el estado de la pregunta frecuente"><span class="fa fa-refresh fa-2x text-orange"></span></a>
+                                    <i class="fa" ng-class="{ 'fa-star' : reporte.calificacion > 0, 'fa-star-o' : reporte.calificacion < 1 }"></i>
+                                    <i class="fa" ng-class="{ 'fa-star' : reporte.calificacion > 1, 'fa-star-o' : reporte.calificacion < 2 }"></i>
+                                    <i class="fa" ng-class="{ 'fa-star' : reporte.calificacion > 2, 'fa-star-o' : reporte.calificacion < 3 }"></i>
+                                    <i class="fa" ng-class="{ 'fa-star' : reporte.calificacion > 3, 'fa-star-o' : reporte.calificacion < 4 }"></i>
+                                    <i class="fa" ng-class="{ 'fa-star' : reporte.calificacion > 4, 'fa-star-o' : reporte.calificacion < 5 }"></i>
                                 </td>
                                 <td class="text-center">
-                                    <a class="clickable" ng-click="vm.abrirModalEditar(pregunta.id)" title="@L("")Editar pregunta frecuente"><span class="fa fa-pencil fa-2x text-orange"></span></a>
-                                </td>
-                                <td class="text-center">
-                                    <a class="clickable" ng-click="vm.abrirModalEliminar(pregunta.id)" title="@L("")Eliminar pregunta frecuente"><span class="fa fa-trash fa-2x text-orange"></span></a>
+                                    <a class="clickable" ng-click="vm.abrirModalConsultar(reporte.id)" title="@L("")Consultar el reporte"><span class="fa fa-eye fa-2x text-orange"></span></a>
                                 </td>
                             </tr>
                         </tbody>

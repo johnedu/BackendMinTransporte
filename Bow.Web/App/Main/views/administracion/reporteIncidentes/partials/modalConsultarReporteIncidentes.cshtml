@@ -1,0 +1,69 @@
+﻿<div class="modal-header">
+    <h2>@L("")Consultar Reporte de Incidente</h2>
+</div>
+<div class="modal-body">
+    <div class="alert alert-danger text-center" ng-show="mensajeError">
+        <strong>{{mensajeError}}</strong>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@L("")Tipo de Reporte</label>
+        </div>
+        <div class="col-md-8">
+            {{reporteIncidente.tipoReporteIncidente}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@L("")Dirección</label>
+        </div>
+        <div class="col-md-8">
+            {{reporteIncidente.direccion}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@L("")Latitud</label>
+        </div>
+        <div class="col-md-8">
+            {{reporteIncidente.latitud}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@L("")Longitud</label>
+        </div>
+        <div class="col-md-8">
+            {{reporteIncidente.longitud}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@L("")Distancia</label>
+        </div>
+        <div class="col-md-8">
+            {{reporteIncidente.distancia}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@L("")Observaciones</label>
+        </div>
+        <div class="col-md-8">
+            {{reporteIncidente.observaciones}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@L("")Estado</label>
+        </div>
+        <div class="col-md-8">
+            <span ng-show="reporteIncidente.esActivo">
+                Activo
+            </span>
+            <span ng-hide="reporteIncidente.esActivo">
+                Inactivo
+            </span>
+        </div>
+    </div>
+</div>

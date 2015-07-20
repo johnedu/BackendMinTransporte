@@ -99,6 +99,8 @@
   <ItemGroup>
     <Compile Include="Administracion\AdministracionService.cs" />
     <Compile Include="Administracion\AutoMapperAdministracionProfile.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\UpdateStateCalificacionIncidentesInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\UpdateStateReporteIncidentesInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeleteTipoInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeleteNoticiasInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeleteItemDiagnosticoVialInput.cs" />
@@ -106,6 +108,8 @@
     <Compile Include="Administracion\DTOs\InputModels\DeletePreguntaFrecuenteInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetAllItemsByDiagnosticoVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetItemByDiagnosticoVialInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\GetReporteCalificacionesInput.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\GetReporteIncidentesInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetTipoReporteInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetNoticiasInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\GetHistoriaVialInput.cs" />
@@ -127,6 +131,7 @@
     <Compile Include="Administracion\DTOs\OutputModels\GetAllHistoriasVialesOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllDeslizadorOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllNoticiasOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetAllReportesCalificacionesOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllReporteIncidentesOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllCategoriasOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllTiposReporteOutput.cs" />
@@ -134,12 +139,15 @@
     <Compile Include="Administracion\DTOs\OutputModels\GetHistoriaVialOutput.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Administracion\DTOs\OutputModels\GetReporteCalificacionesOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetTipoReporteOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\ItemByDiagnosticoVialOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\PasoByHistoriaVialOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\HistoriaVialOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetNoticiasOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\DeslizadorOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetReporteIncidentesOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\ReporteCalificacionesOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\ReporteIncidenteOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\NoticiasOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\TipoReporteOutput.cs" />

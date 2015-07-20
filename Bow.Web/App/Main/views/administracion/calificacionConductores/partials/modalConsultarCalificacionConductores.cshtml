@@ -1,0 +1,61 @@
+﻿<div class="modal-header">
+    <h2>@L("")Consultar Reporte de Calificación</h2>
+</div>
+<div class="modal-body">
+    <div class="alert alert-danger text-center" ng-show="mensajeError">
+        <strong>{{mensajeError}}</strong>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@L("")Tipo de Reporte</label>
+        </div>
+        <div class="col-md-8">
+            {{reporteCalificacion.tipoVehiculoReporte}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@L("")Placa</label>
+        </div>
+        <div class="col-md-8">
+            {{reporteCalificacion.placa}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@L("")Empresa</label>
+        </div>
+        <div class="col-md-8">
+            {{reporteCalificacion.empresa}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@L("")Observaciones</label>
+        </div>
+        <div class="col-md-8">
+            {{reporteCalificacion.observaciones}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@L("")Calificacion</label>
+        </div>
+        <div class="col-md-8">
+            {{reporteCalificacion.calificacion}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@L("")Estado</label>
+        </div>
+        <div class="col-md-8">
+            <span ng-show="reporteCalificacion.esActivo">
+                Activo
+            </span>
+            <span ng-hide="reporteCalificacion.esActivo">
+                Inactivo
+            </span>
+        </div>
+    </div>
+</div>

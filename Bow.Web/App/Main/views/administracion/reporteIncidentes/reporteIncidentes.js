@@ -1,10 +1,10 @@
 ﻿(function () {
     //Nombre del controlador   
-    var controllerId = 'app.views.administracion.preguntasFrecuentes';
+    var controllerId = 'app.views.administracion.reporteIncidentes';
 
     /*****************************************************************
     * 
-    * CONTROLADOR DE PREGUNTAS FRECUENTES
+    * CONTROLADOR DE REPORTE DE INCIDENTES
     * 
     *****************************************************************/
 
@@ -14,100 +14,55 @@
 
            //Inicializando Modelos
 
-           vm.preguntasFrecuentes = [];
+           vm.listaReportesIncidente = [];
 
            //Funcion encargada de consultar las preguntas frecuentes en la base de datos
-           function cargarPreguntasFrecuentes() {
-               administracionService.getAllPreguntasFrecuentes().success(function (data) {
-                   vm.preguntasFrecuentes = data.preguntasFrecuentes;
+           function cargarReporteIncidentes() {
+               administracionService.getAllReporteIncidentes().success(function (data) {
+                   vm.listaReportesIncidente = data.reportesIncidentes;
                }).error(function (error) {
                    console.log(error);
                });
            }
-           cargarPreguntasFrecuentes();
+           cargarReporteIncidentes();
 
            /************************************************************************
-            * Llamado para abrir Modal para Nueva Pregunta Frecuente
-            ************************************************************************/
-
-           vm.abrirModalNueva= function () {
-               var modalInstance = $modal.open({
-                   templateUrl: '/App/Main/views/administracion/preguntasFrecuentes/partials/modalNuevoPreguntasFrecuentes.cshtml',
-                   controller: 'modalNuevoPreguntasFrecuentesController',
-                   size: 'md'
-               });
-
-               modalInstance.result.then(function (pregunta) {
-                   cargarPreguntasFrecuentes();
-                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se guardó correctamente la pregunta: ' + pregunta, abp.localization.localize('', 'Bow') + 'Información');
-               }, function () {
-                   vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al guardar la pregunta frecuente'
-               });
-           }
-
-           /************************************************************************
-           * Llamado para abrir Modal para Editar Pregunta Frecuente
+           * Llamado para abrir Modal para Consultar detalles del reporte de incidentes
            ************************************************************************/
-           vm.abrirModalEditar = function (preguntaId) {
+           vm.abrirModalConsultar = function (reporteId) {
                var modalInstance = $modal.open({
-                   templateUrl: '/App/Main/views/administracion/preguntasFrecuentes/partials/modalEditarPreguntasFrecuentes.cshtml',
-                   controller: 'modalEditarPreguntasFrecuentesController',
+                   templateUrl: '/App/Main/views/administracion/reporteIncidentes/partials/modalConsultarReporteIncidentes.cshtml',
+                   controller: 'modalConsultarReporteIncidentesController',
                    size: 'md',
                    resolve: {
-                       preguntaEditar: function () {
-                           return preguntaId;
+                       reporteEditar: function () {
+                           return reporteId;
                        }
                    }
                });
-
-               modalInstance.result.then(function (pregunta) {
-                   abp.notify.success(abp.localization.localize('', 'Bow') + 'Se actualizó correctamente la pregunta: ' + pregunta, abp.localization.localize('', 'Bow') + 'Información');
-                   cargarPreguntasFrecuentes();
-
-               }, function () {
-                   vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la pregunta frecuente'
-               });
            }
 
            /************************************************************************
-           * Llamado para abrir Modal para Eliminar Pregunta Frecuente
+           * Llamado para abrir Modal para Eliminar un reporte de incidente
            ************************************************************************/
-           vm.abrirModalEliminar = function (preguntaId) {
+           vm.abrirModalEliminar = function (reporteId) {
                 var modalInstance = $modal.open({
-                    templateUrl: '/App/Main/views/administracion/preguntasFrecuentes/partials/modalEliminarPreguntasFrecuentes.cshtml',
-                    controller: 'modalEliminarPreguntasFrecuentesController',
+                    templateUrl: '/App/Main/views/administracion/reporteIncidentes/partials/modalEliminarReporteIncidentes.cshtml',
+                    controller: 'modalEliminarReporteIncidentesController',
                     size: 'md',
                     resolve: {
-                        preguntaEliminar: function () {
-                            return preguntaId;
+                        reporteInactivar: function () {
+                            return reporteId;
                         }
                     }
                 });
 
-                modalInstance.result.then(function (pregunta) {
-                    cargarPreguntasFrecuentes();
-                    abp.notify.success(abp.localization.localize('', 'Bow') + 'Se eliminó correctamente la pregunta: ' + pregunta, abp.localization.localize('', 'Bow') + 'Información');
+                modalInstance.result.then(function () {
+                    cargarReporteIncidentes();
+                    abp.notify.success(abp.localization.localize('', 'Bow') + 'Se eliminó correctamente el reporte.', abp.localization.localize('', 'Bow') + 'Información');
                 }, function () {
-                    vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al actualizar la pregunta frecuente'
+                    vm.resultado = abp.localization.localize('', 'Bow') + 'Ocurrió un problema al eliminar el reporte.'
                 });
-           }
-
-           /************************************************************************
-           * Llamado para modificar el estado de la pregunta frecuente
-           ************************************************************************/
-           vm.modificarEstadoPregunta = function (pregunta) {
-               if (pregunta.esActiva) {
-                   pregunta.esActiva = false;
-               } else {
-                   pregunta.esActiva = true;
-               }
-               administracionService.updatePreguntaFrecuente(pregunta)
-                   .success(function () {
-                       abp.notify.success(abp.localization.localize('', 'Bow') + 'Se modificó correctamente el estado de la pregunta: ' + pregunta.pregunta, abp.localization.localize('', 'Bow') + 'Información');
-                       cargarPreguntasFrecuentes();
-                   }).error(function (error) {
-                       $scope.mensajeError = error.message;
-                   });
            }
        }]);
 })();

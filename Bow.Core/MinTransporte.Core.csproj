@@ -87,7 +87,6 @@
     <Compile Include="Administracion\Entidades\ReporteCalificaciones.cs" />
     <Compile Include="Administracion\Entidades\Noticias.cs" />
     <Compile Include="Administracion\Entidades\ItemDiagnostico.cs" />
-    <Compile Include="Administracion\Entidades\TipoVehiculo.cs" />
     <Compile Include="Administracion\Entidades\TipoReporte.cs" />
     <Compile Include="Administracion\Entidades\ReporteIncidentes.cs" />
     <Compile Include="Administracion\Repositorios\IHistoriaVialRepositorio.cs" />
@@ -95,7 +94,6 @@
     <Compile Include="Administracion\Repositorios\IPreguntaFrecuenteRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\IReporteCalificacionesRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\IItemDiagnosticoRepositorio.cs" />
-    <Compile Include="Administracion\Repositorios\ITipoVehiculoRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\INoticiasRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\ITipoReporteRepositorio.cs" />
     <Compile Include="Administracion\Repositorios\IReporteIncidentesRepositorio.cs" />
