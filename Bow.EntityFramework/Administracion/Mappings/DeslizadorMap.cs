@@ -14,10 +14,10 @@ namespace Bow.Administracion.Mappings
         public DeslizadorMap()
         {
             //Atributos
-            Property(d => d.Nombre).HasMaxLength(512);
-            Property(d => d.Nombre).IsRequired();           
+            Property(d => d.Nombre).HasMaxLength(2048);
+            Property(d => d.Nombre).IsRequired();
 
-            Property(d => d.URLImagen).HasMaxLength(512);
+            Property(d => d.URLImagen).HasMaxLength(2048);
             Property(d => d.URLImagen).IsRequired();         
 
             //Llaves Foráneas

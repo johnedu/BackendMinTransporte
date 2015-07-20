@@ -259,6 +259,53 @@ namespace Bow.Administracion
             return new GetAllDeslizadorOutput { Deslizador = Mapper.Map<List<DeslizadorOutput>>(listaDeslizador) };
         }
 
+
+        public GetDeslizadorOutput GetDeslizador(GetDeslizadorInput deslizadorInput)
+        {
+            return Mapper.Map<GetDeslizadorOutput>(_deslizadorRepositorio.Get(deslizadorInput.Id));
+        }
+
+        public void SaveDeslizador(SaveDeslizadorInput nuevaDeslizador)
+        {
+            Deslizador existeDeslizador = _deslizadorRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == nuevaDeslizador.Nombre.ToLower());
+
+            if (existeDeslizador == null)
+            {
+                Deslizador deslizador = Mapper.Map<Deslizador>(nuevaDeslizador);
+
+                deslizador.TenantId = BowConsts.TENANT_ID_ACR;
+
+                _deslizadorRepositorio.Insert(deslizador);
+            }
+            else
+            {
+                var mensajeError = "Ya existe la imagen en el slider.";
+                throw new UserFriendlyException(mensajeError);
+            }
+        }
+
+        public void UpdateDeslizador(UpdateDeslizadorInput deslizadorUpdate)
+        {
+            Deslizador existeDeslizador = _deslizadorRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == deslizadorUpdate.Nombre.ToLower() && p.Id != deslizadorUpdate.Id);
+
+            if (existeDeslizador == null)
+            {
+                Deslizador desizador = _deslizadorRepositorio.Get(deslizadorUpdate.Id);
+                Mapper.Map(deslizadorUpdate, desizador);
+                _deslizadorRepositorio.Update(desizador);
+            }
+            else
+            {
+                var mensajeError = "Ya existe la imagen en el slider.";
+                throw new UserFriendlyException(mensajeError);
+            }
+        }
+
+        public void DeleteDeslizador(DeleteDeslizadorInput deslizadorEliminar)
+        {
+            _deslizadorRepositorio.Delete(deslizadorEliminar.Id);
+        }
+
         /*********************************************************************************************
          ******************************************  Noticias  ***************************************
          *********************************************************************************************/

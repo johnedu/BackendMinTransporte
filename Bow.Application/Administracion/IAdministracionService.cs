@@ -70,6 +70,18 @@ namespace Bow.Administracion
 
         GetAllDeslizadorOutput GetAllDeslizador();
 
+        GetDeslizadorOutput GetDeslizador(GetDeslizadorInput deslizadorInput);
+       
+
+        void SaveDeslizador(SaveDeslizadorInput nuevaDeslizador);
+      
+
+        void UpdateDeslizador(UpdateDeslizadorInput deslizadorUpdate);
+    
+
+        void DeleteDeslizador(DeleteDeslizadorInput deslizadorEliminar);
+       
+
         //  Noticias
 
         GetAllNoticiasOutput GetAllNoticias();

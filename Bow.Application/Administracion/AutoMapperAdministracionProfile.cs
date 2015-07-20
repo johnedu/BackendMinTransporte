@@ -58,6 +58,10 @@ namespace Bow.Administracion
             CreateMap<Noticias, GetNoticiasOutput>();
             CreateMap<Noticias, NoticiasOutput>();
 
+            //  Deslizador
+            CreateMap<SaveDeslizadorInput, Deslizador>();
+            CreateMap<UpdateDeslizadorInput, Deslizador>();
+            CreateMap<Deslizador, GetDeslizadorOutput>();
             CreateMap<Deslizador, DeslizadorOutput>();
 
             //  Historia Vial
