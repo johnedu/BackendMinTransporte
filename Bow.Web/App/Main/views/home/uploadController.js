@@ -1,32 +1,10 @@
 ﻿(function () {
-    angular.module('app').controller('modalEditarDeslizadorController', ['$scope', '$modalInstance', 'deslizadorEditar', '$http', '$timeout', 'Upload', 'abp.services.app.utilidades', 'abp.services.app.administracion',
-        function ($scope, $modalInstance, deslizadorEditar, $http, $timeout, Upload, utilidadesService, administracionService) {
-
-            $scope.deslizador = {
-                nombre: '',              
-                urlImagen: ''
-            };
-
-            administracionService.getDeslizador({ id: deslizadorEditar })
-                .success(function (data) {
-                    $scope.deslizador = data;
-                });
-
-            $scope.okModal = function () {
-                administracionService.updateDeslizador($scope.deslizador)
-                    .success(function () {
-                        $modalInstance.close($scope.deslizador.nombre);
-                    }).error(function (error) {
-                        $scope.mensajeError = error.message;
-                    });
-            }
-
-            $scope.cancelModal = function () {
-                $modalInstance.dismiss('cancel');
-            }
+    angular.module('app').controller('UploadCtrl', ['$scope', '$http', '$timeout', 'Upload', 'abp.services.app.utilidades',
+        function ($scope, $http, $timeout, Upload, utilidadesService) {
 
             $scope.upload = [];
             $scope.fileUploadObj = { testString1: "Test string 1", testString2: "Test string 2" };
+            $scope.uploadFileLoaded = '';
 
             $scope.onFileSelect = function ($files) {
                 //$files: an array of files selected, each file has name, size, and type.
@@ -46,7 +24,7 @@
                             console.log('Archivo cargado: ', data);
                             utilidadesService.readFile({ ruta: data.returnData, realFileName: data.returnDataType })
                                 .success(function (data) {
-                                    $scope.deslizador.urlImagen = data.urlImagen;
+                                    $scope.uploadFileLoaded = data.urlImagen;
                                     console.log("Archivo leído correctamente.");
                                 });
                         }).error(function (data, status, headers, config) {
@@ -60,6 +38,5 @@
             $scope.abortUpload = function (index) {
                 $scope.upload[index].abort();
             }
-
         }]);
 })();

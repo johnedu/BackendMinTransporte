@@ -11,13 +11,11 @@ namespace Bow.Administracion.DTOs.InputModels
     public class UpdateDeslizadorInput : EntityDto, IInputDto
     {
         [Required]
-        [MaxLength(512)]
+        [MaxLength(2048)]
         public string Nombre { get; set; }
-       
-
         [Required]
-        [MaxLength(512)]
-        public string URLImagen { get; set; }       
+        [MaxLength(2048)]
+        public string UrlImagen { get; set; }       
 
     }
 }

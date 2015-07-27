@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -259,7 +260,6 @@ namespace Bow.Administracion
             return new GetAllDeslizadorOutput { Deslizador = Mapper.Map<List<DeslizadorOutput>>(listaDeslizador) };
         }
 
-
         public GetDeslizadorOutput GetDeslizador(GetDeslizadorInput deslizadorInput)
         {
             return Mapper.Map<GetDeslizadorOutput>(_deslizadorRepositorio.Get(deslizadorInput.Id));
@@ -291,6 +291,11 @@ namespace Bow.Administracion
             if (existeDeslizador == null)
             {
                 Deslizador desizador = _deslizadorRepositorio.Get(deslizadorUpdate.Id);
+
+                //  Eliminamos la imagen anterior
+                string rutaCompletaArchivo = System.AppDomain.CurrentDomain.BaseDirectory + desizador.UrlImagen;
+                File.Delete(rutaCompletaArchivo); 
+
                 Mapper.Map(deslizadorUpdate, desizador);
                 _deslizadorRepositorio.Update(desizador);
             }
@@ -303,6 +308,12 @@ namespace Bow.Administracion
 
         public void DeleteDeslizador(DeleteDeslizadorInput deslizadorEliminar)
         {
+            Deslizador desizador = _deslizadorRepositorio.Get(deslizadorEliminar.Id);
+
+            //  Eliminamos la imagen
+            string rutaCompletaArchivo = System.AppDomain.CurrentDomain.BaseDirectory + desizador.UrlImagen;
+            File.Delete(rutaCompletaArchivo); 
+
             _deslizadorRepositorio.Delete(deslizadorEliminar.Id);
         }
 

@@ -17,8 +17,8 @@ namespace Bow.Administracion.Mappings
             Property(d => d.Nombre).HasMaxLength(2048);
             Property(d => d.Nombre).IsRequired();
 
-            Property(d => d.URLImagen).HasMaxLength(2048);
-            Property(d => d.URLImagen).IsRequired();         
+            Property(d => d.UrlImagen).HasMaxLength(2048);
+            Property(d => d.UrlImagen).IsRequired();         
 
             //Llaves Foráneas
 

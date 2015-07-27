@@ -158,6 +158,10 @@
     <Compile Include="Migrations\201507181253280_update_tables_diagnostico_faqs.Designer.cs">
       <DependentUpon>201507181253280_update_tables_diagnostico_faqs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507262324376_update_table_deslizador.cs" />
+    <Compile Include="Migrations\201507262324376_update_table_deslizador.Designer.cs">
+      <DependentUpon>201507262324376_update_table_deslizador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="BowDataModule.cs" />
     <Compile Include="Migrations\Data\InitialDataBuilder.cs" />
@@ -198,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507181253280_update_tables_diagnostico_faqs.resx">
       <DependentUpon>201507181253280_update_tables_diagnostico_faqs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507262324376_update_table_deslizador.resx">
+      <DependentUpon>201507262324376_update_table_deslizador.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

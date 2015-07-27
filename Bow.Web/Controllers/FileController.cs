@@ -42,7 +42,8 @@ namespace Bow.Web.Controllers
             // You will be able to access this in the .success callback through its data attribute
             // If you want to send something to the .error callback, use the HttpStatusCode.BadRequest instead
             var returnData = uploadedFileInfo.Name;
-            return this.Request.CreateResponse(HttpStatusCode.OK, new { returnData });
+            var returnDataType = originalFileName;
+            return this.Request.CreateResponse(HttpStatusCode.OK, new { returnData, returnDataType });
         }
 
         // You could extract these two private methods to a separate utility class since

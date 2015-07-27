@@ -301,8 +301,8 @@
     <Content Include="App\Main\views\administracion\preguntasFrecuentes\partials\modalEliminarPreguntasFrecuentes.js" />
     <Content Include="App\Main\views\administracion\preguntasFrecuentes\partials\modalNuevoPreguntasFrecuentes.js" />
     <Content Include="App\Main\views\administracion\preguntasFrecuentes\preguntasFrecuentes.js" />
-    <Content Include="App\Main\views\home\home.js" />
     <Content Include="App\Main\views\about\about.js" />
+    <Content Include="App\Main\views\home\uploadController.js" />
     <Content Include="App\Main\views\layout\footer.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -2923,6 +2923,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\Main\images\uploadFiles\" />
     <Folder Include="App_Data\Tmp\FileUploads\" />
     <Folder Include="Scripts\naut\custom\" />
     <Folder Include="Views\File\" />

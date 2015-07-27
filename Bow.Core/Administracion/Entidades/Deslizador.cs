@@ -11,7 +11,7 @@ namespace Bow.Administracion.Entidades
     public class Deslizador : EntidadMultiTenant
     {
         public string Nombre { get; set; }        
-        public string URLImagen { get; set; }
+        public string UrlImagen { get; set; }
        
 
     }

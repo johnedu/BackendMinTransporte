@@ -13,10 +13,9 @@ namespace Bow.Administracion.DTOs.InputModels
         [Required]
         [MaxLength(2048)]
         public string Nombre { get; set; }
-
         [Required]
         [MaxLength(2048)]
-        public string URLImagen { get; set; }
+        public string UrlImagen { get; set; }
 
     }
 }

@@ -87,6 +87,7 @@
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Linq.Dynamic">
       <HintPath>..\packages\System.Linq.Dynamic.Library.1.1.13\lib\net40\System.Linq.Dynamic.dll</HintPath>
     </Reference>
@@ -168,7 +169,12 @@
     <Compile Include="Seguridad\ISeguridadService.cs" />
     <Compile Include="Seguridad\SeguridadService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilidades\DTOs\InputModels\ReadFileInput.cs" />
+    <Compile Include="Utilidades\DTOs\OutputModels\ReadFileOutput.cs" />
+    <Compile Include="Utilidades\UtilidadesService.cs" />
+    <Compile Include="Utilidades\AutoMapperUtilidadesProfile.cs" />
     <Compile Include="Utilidades\AutoMapper\AutoMapperBaseProfile.cs" />
+    <Compile Include="Utilidades\IUtilidadesService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

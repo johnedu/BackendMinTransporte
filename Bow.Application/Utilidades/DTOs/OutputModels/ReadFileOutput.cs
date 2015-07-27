@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Bow.Administracion.DTOs.OutputModels
 {
-    public class DeslizadorOutput : EntityDto, IOutputDto
+    public class ReadFileOutput : IOutputDto
     {
-        public string Nombre { get; set; }
         public string UrlImagen { get; set; }
        
     }
