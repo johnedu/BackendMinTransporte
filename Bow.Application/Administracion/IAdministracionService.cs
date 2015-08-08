@@ -62,6 +62,8 @@ namespace Bow.Administracion
 
         GetAllReportesCalificacionesOutput GetAllReporteCalificaciones();
 
+        GetAllRiesgosCercanosOutput GetAllRiesgosCercanos(GetAllRiesgosCercanosInput riesgosCercanosInput);
+
         void SaveReporteCalificacion(SaveReporteCalificacionInput nuevaCalificacion);
 
         void UpdateStateCalificacionIncidentes(UpdateStateCalificacionIncidentesInput reporteUpdate);
@@ -85,6 +87,8 @@ namespace Bow.Administracion
         //  Noticias
 
         GetAllNoticiasOutput GetAllNoticias();
+
+        GetAllNoticiasActivasOutput GetAllNoticiasActivas();
 
         GetNoticiasOutput GetNoticias(GetNoticiasInput noticiasInput);
 
@@ -112,6 +116,8 @@ namespace Bow.Administracion
         //  Diagnostico Vial
 
         GetAllItemsByDiagnosticoVialOutput GetAllItemsDiagnosticoVial();
+
+        GetAllItemsActivosByDiagnosticoVialOutput GetAllItemsActivosByDiagnosticoVial();
 
         GetItemByDiagnosticoVialOutput GetItemByDiagnosticoVial(GetItemByDiagnosticoVialInput itemDiagnosticoInput);
 

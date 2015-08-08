@@ -20,7 +20,7 @@
        
            function cargarDiagnostico() {
                administracionService.getAllItemsDiagnosticoVial().success(function (data) {
-                   vm.diagnostico = data.itemsDiagnosticoVial;
+                   vm.diagnostico = bow.tablas.paginar(data.itemsDiagnosticoVial, 10);
                }).error(function (error) {
                    console.log(error);
                });
@@ -96,7 +96,6 @@
            * Llamado para modificar el estado de la diagnostico
            ************************************************************************/
            vm.modificarEstadoDiagnostico = function (diagnostico) {
-               alert();
                if (diagnostico.esActivo) {
                    diagnostico.esActivo = false;
                } else {

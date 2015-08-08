@@ -16,6 +16,7 @@ namespace Bow.Administracion.DTOs.OutputModels
         public string Empresa { get; set; }
         public string Observaciones { get; set; }
         public decimal Calificacion { get; set; }
+        public string UrlImagen { get; set; }
         public bool EsActiva { get; set; }
     }
 }

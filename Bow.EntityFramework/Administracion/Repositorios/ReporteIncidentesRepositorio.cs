@@ -28,5 +28,15 @@ namespace Bow.Administracion.Repositorios
         {
             return GetAll().Where(r => r.Id == reporteId).Include(m => m.TipoReporteIncidente).FirstOrDefault();
         }
+
+        public List<ReporteIncidentes> GetAllRiesgosCercanos(decimal latitudMinima, decimal latitudMaxima, decimal longitudMinima, decimal longitudMaxima)
+        {
+            return GetAll().Where(r => r.EsActivo 
+                && r.Latitud >= latitudMinima
+                && r.Latitud <= latitudMaxima
+                && r.Longitud >= longitudMinima
+                && r.Longitud <= longitudMaxima)
+                .Include(m => m.TipoReporteIncidente).ToList();
+        }
     }
 }

@@ -24,14 +24,33 @@
                 </small>
             </div>
         </div>
+        <div class="form-group" ng-class="{'has-error' : modalEditarNoticias.iptEnlace.$dirty && modalEditarNoticias.iptEnlace.$invalid}">
+            <label class="control-label" for="iptEnlace">@L("")Enlace para Compartir</label>
+            <input type="text" class="form-control" id="iptEnlace" name="iptEnlace" placeholder="@L("")Ingrese el enlace para compartir" ng-model="noticia.url" maxlength="4096" />
+        </div>
         <div class="form-group" ng-class="{'has-error' : modalEditarNoticias.iptImagen.$dirty && modalEditarNoticias.iptImagen.$invalid}">
             <div class="row">
                 <div class="col-md-9">
-                    <label class="control-label" for="iptImagen">@L("")URL Imagen</label>
-                    <input type="text" class="form-control" id="iptImagen" name="iptImagen" placeholder="@L("")Ingrese la URL de la imagen" ng-model="noticia.urlImagen" required maxlength="4096" />
-                    <div ng-show="modalEditarNoticias.iptImagen.$dirty && modalEditarNoticias.iptImagen.$invalid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label" for="iptImagen">@L("")Imagen</label>
+                        </div>
+                    </div>
+                    <div class="row bow-margin-top-10">
+                        <div class="col-md-12">
+                            <div class="btn btn-info" ngf-select ngf-change="onFileSelect($files)">Seleccionar imagen</div>
+                        </div>
+                        <div class="col-md-12 bow-padding-top-10" ng-show="showProgressBar">
+                            <div class="progress ng-isolate-scope text-center" value="0">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: percent + '%'}" style="width: 0%;"></div>
+                                <span class="text-nowrap ng-binding ng-scope text-bold">Cargando ...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="iptImagen" name="iptImagen" ng-model="noticia.urlImagen" required />
+                    <div ng-show="modalEditarNoticias.modalNuevaCategoria.$dirty && modalEditarNoticias.iptImagen.$invalid">
                         <small ng-show="modalEditarNoticias.iptImagen.$error.required" class="text-danger">
-                            @L("")La URL de la imagen es requerida
+                            @L("")La imagen es requerida
                         </small>
                     </div>
                 </div>
@@ -39,7 +58,7 @@
                     <img class="img-responsive" src="{{noticia.urlImagen}}" />
                 </div>
             </div>
-        </div>
+        </div>   
     </form>
 </div>
 <div class="modal-footer">

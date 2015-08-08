@@ -19,7 +19,7 @@
            //Funcion encargada de consultar las preguntas frecuentes en la base de datos
            function cargarPreguntasFrecuentes() {
                administracionService.getAllPreguntasFrecuentes().success(function (data) {
-                   vm.preguntasFrecuentes = data.preguntasFrecuentes;
+                   vm.preguntasFrecuentes = bow.tablas.paginar(data.preguntasFrecuentes, 10);
                }).error(function (error) {
                    console.log(error);
                });

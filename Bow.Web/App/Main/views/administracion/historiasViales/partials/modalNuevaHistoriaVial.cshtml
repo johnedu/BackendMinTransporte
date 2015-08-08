@@ -25,11 +25,11 @@
             </div>
         </div>
         <div class="form-group" ng-class="{'has-error' : modalNuevaHistoriaVial.iptNombrePersona.$dirty && modalNuevaHistoriaVial.iptNombrePersona.$invalid}">
-            <label class="control-label" for="iptNombrePersona">@L("")Título</label>
+            <label class="control-label" for="iptNombrePersona">@L("")Nombre de la Persona</label>
             <input type="text" class="form-control" id="iptNombrePersona" name="iptNombrePersona" placeholder="@L("")Ingrese la persona de la historia" ng-model="historiaVial.nombrePersona" required maxlength="1024" />
             <div ng-show="modalNuevaHistoriaVial.iptNombrePersona.$dirty && modalNuevaHistoriaVial.iptNombrePersona.$invalid">
                 <small ng-show="modalNuevaHistoriaVial.iptNombrePersona.$error.required" class="text-danger">
-                    @L("")El título de la historia es requerido
+                    @L("")El nombre de la persona es requerido
                 </small>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 </small>
             </div>
         </div>
-        <div class="form-group" ng-class="{'has-error' : modalNuevaHistoriaVial.iptImagen.$dirty && modalNuevaHistoriaVial.iptImagen.$invalid}">
+        @*<div class="form-group" ng-class="{'has-error' : modalNuevaHistoriaVial.iptImagen.$dirty && modalNuevaHistoriaVial.iptImagen.$invalid}">
             <div class="row">
                 <div class="col-md-9">
                     <label class="control-label" for="iptImagen">@L("")URL Imagen</label>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
     </form>
 </div>
 <div class="modal-footer">

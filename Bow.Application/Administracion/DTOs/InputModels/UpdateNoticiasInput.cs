@@ -22,6 +22,8 @@ namespace Bow.Administracion.DTOs.InputModels
         [MaxLength(512)]
         public string URLImagen { get; set; }
 
+        public string Url { get; set; }
+
         [Required]
         public DateTime Fecha { get; set; }
         public bool EsActiva { get; set; }

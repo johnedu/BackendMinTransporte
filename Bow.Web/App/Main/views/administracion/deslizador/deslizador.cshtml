@@ -1,7 +1,7 @@
 ﻿<div class="container" ng-controller="app.views.administracion.deslizador as vm">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>@L("")Imagenes Slider</h1>
+            <h1>@L("")Imágenes Deslizador</h1>
         </div>
     </div>
     <div class="row">
@@ -9,7 +9,7 @@
             <a class="clickable" ng-click="vm.abrirModalNueva(vm.paisId)" title="">@L("")Registrar Nueva Imagen <span class="fa fa-plus"></span></a>
         </div>
         <div class="col-md-6 text-right">
-            <p>{{vm.deslizador.length}} @L("")Imagenes Registradas</p>
+            <p>{{vm.deslizador.totalFilas}} @L("")deslizadores registrados</p>
         </div>
     </div>
     <div class="row">
@@ -20,13 +20,13 @@
                         <thead>
                             <tr>
                                 <th class="text-center">@L("")Imagen</th>
-                                <th class="text-center">@L("")Descripción</th>                                
+                                <th class="text-center">@L("")Descripción</th>
                                 <th class="text-center">@L("")Editar</th>
                                 <th class="text-center">@L("")Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="deslizador in vm.deslizador">
+                            <tr ng-repeat="deslizador in vm.deslizador.filasMostrar track by $index">
                                 <td class="text-center">
                                     <img width="100" src="{{deslizador.urlImagen}}" />
                                 </td>
@@ -42,6 +42,15 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="text-center">
+                    <pagination items-per-page="vm.deslizador.filasPorPagina"
+                                total-items="vm.deslizador.totalFilas"
+                                ng-model="vm.deslizador.paginaActual"
+                                ng-change="vm.deslizador.pageChanged()"
+                                class="pagination-sm"></pagination>
                 </div>
             </div>
         </div>

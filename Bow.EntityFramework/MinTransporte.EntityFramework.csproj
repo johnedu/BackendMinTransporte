@@ -126,41 +126,9 @@
     <Compile Include="EntityFramework\BowDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\BowRepositoryBase.cs" />
     <Compile Include="MappingsBase\MultiTenantMap.cs" />
-    <Compile Include="Migrations\201507130253387_Inicial.cs" />
-    <Compile Include="Migrations\201507130253387_Inicial.Designer.cs">
-      <DependentUpon>201507130253387_Inicial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507130325493_update_table_preguntasFrecuentes.cs" />
-    <Compile Include="Migrations\201507130325493_update_table_preguntasFrecuentes.Designer.cs">
-      <DependentUpon>201507130325493_update_table_preguntasFrecuentes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507130544291_add_table_noticias.cs" />
-    <Compile Include="Migrations\201507130544291_add_table_noticias.Designer.cs">
-      <DependentUpon>201507130544291_add_table_noticias.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507130609555_add_tables_diagnostico_historiaVial.cs" />
-    <Compile Include="Migrations\201507130609555_add_tables_diagnostico_historiaVial.Designer.cs">
-      <DependentUpon>201507130609555_add_tables_diagnostico_historiaVial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507130750495_add_table_deslizador.cs" />
-    <Compile Include="Migrations\201507130750495_add_table_deslizador.Designer.cs">
-      <DependentUpon>201507130750495_add_table_deslizador.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507140105448_changes_apiary_web_services.cs" />
-    <Compile Include="Migrations\201507140105448_changes_apiary_web_services.Designer.cs">
-      <DependentUpon>201507140105448_changes_apiary_web_services.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507140214234_drop_table_diagnostico.cs" />
-    <Compile Include="Migrations\201507140214234_drop_table_diagnostico.Designer.cs">
-      <DependentUpon>201507140214234_drop_table_diagnostico.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507181253280_update_tables_diagnostico_faqs.cs" />
-    <Compile Include="Migrations\201507181253280_update_tables_diagnostico_faqs.Designer.cs">
-      <DependentUpon>201507181253280_update_tables_diagnostico_faqs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201507262324376_update_table_deslizador.cs" />
-    <Compile Include="Migrations\201507262324376_update_table_deslizador.Designer.cs">
-      <DependentUpon>201507262324376_update_table_deslizador.cs</DependentUpon>
+    <Compile Include="Migrations\201508050516065_Inicial.cs" />
+    <Compile Include="Migrations\201508050516065_Inicial.Designer.cs">
+      <DependentUpon>201508050516065_Inicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="BowDataModule.cs" />
@@ -179,32 +147,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507130253387_Inicial.resx">
-      <DependentUpon>201507130253387_Inicial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507130325493_update_table_preguntasFrecuentes.resx">
-      <DependentUpon>201507130325493_update_table_preguntasFrecuentes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507130544291_add_table_noticias.resx">
-      <DependentUpon>201507130544291_add_table_noticias.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507130609555_add_tables_diagnostico_historiaVial.resx">
-      <DependentUpon>201507130609555_add_tables_diagnostico_historiaVial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507130750495_add_table_deslizador.resx">
-      <DependentUpon>201507130750495_add_table_deslizador.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507140105448_changes_apiary_web_services.resx">
-      <DependentUpon>201507140105448_changes_apiary_web_services.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507140214234_drop_table_diagnostico.resx">
-      <DependentUpon>201507140214234_drop_table_diagnostico.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507181253280_update_tables_diagnostico_faqs.resx">
-      <DependentUpon>201507181253280_update_tables_diagnostico_faqs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507262324376_update_table_deslizador.resx">
-      <DependentUpon>201507262324376_update_table_deslizador.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201508050516065_Inicial.resx">
+      <DependentUpon>201508050516065_Inicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

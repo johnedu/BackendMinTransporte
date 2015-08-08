@@ -1,5 +1,5 @@
 ﻿<div class="modal-header">
-    <h2>@L("")Modificar Imagen de slider</h2>
+    <h2>@L("")Modificar Imagen de deslizador</h2>
 </div>
 <div class="modal-body">
     <div class="alert alert-danger text-center" ng-show="mensajeError">
@@ -18,17 +18,20 @@
         <div class="form-group" ng-class="{'has-error' : modalEditarDeslizador.iptImagen.$dirty && modalEditarDeslizador.iptImagen.$invalid}">
             <div class="row">
                 <div class="col-md-9">
-                    <label class="control-label" for="iptImagen">@L("")Imagen</label>
                     <div class="row">
-                        <div class="col-md-9">
-                            <div class="row bow-margin-top-10">
-                                <div class="col-md-12">
-                                    <div class="btn btn-info" ngf-select ngf-change="onFileSelect($files)">Seleccionar imagen</div>
-                                </div>
-                            </div>
+                        <div class="col-md-6">
+                            <label class="control-label" for="iptImagen">@L("")Imagen</label>
                         </div>
-                        <div class="col-md-3">
-                            <img class="img-responsive" />
+                    </div>
+                    <div class="row bow-margin-top-10">
+                        <div class="col-md-12">
+                            <div class="btn btn-info" ngf-select ngf-change="onFileSelect($files)">Seleccionar imagen</div>
+                        </div>
+                        <div class="col-md-12 bow-padding-top-10" ng-show="showProgressBar">
+                            <div class="progress ng-isolate-scope text-center" value="0">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: percent + '%'}" style="width: 0%;"></div>
+                                <span class="text-nowrap ng-binding ng-scope text-bold">Cargando ...</span>
+                            </div>
                         </div>
                     </div>
                     <input type="hidden" id="iptImagen" name="iptImagen" ng-model="deslizador.urlImagen" required />

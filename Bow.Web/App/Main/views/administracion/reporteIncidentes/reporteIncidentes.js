@@ -19,7 +19,7 @@
            //Funcion encargada de consultar las preguntas frecuentes en la base de datos
            function cargarReporteIncidentes() {
                administracionService.getAllReporteIncidentes().success(function (data) {
-                   vm.listaReportesIncidente = data.reportesIncidentes;
+                   vm.listaReportesIncidente = bow.tablas.paginar(data.reportesIncidentes, 10);
                }).error(function (error) {
                    console.log(error);
                });

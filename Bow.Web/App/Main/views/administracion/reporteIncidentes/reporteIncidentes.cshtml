@@ -8,7 +8,7 @@
         <div class="col-md-6">
         </div>
         <div class="col-md-6 text-right">
-            <p>{{vm.listaReportesIncidente.length}} @L("")Reportes</p>
+            <p>{{vm.listaReportesIncidente.totalFilas}} @L("")Reportes</p>
         </div>
     </div>
     <div class="row">
@@ -20,21 +20,18 @@
                             <tr>
                                 <th class="text-center">@L("")Tipo de Reporte</th>
                                 <th class="text-center">@L("")Observaciones</th>
-                                <th class="text-center">@L("")Dirección</th>
                                 <th class="text-center">@L("")Consultar</th>
                                 @*<th class="text-center">@L("")Eliminar</th>*@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="reporteIncidente in vm.listaReportesIncidente">
+                            <tr ng-repeat="reporteIncidente in vm.listaReportesIncidente.filasMostrar track by $index">
                                 <td>
                                     {{reporteIncidente.tipoReporteIncidente}}
                                 </td>
                                 <td>
-                                    {{reporteIncidente.observaciones}}
-                                </td>
-                                <td>
-                                    {{reporteIncidente.direccion}}
+                                    {{reporteIncidente.observaciones | limitTo: 100 }}
+                                    <span ng-show="reporteIncidente.observaciones.length > 100"> ...</span>
                                 </td>
                                 <td class="text-center">
                                     <a class="clickable" ng-click="vm.abrirModalConsultar(reporteIncidente.id)" title="@L("")Consultar información del reporte"><span class="fa fa-eye fa-2x text-orange"></span></a>
@@ -45,6 +42,15 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="text-center">
+                    <pagination items-per-page="vm.listaReportesIncidente.filasPorPagina"
+                                total-items="vm.listaReportesIncidente.totalFilas"
+                                ng-model="vm.listaReportesIncidente.paginaActual"
+                                ng-change="vm.listaReportesIncidente.pageChanged()"
+                                class="pagination-sm"></pagination>
                 </div>
             </div>
         </div>

@@ -40,7 +40,9 @@ namespace Bow.Administracion
             CreateMap<ReporteIncidentes, ReporteIncidenteOutput>()
                 .ForMember(dest => dest.TipoReporteIncidente, opt => opt.MapFrom(src => src.TipoReporteIncidente.Nombre))
                 .ForMember(dest => dest.TipoReporteImagen, opt => opt.MapFrom(src => src.TipoReporteIncidente.UrlImagen));
-            CreateMap<SaveReporteIncidentesInput, ReporteIncidentes>();
+            CreateMap<SaveReporteIncidentesInput, ReporteIncidentes>()
+                .ForMember(dest => dest.Latitud, opt => opt.MapFrom(src => decimal.Parse(src.Latitud)))
+                .ForMember(dest => dest.Longitud, opt => opt.MapFrom(src => decimal.Parse(src.Longitud)));
 
             //  Reporte de Calificaciones
 

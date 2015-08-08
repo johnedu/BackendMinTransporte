@@ -23,6 +23,9 @@ namespace Bow.Administracion.Mappings
 
             Property(d => d.Calificacion).IsRequired();
 
+            Property(d => d.UrlImagen).HasMaxLength(512);
+            Property(d => d.UrlImagen).IsRequired();
+
             Property(d => d.EsActiva).IsRequired();
 
             //Tabla

@@ -9,7 +9,7 @@
             <a class="clickable" ng-click="vm.abrirModalNueva(vm.paisId)" title="">@L("")Registrar Nueva Historia <span class="fa fa-plus"></span></a>
         </div>
         <div class="col-md-6 text-right">
-            <p>{{vm.historiasViales.length}} @L("")Historias Registradas</p>
+            <p>{{vm.historiasViales.totalFilas}} @L("")Historias Registradas</p>
         </div>
     </div>
     <div class="row">
@@ -29,7 +29,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="historia in vm.historiasViales">
+                            <tr ng-repeat="historia in vm.historiasViales.filasMostrar track by $index">
                                 <td>
                                     {{historia.nombre}}
                                 </td>
@@ -59,6 +59,15 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="text-center">
+                    <pagination items-per-page="vm.historiasViales.filasPorPagina"
+                                total-items="vm.historiasViales.totalFilas"
+                                ng-model="vm.historiasViales.paginaActual"
+                                ng-change="vm.historiasViales.pageChanged()"
+                                class="pagination-sm"></pagination>
                 </div>
             </div>
         </div>

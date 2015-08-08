@@ -9,7 +9,7 @@
             <a class="clickable" ng-click="vm.abrirModalNueva()" title="">@L("")Registrar Nueva Pregunta Frecuente <span class="fa fa-plus"></span></a>
         </div>
         <div class="col-md-6 text-right">
-            <p>{{vm.preguntasFrecuentes.length}} @L("")Preguntas Frecuentes</p>
+            <p>{{vm.preguntasFrecuentes.totalFilas}} @L("")Preguntas Frecuentes</p>
         </div>
     </div>
     <div class="row">
@@ -28,14 +28,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="pregunta in vm.preguntasFrecuentes">
+                            <tr ng-repeat="pregunta in vm.preguntasFrecuentes.filasMostrar track by $index">
                                 <td>
                                     {{pregunta.pregunta}}
                                 </td>
                                 <td>
                                     {{pregunta.respuesta}}
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     <span ng-show="pregunta.esActiva">
                                         Activa
                                     </span>
@@ -55,6 +55,15 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="text-center">
+                    <pagination items-per-page="vm.preguntasFrecuentes.filasPorPagina"
+                                total-items="vm.preguntasFrecuentes.totalFilas"
+                                ng-model="vm.preguntasFrecuentes.paginaActual"
+                                ng-change="vm.preguntasFrecuentes.pageChanged()"
+                                class="pagination-sm"></pagination>
                 </div>
             </div>
         </div>

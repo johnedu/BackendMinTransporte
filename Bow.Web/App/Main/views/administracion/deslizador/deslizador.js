@@ -19,7 +19,7 @@
            //Funcion encargada de consultar las imagenes del slider
            function cargarDeslizador() {
                administracionService.getAllDeslizador().success(function (data) {
-                   vm.deslizador = data.deslizador;
+                   vm.deslizador = bow.tablas.paginar(data.deslizador, 10);
                }).error(function (error) {
                    console.log(error);
                });

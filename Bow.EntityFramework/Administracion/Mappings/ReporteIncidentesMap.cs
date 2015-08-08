@@ -16,10 +16,11 @@ namespace Bow.Administracion.Mappings
             //Atributos
             Property(d => d.Direccion).HasMaxLength(512);
 
-            Property(d => d.Latitud).HasMaxLength(100);
+            Property(d => d.Latitud).HasPrecision(15,10);
             Property(d => d.Latitud).IsRequired();
-            Property(d => d.Longitud).HasMaxLength(100);
+            Property(d => d.Longitud).HasPrecision(15, 10);
             Property(d => d.Longitud).IsRequired();
+
             Property(d => d.Distancia).HasMaxLength(100);
 
             Property(d => d.Observaciones).HasMaxLength(2048);

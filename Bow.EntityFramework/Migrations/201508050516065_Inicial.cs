@@ -202,11 +202,8 @@ namespace Bow.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Pregunta = c.String(nullable: false),
                         Respuesta = c.String(nullable: false),
-                        EstadoActiva = c.Boolean(nullable: false),
-                        FechaCreacion = c.String(),
-                        UsuarioIdCreacion = c.Long(nullable: false),
-                        FechaModificacion = c.String(),
-                        UsuarioIdModificacion = c.Long(),
+                        FechaPublicacion = c.DateTime(nullable: false),
+                        EsActiva = c.Boolean(nullable: false),
                         TenantId = c.Int(nullable: false),
                     },
                 annotations: new Dictionary<string, object>
@@ -221,6 +218,8 @@ namespace Bow.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Nombre = c.String(nullable: false, maxLength: 512),
+                        TipoCategoria = c.String(nullable: false, maxLength: 512),
+                        UrlImagen = c.String(maxLength: 2048),
                         TenantId = c.Int(nullable: false),
                     },
                 annotations: new Dictionary<string, object>
@@ -230,14 +229,37 @@ namespace Bow.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "MinTransporte.historia_vial",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nombre = c.String(nullable: false, maxLength: 512),
+                        Descripcion = c.String(nullable: false, maxLength: 2048),
+                        NombrePersona = c.String(maxLength: 512),
+                        FechaPublicacion = c.DateTime(nullable: false),
+                        Url = c.String(maxLength: 2048),
+                        EsActiva = c.Boolean(nullable: false),
+                        CategoriaId = c.Int(nullable: false),
+                        TenantId = c.Int(nullable: false),
+                    },
+                annotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_HistoriaVial_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("MinTransporte.tipo_reporte", t => t.CategoriaId, cascadeDelete: true)
+                .Index(t => t.CategoriaId);
+            
+            CreateTable(
                 "MinTransporte.reporte_incidentes",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         TipoReporteId = c.Int(nullable: false),
                         Direccion = c.String(maxLength: 512),
-                        Latitud = c.String(nullable: false, maxLength: 100),
-                        Longitud = c.String(nullable: false, maxLength: 100),
+                        Latitud = c.Decimal(nullable: false, precision: 15, scale: 10),
+                        Longitud = c.Decimal(nullable: false, precision: 15, scale: 10),
+                        Distancia = c.String(maxLength: 100),
                         Observaciones = c.String(maxLength: 2048),
                         EsActivo = c.Boolean(nullable: false),
                         TenantId = c.Int(nullable: false),
@@ -247,22 +269,8 @@ namespace Bow.Migrations
                     { "DynamicFilter_ReporteIncidentes_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("MinTransporte.tipo_reporte", t => t.TipoReporteId)
+                .ForeignKey("MinTransporte.tipo_reporte", t => t.TipoReporteId, cascadeDelete: true)
                 .Index(t => t.TipoReporteId);
-            
-            CreateTable(
-                "MinTransporte.tipo_vehiculo",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Nombre = c.String(nullable: false, maxLength: 512),
-                        TenantId = c.Int(nullable: false),
-                    },
-                annotations: new Dictionary<string, object>
-                {
-                    { "DynamicFilter_TipoVehiculo_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
-                })
-                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "MinTransporte.reporte_calificaciones",
@@ -274,6 +282,7 @@ namespace Bow.Migrations
                         Empresa = c.String(maxLength: 512),
                         Observaciones = c.String(maxLength: 2048),
                         Calificacion = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        UrlImagen = c.String(nullable: false, maxLength: 512),
                         EsActiva = c.Boolean(nullable: false),
                         TenantId = c.Int(nullable: false),
                     },
@@ -282,15 +291,68 @@ namespace Bow.Migrations
                     { "DynamicFilter_ReporteCalificaciones_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("MinTransporte.tipo_vehiculo", t => t.TipoVehiculoId)
+                .ForeignKey("MinTransporte.tipo_reporte", t => t.TipoVehiculoId, cascadeDelete: true)
                 .Index(t => t.TipoVehiculoId);
+            
+            CreateTable(
+                "MinTransporte.noticias",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Titulo = c.String(nullable: false, maxLength: 512),
+                        Descripcion = c.String(nullable: false, maxLength: 2048),
+                        Fecha = c.DateTime(nullable: false),
+                        Url = c.String(nullable: false, maxLength: 512),
+                        UrlImagen = c.String(nullable: false, maxLength: 512),
+                        EsActiva = c.Boolean(nullable: false),
+                        TenantId = c.Int(nullable: false),
+                    },
+                annotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_Noticias_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "MinTransporte.item_diagnostico",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nombre = c.String(nullable: false, maxLength: 512),
+                        Observaciones = c.String(nullable: false, maxLength: 2048),
+                        EsRequerido = c.Boolean(nullable: false),
+                        UrlImagen = c.String(),
+                        EsActivo = c.Boolean(nullable: false),
+                        TenantId = c.Int(nullable: false),
+                    },
+                annotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_ItemDiagnostico_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "MinTransporte.deslizador",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nombre = c.String(nullable: false, maxLength: 2048),
+                        UrlImagen = c.String(nullable: false, maxLength: 2048),
+                        TenantId = c.Int(nullable: false),
+                    },
+                annotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_Deslizador_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                })
+                .PrimaryKey(t => t.Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("MinTransporte.reporte_calificaciones", "TipoVehiculoId", "MinTransporte.tipo_vehiculo");
+            DropForeignKey("MinTransporte.reporte_calificaciones", "TipoVehiculoId", "MinTransporte.tipo_reporte");
             DropForeignKey("MinTransporte.reporte_incidentes", "TipoReporteId", "MinTransporte.tipo_reporte");
+            DropForeignKey("MinTransporte.historia_vial", "CategoriaId", "MinTransporte.tipo_reporte");
             DropForeignKey("MinTransporte.AbpRoles", "TenantId", "MinTransporte.AbpTenants");
             DropForeignKey("MinTransporte.AbpPermissions", "RoleId", "MinTransporte.AbpRoles");
             DropForeignKey("MinTransporte.AbpRoles", "LastModifierUserId", "MinTransporte.AbpUsers");
@@ -310,6 +372,7 @@ namespace Bow.Migrations
             DropForeignKey("MinTransporte.AbpUsers", "CreatorUserId", "MinTransporte.AbpUsers");
             DropIndex("MinTransporte.reporte_calificaciones", new[] { "TipoVehiculoId" });
             DropIndex("MinTransporte.reporte_incidentes", new[] { "TipoReporteId" });
+            DropIndex("MinTransporte.historia_vial", new[] { "CategoriaId" });
             DropIndex("MinTransporte.AbpTenants", new[] { "CreatorUserId" });
             DropIndex("MinTransporte.AbpTenants", new[] { "LastModifierUserId" });
             DropIndex("MinTransporte.AbpTenants", new[] { "DeleterUserId" });
@@ -327,20 +390,35 @@ namespace Bow.Migrations
             DropIndex("MinTransporte.AbpRoles", new[] { "TenantId" });
             DropIndex("MinTransporte.AbpPermissions", new[] { "UserId" });
             DropIndex("MinTransporte.AbpPermissions", new[] { "RoleId" });
+            DropTable("MinTransporte.deslizador",
+                removedAnnotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_Deslizador_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                });
+            DropTable("MinTransporte.item_diagnostico",
+                removedAnnotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_ItemDiagnostico_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                });
+            DropTable("MinTransporte.noticias",
+                removedAnnotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_Noticias_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                });
             DropTable("MinTransporte.reporte_calificaciones",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_ReporteCalificaciones_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("MinTransporte.tipo_vehiculo",
-                removedAnnotations: new Dictionary<string, object>
-                {
-                    { "DynamicFilter_TipoVehiculo_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
-                });
             DropTable("MinTransporte.reporte_incidentes",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_ReporteIncidentes_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
+                });
+            DropTable("MinTransporte.historia_vial",
+                removedAnnotations: new Dictionary<string, object>
+                {
+                    { "DynamicFilter_HistoriaVial_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
             DropTable("MinTransporte.tipo_reporte",
                 removedAnnotations: new Dictionary<string, object>

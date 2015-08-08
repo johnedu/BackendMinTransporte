@@ -20,6 +20,9 @@ namespace Bow.Administracion.DTOs.InputModels
         [Required]
         [MaxLength(2048)]
         public string Observaciones { get; set; }
-        public string Calificacion { get; set; }
+        public decimal Calificacion { get; set; }
+        [Required]
+        [MaxLength(512)]
+        public string UrlImagen { get; set; }
     }
 }

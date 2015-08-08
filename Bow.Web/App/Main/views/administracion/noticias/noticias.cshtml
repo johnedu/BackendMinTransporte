@@ -9,7 +9,7 @@
             <a class="clickable" ng-click="vm.abrirModalNueva()" title="">@L("")Registrar Nueva Noticia <span class="fa fa-plus"></span></a>
         </div>
         <div class="col-md-6 text-right">
-            <p>{{vm.noticias.length}} @L("")Noticias</p>
+            <p>{{vm.noticias.totalFilas}} @L("")Noticias</p>
         </div>
     </div>
     <div class="row">
@@ -28,7 +28,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="noticia in vm.noticias">
+                            <tr ng-repeat="noticia in vm.noticias.filasMostrar track by $index">
                                 <td>
                                     {{noticia.titulo}}
                                 </td>
@@ -55,6 +55,15 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="text-center">
+                    <pagination items-per-page="vm.noticias.filasPorPagina"
+                                total-items="vm.noticias.totalFilas"
+                                ng-model="vm.noticias.paginaActual"
+                                ng-change="vm.noticias.pageChanged()"
+                                class="pagination-sm"></pagination>
                 </div>
             </div>
         </div>

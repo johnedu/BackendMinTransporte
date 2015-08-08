@@ -12,5 +12,6 @@ namespace Bow.Administracion.Repositorios
     {
         List<ReporteIncidentes> GetAllReporteIncidentesWithTipo();
         ReporteIncidentes GetWithTipo(int reporteId);
+        List<ReporteIncidentes> GetAllRiesgosCercanos(decimal latitudMinima, decimal latitudMaxima, decimal longitudMinima, decimal longitudMaxima);
     }
 }

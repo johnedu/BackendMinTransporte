@@ -9,7 +9,7 @@
             <a class="clickable" ng-click="vm.abrirModalNueva()" title="">@L("")Registrar Nueva Categoría <span class="fa fa-plus"></span></a>
         </div>
         <div class="col-md-6 text-right">
-            <p>{{vm.categorias.length}} @L("")Categorías</p>
+            <p>{{vm.categorias.totalFilas}} @L("")Categorías</p>
         </div>
     </div>
     <div class="row">
@@ -26,7 +26,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="categoria in vm.categorias">
+                            <tr ng-repeat="categoria in vm.categorias.filasMostrar track by $index">
                                 <td>
                                     {{categoria.nombre}}
                                 </td>
@@ -45,6 +45,15 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="text-center">
+                    <pagination items-per-page="vm.categorias.filasPorPagina"
+                                total-items="vm.categorias.totalFilas"
+                                ng-model="vm.categorias.paginaActual"
+                                ng-change="vm.categorias.pageChanged()"
+                                class="pagination-sm"></pagination>
                 </div>
             </div>
         </div>

@@ -1,6 +1,8 @@
 ﻿(function () {
     $('#LoginButton').click(function (e) {
+        $('#LoginButton').prop('disabled', true);
         e.preventDefault();
+        
         abp.ui.setBusy(
             $('#LoginArea'),
             abp.ajax({
@@ -13,5 +15,10 @@
                 })
             })
         );
+
+        abp.message.error = function (message, title) {
+            abp.notify.error(message, title);
+            $('#LoginButton').prop('disabled', false);
+        };
     });
 })();

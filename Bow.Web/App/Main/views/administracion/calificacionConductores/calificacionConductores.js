@@ -19,7 +19,7 @@
            //Funcion encargada de consultar las preguntas frecuentes en la base de datos
            function cargarReporteConductores() {
                administracionService.getAllReporteCalificaciones().success(function (data) {
-                   vm.listaReporteConductores = data.reportesCalificaciones;
+                   vm.listaReporteConductores = bow.tablas.paginar(data.reportesCalificaciones, 10);
                }).error(function (error) {
                    console.log(error);
                });

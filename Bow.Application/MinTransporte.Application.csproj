@@ -100,6 +100,7 @@
   <ItemGroup>
     <Compile Include="Administracion\AdministracionService.cs" />
     <Compile Include="Administracion\AutoMapperAdministracionProfile.cs" />
+    <Compile Include="Administracion\DTOs\InputModels\GetAllRiesgosCercanosInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeleteDeslizadorInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeleteTipoInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\DeleteNoticiasInput.cs" />
@@ -132,10 +133,13 @@
     <Compile Include="Administracion\DTOs\InputModels\UpdateHistoriasVialInput.cs" />
     <Compile Include="Administracion\DTOs\InputModels\UpdatePreguntaFrecuenteInput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllHistoriasVialesActivasOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetAllItemsActivosByDiagnosticoVialOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllItemsByDiagnosticoVialOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllHistoriasVialesOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllDeslizadorOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetAllNoticiasActivasOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllNoticiasOutput.cs" />
+    <Compile Include="Administracion\DTOs\OutputModels\GetAllRiesgosCercanosOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllReporteIncidentesOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllCategoriasOutput.cs" />
     <Compile Include="Administracion\DTOs\OutputModels\GetAllReportesCalificacionesOutput.cs" />

@@ -7,13 +7,13 @@ namespace Bow.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.2-31219")]
-    public sealed partial class update_tables_diagnostico_faqs : IMigrationMetadata
+    public sealed partial class Inicial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(update_tables_diagnostico_faqs));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Inicial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201507181253280_update_tables_diagnostico_faqs"; }
+            get { return "201508050516065_Inicial"; }
         }
         
         string IMigrationMetadata.Source

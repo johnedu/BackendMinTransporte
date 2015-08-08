@@ -24,5 +24,7 @@ namespace Bow.Administracion.DTOs.InputModels
         [MaxLength(512)]
         public string URLImagen { get; set; }
 
+        public string Url { get; set; }
+
     }
 }

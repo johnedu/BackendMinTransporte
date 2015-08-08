@@ -1,7 +1,7 @@
 ﻿<div class="container" ng-controller="app.views.administracion.diagnostico as vm">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>@L("")Diagnostico</h1>
+            <h1>@L("")Diagnóstico</h1>
         </div>
     </div>
     <div class="row">
@@ -9,7 +9,7 @@
             <a class="clickable" ng-click="vm.abrirModalNueva()" title="">@L("")Registrar Nuevo Diagnostico <span class="fa fa-plus"></span></a>
         </div>
         <div class="col-md-6 text-right">
-            <p>{{vm.diagnostico.length}} @L("")Diagnosticos</p>
+            <p>{{vm.diagnostico.totalFilas}} @L("")Diagnosticos</p>
         </div>
     </div>
     <div class="row">
@@ -21,7 +21,7 @@
                             <tr>
                                 <th class="text-center">@L("")Nombre</th>
                                 <th class="text-center">@L("")Observaciones</th>
-                                <th class="text-center">@L("")Obligatorio para viajar</th>
+                                <th class="text-center">@L("")Anula Diagnóstico</th>
                                 <th class="text-center">@L("")Estado</th>
                                 <th class="text-center">@L("")Cambiar Estado</th>
                                 <th class="text-center">@L("")Editar</th>
@@ -29,7 +29,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="diagnostico in vm.diagnostico">
+                            <tr ng-repeat="diagnostico in vm.diagnostico.filasMostrar track by $index">
                                 <td>
                                     {{diagnostico.nombre}}
                                 </td>
@@ -59,6 +59,15 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="text-center">
+                    <pagination items-per-page="vm.diagnostico.filasPorPagina"
+                                total-items="vm.diagnostico.totalFilas"
+                                ng-model="vm.diagnostico.paginaActual"
+                                ng-change="vm.diagnostico.pageChanged()"
+                                class="pagination-sm"></pagination>
                 </div>
             </div>
         </div>

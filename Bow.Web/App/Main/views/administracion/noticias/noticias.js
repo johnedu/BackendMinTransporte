@@ -19,7 +19,7 @@
            //Funcion encargada de consultar las noticias en la base de datos
            function cargarNoticias() {
                administracionService.getAllNoticias().success(function (data) {
-                   vm.noticias = data.noticias;
+                   vm.noticias = bow.tablas.paginar(data.noticias, 10);
                }).error(function (error) {
                    console.log(error);
                });

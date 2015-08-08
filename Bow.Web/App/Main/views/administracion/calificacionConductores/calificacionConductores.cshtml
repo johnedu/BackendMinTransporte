@@ -8,7 +8,7 @@
         <div class="col-md-6">
         </div>
         <div class="col-md-6 text-right">
-            <p>{{vm.listaReporteConductores.length}} @L("")Reportes</p>
+            <p>{{vm.listaReporteConductores.totalFilas}} @L("")Reportes</p>
         </div>
     </div>
     <div class="row">
@@ -27,7 +27,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="reporte in vm.listaReporteConductores">
+                            <tr ng-repeat="reporte in vm.listaReporteConductores.filasMostrar track by $index">
                                 <td>
                                     {{reporte.tipoVehiculoReporte}}
                                 </td>
@@ -38,7 +38,8 @@
                                     {{reporte.empresa}}
                                 </td>
                                 <td>
-                                    {{reporte.observaciones}}
+                                    {{reporte.observaciones | limitTo: 100 }}
+                                    <span ng-show="reporte.observaciones.length > 100"> ...</span>
                                 </td>
                                 <td class="text-center">
                                     <i class="fa" ng-class="{ 'fa-star' : reporte.calificacion > 0, 'fa-star-o' : reporte.calificacion < 1 }"></i>
@@ -53,6 +54,15 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="text-center">
+                    <pagination items-per-page="vm.listaReporteConductores.filasPorPagina"
+                                total-items="vm.listaReporteConductores.totalFilas"
+                                ng-model="vm.listaReporteConductores.paginaActual"
+                                ng-change="vm.listaReporteConductores.pageChanged()"
+                                class="pagination-sm"></pagination>
                 </div>
             </div>
         </div>

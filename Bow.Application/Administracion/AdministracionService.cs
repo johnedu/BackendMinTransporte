@@ -171,23 +171,64 @@ namespace Bow.Administracion
         public void UpdateTipo(UpdateTipoInput tipoUpdate)
         {
             TipoReporte existeTipo = _tipoReporteRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == tipoUpdate.Nombre.ToLower() && p.TipoCategoria.ToLower() == tipoUpdate.TipoCategoria.ToLower() && p.Id != tipoUpdate.Id);
-
+            var mensajeError = "";
+ 
             if (existeTipo == null)
             {
                 TipoReporte tipo = _tipoReporteRepositorio.Get(tipoUpdate.Id);
+                var imagenAnterior = tipo.UrlImagen;
                 Mapper.Map(tipoUpdate, tipo);
                 _tipoReporteRepositorio.Update(tipo);
+
+                //  Eliminamos la imagen anterior
+                try
+                {
+                    if (!imagenAnterior.Equals(tipo.UrlImagen))
+                    {
+                        string rutaCompletaArchivo = System.AppDomain.CurrentDomain.BaseDirectory + imagenAnterior;
+                        File.Delete(rutaCompletaArchivo);
+                    }
+                }
+                catch (FileNotFoundException e)
+                {
+                    mensajeError = "El archivo anterior no se encuentra.";
+                    throw new UserFriendlyException(mensajeError);
+                }
+                catch (Exception e)
+                {
+                    mensajeError = "Ocurrió un problema al eliminar el archivo anterior.";
+                    throw new UserFriendlyException(mensajeError);
+                }
             }
             else
             {
-                var mensajeError = "Ya existe el tipo o categoría.";
+                mensajeError = "Ya existe el tipo o categoría.";
                 throw new UserFriendlyException(mensajeError);
             }
         }
 
         public void DeleteTipo(DeleteTipoInput tipoEliminar)
         {
+            TipoReporte tipo = _tipoReporteRepositorio.Get(tipoEliminar.Id);
             _tipoReporteRepositorio.Delete(tipoEliminar.Id);
+            var mensajeError = "";
+
+            //  Eliminamos la imagen
+            try
+            {
+                string rutaCompletaArchivo = System.AppDomain.CurrentDomain.BaseDirectory + tipo.UrlImagen;
+                File.Delete(rutaCompletaArchivo);
+            }
+            catch (FileNotFoundException e)
+            {
+                mensajeError = "El archivo anterior no se encuentra.";
+                //throw new UserFriendlyException(mensajeError);
+            }
+            catch (Exception e)
+            {
+                mensajeError = "Ocurrió un problema al eliminar el archivo anterior.";
+                //throw new UserFriendlyException(mensajeError);
+            }
         }
 
         /*********************************************************************************************
@@ -203,6 +244,12 @@ namespace Bow.Administracion
         {
             var listaReporteIncidentes = _reporteIncidentesRepositorio.GetAllReporteIncidentesWithTipo();
             return new GetAllReporteIncidentesOutput { ReportesIncidentes = Mapper.Map<List<ReporteIncidenteOutput>>(listaReporteIncidentes) };
+        }
+
+        public GetAllRiesgosCercanosOutput GetAllRiesgosCercanos(GetAllRiesgosCercanosInput riesgosCercanosInput)
+        {
+            var listaReporteIncidentes = _reporteIncidentesRepositorio.GetAllRiesgosCercanos(decimal.Parse(riesgosCercanosInput.LatitudMinima), decimal.Parse(riesgosCercanosInput.LatitudMaxima), decimal.Parse(riesgosCercanosInput.LongitudMinima), decimal.Parse(riesgosCercanosInput.LongitudMaxima));
+            return new GetAllRiesgosCercanosOutput { ReportesIncidentes = Mapper.Map<List<ReporteIncidenteOutput>>(listaReporteIncidentes) };
         }
 
         public void SaveReporteIncidentes(SaveReporteIncidentesInput nuevoReporte)
@@ -288,33 +335,63 @@ namespace Bow.Administracion
         {
             Deslizador existeDeslizador = _deslizadorRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == deslizadorUpdate.Nombre.ToLower() && p.Id != deslizadorUpdate.Id);
 
+            var mensajeError = "";
+
             if (existeDeslizador == null)
             {
-                Deslizador desizador = _deslizadorRepositorio.Get(deslizadorUpdate.Id);
+                Deslizador deslizador = _deslizadorRepositorio.Get(deslizadorUpdate.Id);
+                var imagenAnterior = deslizador.UrlImagen;
+                Mapper.Map(deslizadorUpdate, deslizador);
+                _deslizadorRepositorio.Update(deslizador);
 
                 //  Eliminamos la imagen anterior
-                string rutaCompletaArchivo = System.AppDomain.CurrentDomain.BaseDirectory + desizador.UrlImagen;
-                File.Delete(rutaCompletaArchivo); 
+                try
+                {
+                    if (!imagenAnterior.Equals(deslizadorUpdate.UrlImagen))
+                    {
 
-                Mapper.Map(deslizadorUpdate, desizador);
-                _deslizadorRepositorio.Update(desizador);
+                        string rutaCompletaArchivo = System.AppDomain.CurrentDomain.BaseDirectory + imagenAnterior;
+                        File.Delete(rutaCompletaArchivo);
+                    }
+                }
+                catch (FileNotFoundException e) {
+                    mensajeError = "El archivo anterior no se encuentra.";
+                    throw new UserFriendlyException(mensajeError);
+                }
+                catch(Exception e) {
+                    mensajeError = "Ocurrió un problema al eliminar el archivo anterior.";
+                    throw new UserFriendlyException(mensajeError);
+                }
             }
             else
             {
-                var mensajeError = "Ya existe la imagen en el slider.";
+                mensajeError = "Ya existe la imagen en el slider.";
                 throw new UserFriendlyException(mensajeError);
             }
         }
 
         public void DeleteDeslizador(DeleteDeslizadorInput deslizadorEliminar)
         {
-            Deslizador desizador = _deslizadorRepositorio.Get(deslizadorEliminar.Id);
+            Deslizador deslizador = _deslizadorRepositorio.Get(deslizadorEliminar.Id);
+            _deslizadorRepositorio.Delete(deslizadorEliminar.Id);
+            var mensajeError = "";
 
             //  Eliminamos la imagen
-            string rutaCompletaArchivo = System.AppDomain.CurrentDomain.BaseDirectory + desizador.UrlImagen;
-            File.Delete(rutaCompletaArchivo); 
-
-            _deslizadorRepositorio.Delete(deslizadorEliminar.Id);
+            try
+            {
+                string rutaCompletaArchivo = System.AppDomain.CurrentDomain.BaseDirectory + deslizador.UrlImagen;
+                File.Delete(rutaCompletaArchivo);
+            }
+            catch (FileNotFoundException e)
+            {
+                mensajeError = "El archivo anterior no se encuentra.";
+                //throw new UserFriendlyException(mensajeError);
+            }
+            catch (Exception e)
+            {
+                mensajeError = "Ocurrió un problema al eliminar el archivo anterior.";
+                //throw new UserFriendlyException(mensajeError);
+            }
         }
 
         /*********************************************************************************************
@@ -325,6 +402,12 @@ namespace Bow.Administracion
         {
             var listaNoticias = _noticiasRepositorio.GetAllList().OrderBy(p => p.Fecha);
             return new GetAllNoticiasOutput { Noticias = Mapper.Map<List<NoticiasOutput>>(listaNoticias) };
+        }
+
+        public GetAllNoticiasActivasOutput GetAllNoticiasActivas()
+        {
+            var listaNoticias = _noticiasRepositorio.GetAll().Where(n => n.EsActiva).ToList().OrderBy(p => p.Fecha);
+            return new GetAllNoticiasActivasOutput { Noticias = Mapper.Map<List<NoticiasOutput>>(listaNoticias) };
         }
 
         public GetNoticiasOutput GetNoticias(GetNoticiasInput noticiasInput)
@@ -340,7 +423,6 @@ namespace Bow.Administracion
             {
                 Noticias noticia = Mapper.Map<Noticias>(nuevaNoticias);
                 noticia.EsActiva = true;
-                noticia.Url = "www.google.com";
                 noticia.Fecha = DateTime.Now;
                 noticia.TenantId = BowConsts.TENANT_ID_ACR;
                 _noticiasRepositorio.Insert(noticia);
@@ -355,23 +437,64 @@ namespace Bow.Administracion
         public void UpdateNoticias(UpdateNoticiasInput noticiaUpdate)
         {
             Noticias existeNoticia = _noticiasRepositorio.FirstOrDefault(p => p.Titulo.ToLower() == noticiaUpdate.Titulo.ToLower() && p.Id != noticiaUpdate.Id);
+            var mensajeError = "";
 
             if (existeNoticia == null)
             {
                 Noticias noticia = _noticiasRepositorio.Get(noticiaUpdate.Id);
+                var imagenAnterior = noticia.UrlImagen;
                 Mapper.Map(noticiaUpdate, noticia);
                 _noticiasRepositorio.Update(noticia);
+
+                //  Eliminamos la imagen anterior
+                try
+                {
+                    if (!imagenAnterior.Equals(noticiaUpdate.URLImagen))
+                    {
+                        string rutaCompletaArchivo = System.AppDomain.CurrentDomain.BaseDirectory + imagenAnterior;
+                        File.Delete(rutaCompletaArchivo);
+                    }
+                }
+                catch (FileNotFoundException e)
+                {
+                    mensajeError = "El archivo anterior no se encuentra.";
+                    throw new UserFriendlyException(mensajeError);
+                }
+                catch (Exception e)
+                {
+                    mensajeError = "Ocurrió un problema al eliminar el archivo anterior.";
+                    throw new UserFriendlyException(mensajeError);
+                }
             }
             else
             {
-                var mensajeError = "Ya existe la noticia.";
+                mensajeError = "Ya existe la noticia.";
                 throw new UserFriendlyException(mensajeError);
             }
         }
 
         public void DeleteNoticias(DeleteNoticiasInput noticiaEliminar)
         {
+            Noticias noticia = _noticiasRepositorio.Get(noticiaEliminar.Id);
             _noticiasRepositorio.Delete(noticiaEliminar.Id);
+            var mensajeError = "";
+
+            //  Eliminamos la imagen
+            try
+            {
+                string rutaCompletaArchivo = System.AppDomain.CurrentDomain.BaseDirectory + noticia.UrlImagen;
+                File.Delete(rutaCompletaArchivo);
+            }
+            catch (FileNotFoundException e)
+            {
+                mensajeError = "El archivo anterior no se encuentra.";
+                //throw new UserFriendlyException(mensajeError);
+            }
+            catch (Exception e)
+            {
+                mensajeError = "Ocurrió un problema al eliminar el archivo anterior.";
+                //throw new UserFriendlyException(mensajeError);
+            }
         }
 
         /*********************************************************************************************
@@ -446,6 +569,12 @@ namespace Bow.Administracion
             return new GetAllItemsByDiagnosticoVialOutput { ItemsDiagnosticoVial = Mapper.Map<List<ItemByDiagnosticoVialOutput>>(listaItemsDiagnostico) };
         }
 
+        public GetAllItemsActivosByDiagnosticoVialOutput GetAllItemsActivosByDiagnosticoVial()
+        {
+            var listaItemsDiagnostico = _itemDiagnosticoRepositorio.GetAll().Where(i => i.EsActivo).ToList().OrderBy(p => p.Id);
+            return new GetAllItemsActivosByDiagnosticoVialOutput { ItemsDiagnosticoVial = Mapper.Map<List<ItemByDiagnosticoVialOutput>>(listaItemsDiagnostico) };
+        }
+
         public GetItemByDiagnosticoVialOutput GetItemByDiagnosticoVial(GetItemByDiagnosticoVialInput itemDiagnosticoInput)
         {
             return Mapper.Map<GetItemByDiagnosticoVialOutput>(_itemDiagnosticoRepositorio.Get(itemDiagnosticoInput.Id));
@@ -472,23 +601,64 @@ namespace Bow.Administracion
         public void UpdateItemDiagnosticoVial(UpdateItemDiagnosticoVialInput itemDiagnosticoUpdate)
         {
             ItemDiagnostico existeItemDiagnostico = _itemDiagnosticoRepositorio.FirstOrDefault(p => p.Nombre.ToLower() == itemDiagnosticoUpdate.Nombre.ToLower() && p.Id != itemDiagnosticoUpdate.Id);
+            var mensajeError = "";
 
             if (existeItemDiagnostico == null)
             {
                 ItemDiagnostico itemDiagnostico = _itemDiagnosticoRepositorio.Get(itemDiagnosticoUpdate.Id);
+                var imagenAnterior = itemDiagnostico.UrlImagen;
                 Mapper.Map(itemDiagnosticoUpdate, itemDiagnostico);
                 _itemDiagnosticoRepositorio.Update(itemDiagnostico);
+
+                //  Eliminamos la imagen anterior
+                try
+                {
+                    if (!imagenAnterior.Equals(itemDiagnosticoUpdate.UrlImagen))
+                    {
+                        string rutaCompletaArchivo = System.AppDomain.CurrentDomain.BaseDirectory + imagenAnterior;
+                        File.Delete(rutaCompletaArchivo);
+                    }
+                }
+                catch (FileNotFoundException e)
+                {
+                    mensajeError = "El archivo anterior no se encuentra.";
+                    throw new UserFriendlyException(mensajeError);
+                }
+                catch (Exception e)
+                {
+                    mensajeError = "Ocurrió un problema al eliminar el archivo anterior.";
+                    throw new UserFriendlyException(mensajeError);
+                }
             }
             else
             {
-                var mensajeError = "Ya existe el item del diagnóstico vial.";
+                mensajeError = "Ya existe el item del diagnóstico vial.";
                 throw new UserFriendlyException(mensajeError);
             }
         }
 
         public void DeleteItemDiagnosticoVial(DeleteItemDiagnosticoVialInput itemDiagnosticoEliminar)
         {
+            ItemDiagnostico item = _itemDiagnosticoRepositorio.Get(itemDiagnosticoEliminar.Id);
             _itemDiagnosticoRepositorio.Delete(itemDiagnosticoEliminar.Id);
+            var mensajeError = "";
+
+            //  Eliminamos la imagen
+            try
+            {
+                string rutaCompletaArchivo = System.AppDomain.CurrentDomain.BaseDirectory + item.UrlImagen;
+                File.Delete(rutaCompletaArchivo);
+            }
+            catch (FileNotFoundException e)
+            {
+                mensajeError = "El archivo anterior no se encuentra.";
+                //throw new UserFriendlyException(mensajeError);
+            }
+            catch (Exception e)
+            {
+                mensajeError = "Ocurrió un problema al eliminar el archivo anterior.";
+                //throw new UserFriendlyException(mensajeError);
+            }
         }
 
     }

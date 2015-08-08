@@ -19,7 +19,7 @@
            //Funcion encargada de consultar las categorias en la base de datos
            function cargarCategorias() {
                administracionService.getAllTipos().success(function (data) {
-                   vm.categorias = data.tiposReporte;
+                   vm.categorias = bow.tablas.paginar(data.tiposReporte, 10);
                }).error(function (error) {
                    console.log(error);
                });

@@ -19,7 +19,7 @@
            //Funcion encargada de consultar las historias en la base de datos
            function cargarHistoriasViales() {
                administracionService.getAllHistoriasViales().success(function (data) {
-                   vm.historiasViales = data.historiasViales;
+                   vm.historiasViales = bow.tablas.paginar(data.historiasViales, 10);
                }).error(function (error) {
                    console.log(error);
                });
